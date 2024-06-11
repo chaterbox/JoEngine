@@ -1,10 +1,10 @@
 #pragma once
 #include <memory>
 
-#if defined(JOE_PLATFORM_WINDOWS) || defined(JOE_PLATFORM_LINUX)
+#if defined(JOE_PLATFORM_LINUX)
 	#define JOE_API
 	#else
-	#error "ERROR: Platform Not Linux or Windows"
+	#error "ERROR: Platform Not Linux"
 #endif
 
 #ifdef JOE_ENABLE_ASSERTS
