@@ -15,29 +15,12 @@
 - Metal
 - DX12
 
-## Install Instructions:
-### Linux:
-#### Arch:
-Cmake:
+## Setup
+### Linux
+Run GenerateProjects.sh in the Scripts/linux folder
 
-```
-pacman -S cmake
-```
-Git:
-```
-pacman -S git
-```
-
-#### Debian/Ubuntu
-Cmake:
-```
-apt install cmake
-```
-Git:
-```
-apt install cmake
-```
-#### NeoVim
+## Optional
+### NeoVim:
 change :make command to use bear to gen compile_commands.json
 ```
 set makeprg=bear\ --\ make
@@ -50,6 +33,7 @@ Stable, runs with little to no major bugs.
 For delelopment.
 
 ## Future Plans:
- 
+ - Replace OpenGl for vulkan
+ - create editor
 ### Platform Specific:
 
