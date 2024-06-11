@@ -1,0 +1,6 @@
+bin
+intermediate
+Makefile
+.cache/
+compile_commands.json
+Sandbox/imgui.ini
