@@ -15,6 +15,7 @@ IncludeDirs["GLFW"] = "Engine/Vendor/glfw/include"
 IncludeDirs["glad"] = "Engine/Vendor/glad/include"
 IncludeDirs["ImGui"] = "Engine/Vendor/imgui"
 IncludeDirs["glm"] = "Engine/Vendor/glm"
+IncludeDirs["vkBootStrap"] = "Engine/Vendor/vkbootstrap"
 
 include "Engine/Vendor/glfw"
 include "Engine/Vendor/glad"
@@ -38,7 +39,9 @@ files
 "%{prj.name}/Src/**.h",
 "%{prj.name}/Src/**.cpp",
 "%{prj.name}/Vendor/glm/glm/**.hpp",
-"%{prj.name}/Vendor/glm/glm/**.inl"
+"%{prj.name}/Vendor/glm/glm/**.inl",
+"%{prj.name}/Vendor/vkbootstrap/**.h",
+"%{prj.name}/Vendor/vkbootstrap/**.cpp"
 }
 
 defines
@@ -54,7 +57,8 @@ includedirs
 	"%{IncludeDirs.GLFW}",
 	"%{IncludeDirs.glad}",
 	"%{IncludeDirs.ImGui}",
-	"%{IncludeDirs.glm}"
+	"%{IncludeDirs.glm}",
+  	"%{IncludeDirs.vkBootStrap}"
 }
 libdirs
 {
