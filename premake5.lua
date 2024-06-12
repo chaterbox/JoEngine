@@ -83,6 +83,10 @@ defines
 
 filter "system:linux"
 
+toolset "clang"
+
+warnings "Extra"
+
 links
 {
 	"GLFW",
@@ -135,7 +139,7 @@ includedirs
 
 links
 {
-	"Engine"		
+	"Engine"
 }
 
 filter "system:windows"
@@ -148,6 +152,10 @@ defines
 }
 
 filter "system:linux"
+
+toolset "clang"
+
+warnings "Extra"
 
 links
 {
