@@ -1,6 +1,6 @@
 #pragma once
 #include <sys/uio.h>
-#if defined(JOE_PLATFORM_WINDOWS) || defined(JOE_PLATFORM_LINUX)
+#if defined(JOE_PLATFORM_LINUX)
 
 extern Joe::Application* Joe::CreateApplication();
 
