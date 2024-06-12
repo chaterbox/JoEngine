@@ -23,6 +23,9 @@ project "GLFW"
 		systemversion "latest"
 		staticruntime "On"
 
+		toolset "clang"
+		warnings "Extra"
+
 		files
 		{
 			"src/x11_init.c",

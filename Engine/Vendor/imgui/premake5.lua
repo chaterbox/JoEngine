@@ -28,6 +28,8 @@ project "ImGui"
 		pic "On"
 		systemversion "latest"
 		cppdialect "C++17"
+		toolset "clang"
+		warnings "Extra"
 
 	filter "configurations:Debug"
 		runtime "Debug"
