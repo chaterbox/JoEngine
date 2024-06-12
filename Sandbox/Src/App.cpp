@@ -139,16 +139,16 @@ public:
 	void OnUpdate() override
 	{
 		if (Joe::Input::IsKeyPressed(JOE_KEY_LEFT))
-			m_CameraPosition.x += m_CameraSpeed;
-
-		else if (Joe::Input::IsKeyPressed(JOE_KEY_RIGHT))
 			m_CameraPosition.x -= m_CameraSpeed;
 
+		else if (Joe::Input::IsKeyPressed(JOE_KEY_RIGHT))
+			m_CameraPosition.x += m_CameraSpeed;
+
 		if (Joe::Input::IsKeyPressed(JOE_KEY_UP))
-					m_CameraPosition.y -= m_CameraSpeed;
+					m_CameraPosition.y += m_CameraSpeed;
 
 		else if (Joe::Input::IsKeyPressed(JOE_KEY_DOWN))
-			m_CameraPosition.y += m_CameraSpeed;
+			m_CameraPosition.y -= m_CameraSpeed;
 
 		if (Joe::Input::IsKeyPressed(JOE_KEY_A))
 			m_CameraRotation -= m_CameraRotationSpeed;
