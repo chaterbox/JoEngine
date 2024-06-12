@@ -21,9 +21,10 @@ Run GenerateProjects.sh in the Scripts/linux folder
 
 ## Optional
 ### NeoVim:
-change :make command to use bear to gen compile_commands.json
+#### Gen compile_commands.json
+#### Bear
 ```
-set makeprg=bear\ --\ make
+bear -- make
 ```
 
 ## Branches
