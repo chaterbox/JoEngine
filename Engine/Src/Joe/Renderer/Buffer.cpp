@@ -6,13 +6,14 @@
 #include "Platform/Opengl/OpenGLBuffer.h"
 #include "Platform/Vulkan/VulkanBuffer.h"
 
-namespace Joe{
-	Joe::VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size){
-		switch (Renderer::GetAPI()){
-		case RendererAPI::API::None:   JOE_CORE_ASSERT(false, "RendererAPI::None is currently not suported!");return nullptr;
+namespace Joe
+{
+	  Joe::VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size){
+		        switch (Renderer::GetAPI()){
+		case RendererAPI::API::None: JOE_CORE_ASSERT(false, "RendererAPI::None is currently not suported!");return nullptr;
 		case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		case RendererAPI::API::Vulkan: return new VulkanVertexBuffer(vertices, size);
-		case RendererAPI::API::DX12:
+		case RendererAPI::API::DX12: return nullptr;
 			break;
 		default:
 			break;
@@ -26,6 +27,10 @@ namespace Joe{
 		case RendererAPI::API::None:  JOE_CORE_ASSERT(false,"RendererAPI::None is currently not suported") return nullptr;
 		case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, size);
 		case RendererAPI::API::Vulkan: return new VulkanIndexBuffer(indices, size);
+		case RendererAPI::API::DX12: return nullptr;
+			break;
+		default:
+			break;
 		}
 		JOE_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;

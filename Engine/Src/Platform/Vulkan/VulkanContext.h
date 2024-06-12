@@ -2,6 +2,7 @@
 #include <vulkan_core.h>
 #include <vulkan.h>
 #include "Joe/Renderer/GraphicsContext.h"
+#include <vector>
 
 struct GLFWwindow;
 

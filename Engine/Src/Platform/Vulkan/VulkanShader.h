@@ -1,6 +1,7 @@
 #pragma once
 #include <vulkan.h>
 #include "Joe/Renderer/Shader.h"
+#include <vector>
 
 namespace Joe{
 	class VulkanShader : public Shader{

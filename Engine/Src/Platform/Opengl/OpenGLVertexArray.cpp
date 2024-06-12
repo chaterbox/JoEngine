@@ -1,3 +1,4 @@
+#include "Joe/Renderer/Buffer.h"
 #include "Joepch.h"
 #include "OpenGLVertexArray.h"
 
@@ -17,6 +18,7 @@ namespace Joe{
 		case Joe::ShaderDataType::Int3:		return GL_INT;
 		case Joe::ShaderDataType::Int4:		return GL_INT;
 		case Joe::ShaderDataType::Bool:		return GL_BOOL;
+		case Joe::ShaderDataType::None: return GL_NONE;
 		}
 		return 0;
 	}

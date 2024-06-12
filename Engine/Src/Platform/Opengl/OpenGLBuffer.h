@@ -1,5 +1,6 @@
 #pragma once
 #include "Joe/Renderer/Buffer.h"
+#include <stdint.h>
 
 namespace Joe{
 	class OpenGLVertexBuffer : public VertexBuffer{

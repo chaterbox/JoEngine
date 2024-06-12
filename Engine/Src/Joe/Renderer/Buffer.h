@@ -1,4 +1,8 @@
 #pragma once
+#include <stdint.h>
+#include <string>
+#include <vector>
+
 namespace Joe
 {
 	enum class ShaderDataType{
@@ -18,6 +22,7 @@ namespace Joe
 		case ShaderDataType::Int3:   return 4 * 3;
 		case ShaderDataType::Int4:   return 4 * 4;
 		case ShaderDataType::Bool:   return 1;
+		case ShaderDataType::None: return 0;
 		}
 		return 0;
 	}
@@ -46,7 +51,8 @@ namespace Joe
 			case Joe::ShaderDataType::Int3: return 3;
 			case Joe::ShaderDataType::Int4: return 4;
 			case Joe::ShaderDataType::Bool: return 1;
-			}
+			case Joe::ShaderDataType::None: return 0;
+      }
 			return 0;
 		}
 	};

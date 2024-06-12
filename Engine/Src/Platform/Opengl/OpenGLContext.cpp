@@ -13,7 +13,7 @@ namespace Joe{
 	void OpenglContext::Init(){
 		glfwMakeContextCurrent(m_WindowHandle);
 
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		JOE_CORE_ASSERT(status, "failed to init GLAD!");
 
 		JOE_CORE_INFO("OpenGL INFO:");

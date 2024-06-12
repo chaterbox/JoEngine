@@ -7,8 +7,6 @@ extern Joe::Application* Joe::CreateApplication();
 int main(int argc,char** argv){
 	Joe::Log::Init();
 	JOE_CORE_WARN("init log");
-	int a = 5;
-	//JOE_INFO("hello var ={0}", a);
 	auto app = Joe::CreateApplication();
 	app->Run();
 	delete app;
@@ -19,8 +17,6 @@ int main(int argc,char** argv){
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd){
 	Joe::Log::Init();
 	JOE_CORE_WARN("init log");
-	int a = 5;
-	//JOE_INFO("hello var ={0}", a);
 	auto app = Jovk::CreateApplication();
 	app->Run();
 	delete app;

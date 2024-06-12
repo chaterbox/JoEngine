@@ -18,7 +18,7 @@ namespace Joe{
 			GLint isCompiled = 0;
 			glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &isCompiled);
 
-			if (isCompiled = GL_FALSE){
+			if (isCompiled == GL_FALSE){
 				GLint maxLength = 0;
 				glGetShaderiv(vertexShader, GL_INFO_LOG_LENGTH, &maxLength);
 
