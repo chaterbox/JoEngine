@@ -26,8 +26,6 @@ namespace Joe {
 	}
 
 	GlfwWindow::~GlfwWindow(){
-		if (RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
-		}
 		Shutdown();
 	}
 
@@ -50,26 +48,21 @@ namespace Joe {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
-		if (RendererAPI::GetAPI() == RendererAPI::API::OpenGL){
-			m_Context = new OpenglContext(m_Window);
-			m_Context->Init();
-		}
-
-		if (RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
-			m_Context = new VulkanContext();
-			m_Context->Init();
-		}
-
-		auto instance = VulkanContext::GetInstanceHandle();
-
-		if(RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
-			VulkanSwapchain::CreateSurface(instance, m_Window);
-		}
-
-		if (RendererAPI::GetAPI() == RendererAPI::API::DX12){
-			m_Context = new Dx12Context();
-			m_Context->Init();
-		}
+    switch (RendererAPI::GetAPI()) {
+      case Joe::RendererAPI::API::OpenGL:
+        m_Context = new OpenglContext(m_Window);
+        break;
+      case Joe::RendererAPI::API::Vulkan:
+        m_Context = new VulkanContext(m_Window);
+        break;
+      case Joe::RendererAPI::API::DX12:
+        m_Context = new Dx12Context();
+        break;
+      case Joe::RendererAPI::API::None:
+        m_Context = nullptr;
+    }
+		
+    m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
