@@ -2,7 +2,7 @@
 #include "Joe/Core.h"
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
-
+//TODO: expand logger class
 namespace Joe{
 	class JOE_API Log{
 	public:

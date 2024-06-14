@@ -1,6 +1,6 @@
 #pragma once
 #include "Joe/Renderer/GraphicsContext.h"
-
+//TODO: get rid of opengl
 struct GLFWwindow;
 
 namespace Joe{

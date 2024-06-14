@@ -45,17 +45,20 @@ namespace Joe{
 		// Setup Platform/Renderer bindings
 		ImGui_ImplGlfw_InitForOpenGL(window, true);
 		ImGui_ImplOpenGL3_Init("#version 410");
+    //TODO: add ImGui_ImplVulkan_Init
 	}
 
 	void ImGuiLayer::OnDetach(){
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
+    //TODO: add ImGui_ImplVulkan_Shutdown
 		ImGui::DestroyContext();
 	}
 
 	void ImGuiLayer::Begin(){
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
+    //TODO: add ImGui_ImplVulkan_NewFrame
 		ImGui::NewFrame();
 	}
 
@@ -67,6 +70,7 @@ namespace Joe{
 		// Rendering
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    //TODO: add ImGui_ImplVulkan_RenderDrawData
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable){
 			GLFWwindow* backup_current_context = glfwGetCurrentContext();
