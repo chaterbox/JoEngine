@@ -1,5 +1,8 @@
 #pragma once
 #include <sys/uio.h>
+#include "Log.h"
+#include "Application.h"
+
 #if defined(JOE_PLATFORM_LINUX)
 
 extern Joe::Application* Joe::CreateApplication();
