@@ -3,6 +3,8 @@
 
 struct GLFWwindow;
 
+//TODO: create swapchain
+
 namespace Joe{
 	class VulkanSwapchain{
 	public:
