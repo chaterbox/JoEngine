@@ -23,7 +23,7 @@ namespace Joe{
 
 		void PushLayer(Layer* Layer);
 		void PushOverlay(Layer* Layer);
-		inline static Application& Get() { return *s_Instance; }
+		static inline Application& Get() { return *s_Instance; }
 		inline Window& GetWindow() { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
