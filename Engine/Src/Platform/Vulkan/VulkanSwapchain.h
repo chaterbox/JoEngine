@@ -8,11 +8,11 @@ struct GLFWwindow;
 namespace Joe{
 	class VulkanSwapchain{
 	public:
-		void Create(bool VSync);
+		static void Create(bool VSync);
 
-		VkSwapchainKHR GetSwapchainKHRHandle() { return m_Swapchain; }
+		static VkSwapchainKHR GetSwapchainKHRHandle() { return m_Swapchain; }
 	private:
-		VkSwapchainKHR m_Swapchain;
+		static inline VkSwapchainKHR m_Swapchain;
 		VkSurfaceCapabilitiesKHR surCap;
 		VkSurfaceFormatKHR surFormat;
 	};
