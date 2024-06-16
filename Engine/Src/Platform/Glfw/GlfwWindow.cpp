@@ -8,6 +8,7 @@
 #include "Platform/Opengl/OpenGLContext.h"
 //Vulkan
 #include "Platform/Vulkan/VulkanContext.h"
+#include "Platform/Vulkan/VulkanSwapchain.h"
 //DX12
 #include "Platform/Dx12/Dx12Context.h"
 
