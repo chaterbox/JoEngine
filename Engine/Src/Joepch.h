@@ -12,11 +12,3 @@
 // jovk
 // logging
 #include "Joe/Log.h"
-// windows
-#ifdef JOE_PLATFORM_WINDOWS
-#include <Windows.h>
-#endif
-// linux
-#ifdef JOE_PLATFORM_LINUX
-#include <xcb/xcb.h>
-#endif
