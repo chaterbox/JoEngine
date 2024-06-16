@@ -1,161 +1,125 @@
+#include "Joe/Log.h"
 #include "Joepch.h"
 #include "VulkanContext.h"
-#include "VulkanUtils.h"
-#ifdef JOE_PLATFORM_WINDOWS
-#include <vulkan_win32.h>
-#endif
-#ifdef JOE_PLATFORM_LINUX
-#include <vulkan/vulkan_xcb.h>
-#endif
+#include "vulkan_core.h"
+#include <VkBootstrap.h>
+#include <GLFW/glfw3.h>
+#include <iostream>
 
 namespace Joe{
-	void VulkanContext::Init(){						
+	void VulkanContext::Init(){
+#ifdef JOE_DEBUG
+  bool valdation = true;
+#else 
+  bool valdation = false;
+#endif
 		///////////////////////////////////////////
 		////               instance            ////
 		///////////////////////////////////////////
+	vkb::InstanceBuilder builder;
+	auto inst_ret = builder.set_app_name("JoEngine")
+	.enable_validation_layers(valdation)
+	.use_default_debug_messenger()
+	.require_api_version(1,2,0)
+	.build();
 
-		uint32_t apiVer = 0;
-		vkEnumerateInstanceVersion(&apiVer);
+  JOE_CORE_INFO("VULKAN::INSTANCE::INIT");
 
-		VkApplicationInfo appInfo = {};
-		appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-		appInfo.applicationVersion = VK_MAKE_VERSION(0, 0, 1);
-		appInfo.pApplicationName = "JOE";
-		appInfo.engineVersion = VK_MAKE_VERSION(0, 0, 1);
-		appInfo.pEngineName = "JOE";
-		appInfo.apiVersion = VK_API_VERSION_1_2;
-		
-		#ifdef JOE_PLATFORM_WINDOWS
-			instanceExtensions.push_back(VK_KHR_WIN32_SURFACE_EXTENSION_NAME);
-		#endif
+	vkb::Instance vkb_inst = inst_ret.value();
+	m_Instance = vkb_inst.instance;
 
-		#ifdef JOE_PLATFORM_LINUX
-			instanceExtensions.push_back(VK_KHR_XCB_SURFACE_EXTENSION_NAME);
-		#endif
+  if(glfwCreateWindowSurface(m_Instance, m_WindowHandle, nullptr,&m_Surface) != VK_SUCCESS){
+    JOE_CORE_FATAL("VULKAN::SURFACE::CREATION::FAILED"); 
+  }else{
+    JOE_CORE_INFO("VULKAN::SURFACE::CREATION::SUCCESS");
+  }
 
-		#ifdef JOE_DEBUG
-			instanceExtensions.push_back(VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME);
-		#endif
+  vkb::PhysicalDeviceSelector selector{vkb_inst};
 
-		VkValidationFeatureEnableEXT bestpratice = VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT;
-		VkValidationFeaturesEXT enableValFeat = {};
-		enableValFeat.sType = VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT;
-		enableValFeat.enabledValidationFeatureCount = 1;
-		enableValFeat.pEnabledValidationFeatures = &bestpratice;
+  vkb::PhysicalDevice physicalDevice;
+  VkPhysicalDeviceFeatures features = {};
+   
+  physicalDevice = selector
+    .set_minimum_version(1,2)
+    .set_surface(m_Surface)
+    .set_required_features(features)
+    .select()
+    .value();
 
-		#ifdef JOE_DEBUG
-			std::vector<const char*>instanceLayers;
-			instanceLayers.push_back("VK_LAYER_KHRONOS_validation");
-			#ifdef JOE_ENABLE_API_DUMP
-				instanceLayers.push_back("VK_LAYER_LUNARG_api_dump");
-			#endif
-		#endif
+  vkb::DeviceBuilder deviceBuilder{physicalDevice};
+  vkb::Device vkbDevice = deviceBuilder.build().value();
 
-		#ifdef JOE_DIST
-				std::vector<const char*>instanceLayers = {};
-		#endif
+  m_PhysDevice = physicalDevice.physical_device;
+  m_LogicalDevice = vkbDevice.device;
 
-		#ifdef JOE_RELEASE
-			std::vector<const char*>instanceLayers = {};
-		#endif
-		
-		VkInstanceCreateInfo instanceInfo = {};
-		instanceInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-		#ifdef JOE_DEBUG
-			instanceInfo.pNext = &enableValFeat;
-		#endif 
-		instanceInfo.pApplicationInfo = &appInfo;
-		instanceInfo.enabledExtensionCount = static_cast<uint32_t>(instanceExtensions.size());
-		instanceInfo.ppEnabledExtensionNames = instanceExtensions.data();
-		instanceInfo.enabledLayerCount = static_cast<uint32_t>(instanceLayers.size());
-		instanceInfo.ppEnabledLayerNames = instanceLayers.data();
+  m_GraphicsQueue = vkbDevice.get_queue(vkb::QueueType::graphics).value();
 
-		if(vkCreateInstance(&instanceInfo, nullptr, &instance) != VK_SUCCESS) {
-			JOE_FATAL("VULKAN::INSTANCE::CREATE::FAILED");
-		}
+  m_GraphicsQueueFamily = vkbDevice.get_queue_index(vkb::QueueType::graphics).value();
 
-		uint32_t physicalDeviceCount = 0;
-		vkEnumeratePhysicalDevices(instance, &physicalDeviceCount, nullptr);
+  std::cout << "\n";
 
-		if (physicalDeviceCount == 0) {
-			JOE_CORE_ERROR("VULKAN: no physical device found");
-		}
+  	///////////////////////////////////////////
+		////            device info            ////
+		///////////////////////////////////////////
 
-		vkEnumeratePhysicalDevices(instance, &physicalDeviceCount, &m_PhysDevice);
+  JOE_INFO("VULKAN:: [DEVICE INFO]");
 
-				///////////////////////////////////////////
-				////            device info            ////
-				///////////////////////////////////////////
+  int apiMajor,apiMinor,apiPatch,driverMajor,driverMinor,driverPatch;
 
-		vkGetPhysicalDeviceProperties(m_PhysDevice, &m_DeviceProp);
+  apiMajor = VK_VERSION_MAJOR(physicalDevice.properties.apiVersion);
+  apiMinor = VK_VERSION_MINOR(physicalDevice.properties.apiVersion);
+  apiPatch = VK_VERSION_PATCH(physicalDevice.properties.apiVersion);
 
-		JOE_CORE_INFO("VULKAN INFO:");
-		JOE_CORE_INFO("VULKAN: DEVICE INFO:");
-		JOE_CORE_INFO("	VULKAN: Device: {0}", m_DeviceProp.deviceName);
+  driverMajor = VK_VERSION_MAJOR(physicalDevice.properties.driverVersion);
+  driverMinor = VK_VERSION_MINOR(physicalDevice.properties.driverVersion);
+  driverPatch = VK_VERSION_PATCH(physicalDevice.properties.driverVersion);
 
-		int driverMajor, driverMinor, driverPatch, apiMajor, apiMinor, apiPatch;
+  if(physicalDevice.properties.vendorID == VendorIDs::AMD){
+    JOE_INFO("VULKAN:: [VENDOR] AMD");
+  }
 
-		apiMajor = VK_VERSION_MAJOR(m_DeviceProp.apiVersion);
-		apiMinor = VK_VERSION_MINOR(m_DeviceProp.apiVersion);
-		apiPatch = VK_VERSION_PATCH(m_DeviceProp.apiVersion);
+  if(physicalDevice.properties.vendorID == VendorIDs::NVIDIA){
+    JOE_INFO("VULKAN:: [VENDOR] NVIDIA");
+  }
 
-		JOE_CORE_INFO("	VULKAN: API Version: {0}.{1}.{2}", apiMajor, apiMinor, apiPatch);
+  if(physicalDevice.properties.vendorID == VendorIDs::INTEL){
+    JOE_INFO("VULKAN:: [VENDOR] INTEL");
+  }
 
-		driverMajor = VK_VERSION_MAJOR(m_DeviceProp.driverVersion);
-		driverMinor = VK_VERSION_MINOR(m_DeviceProp.driverVersion);
-		driverPatch = VK_VERSION_PATCH(m_DeviceProp.driverVersion);
+  if(physicalDevice.properties.vendorID == VendorIDs::APPLE){
+    JOE_INFO("VULKAN:: [VENDOR] APPLE");
+  }
 
-		JOE_CORE_INFO("	VULKAN: Driver Version: {0}.{1}.{2}", driverMajor, driverMinor, driverPatch);
+  JOE_INFO("VULKAN:: [DEVICE NAME] {0}", physicalDevice.properties.deviceName);
+  JOE_INFO("VULKAN:: [DRIVER VERSION] {0},{1},{2}",driverMajor,driverMinor,driverPatch);
+  JOE_INFO("VULKAN:: [API VERSION] {0},{1},{2}",apiMajor,apiMinor,apiPatch);
 
-		switch (m_DeviceProp.deviceType) {
-		case VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU:
-			JOE_CORE_INFO("	VULKAN: Device type: Integerated GPU ");
-			break;
-		case VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU:
-			JOE_CORE_INFO("	VULKAN: Device type: Discrete_GPU");
-			break;
-		default:
-			JOE_CORE_ERROR("	VULKAN: Unsupported physical device");
-			break;
-		}
+  switch (physicalDevice.properties.deviceType) {
+    case VK_PHYSICAL_DEVICE_TYPE_CPU:
+      JOE_INFO("VULKAN:: [DEVICE TYPE] CPU");
+      break;
+    case VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU:
+      JOE_INFO("VULKAN:: [DEVICE TYPE] DISCRETE GPU");
+      break;
+    case VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU:
+      JOE_INFO("VULKAN:: [DEVICE TYPE] INTERGRATED GPU");
+      break;
+  }
 
-		std::vector<const char*>DeviceExtensions = { VK_KHR_SWAPCHAIN_EXTENSION_NAME };
+    std::cout << "\n";
 
-		VkPhysicalDeviceFeatures physDeviceFeats = { VK_FALSE };
+    //TODO: add vma
 
-		float queuePri = 1.0f;
-
-		VkDeviceQueueCreateInfo queueInfo = {};
-		queueInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
-		queueInfo.queueCount = 1;
-		queueInfo.queueFamilyIndex = 0;
-		queueInfo.pQueuePriorities = &queuePri;
-		queueInfo.flags = 0;
-
-		VkDeviceCreateInfo DeviceCreateInfo = {};
-		DeviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
-		DeviceCreateInfo.enabledExtensionCount = static_cast<uint32_t>(DeviceExtensions.size());
-		DeviceCreateInfo.ppEnabledExtensionNames = DeviceExtensions.data();
-		DeviceCreateInfo.pEnabledFeatures = &physDeviceFeats;
-		DeviceCreateInfo.pQueueCreateInfos = &queueInfo;
-		DeviceCreateInfo.queueCreateInfoCount = 1;
-		DeviceCreateInfo.flags = 0;
-
-		uint32_t queueFamPropsCount = 0;
-		vkGetPhysicalDeviceQueueFamilyProperties(m_PhysDevice, &queueFamPropsCount, nullptr);
-
-		if (vkCreateDevice(m_PhysDevice, &DeviceCreateInfo, nullptr, &m_LogicalDevice) != VK_SUCCESS) {
-			JOE_FATAL("VULKAN::LOGICAL::DEVICE::CREATE::FAILED");
-		}
 	}
 
 	void VulkanContext::Swapbuffers(){
 	}
 
-	VulkanContext::VulkanContext(){
+	VulkanContext::VulkanContext(GLFWwindow* window)
+  : m_WindowHandle(window){
 	}
 
 	VulkanContext::~VulkanContext(){
-		vkDestroyInstance(instance, nullptr);
+		vkDestroyInstance(m_Instance, nullptr);
 	}
 }
