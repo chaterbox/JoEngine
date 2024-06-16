@@ -1,5 +1,5 @@
 bin
-intermediate
+bin-int
 Makefile
 .cache/
 compile_commands.json
