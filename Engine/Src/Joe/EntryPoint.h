@@ -9,7 +9,8 @@ extern Joe::Application* Joe::CreateApplication();
 
 int main(int argc,char** argv){
 	Joe::Log::Init();
-	JOE_CORE_INFO("init log");
+	JOE_CORE_INFO("JOENGINE::INIT");
+	JOE_CORE_INFO("LOG::INIT");
 	auto app = Joe::CreateApplication();
 	app->Run();
 	delete app;
