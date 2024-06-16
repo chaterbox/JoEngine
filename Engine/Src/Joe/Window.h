@@ -11,16 +11,16 @@ namespace Joe{
 		unsigned int Width;
 		unsigned int Height;
 		
-		WindowProps(const std::string& title = "jovk Engine",
+		WindowProps(const std::string& title = "JoEngine",
 			unsigned int width = 1280,
 			unsigned int height = 720)
 			: Title(title), Width(width), Height(height){
 			#ifdef JOE_DEBUG
 			if(RendererAPI::GetAPI() == RendererAPI::API::OpenGL){
-				Title = "Jovk Engine: DEBUG: RendererAPI: OpenGL";
+				Title = "JoEngine: DEBUG: RendererAPI: OpenGL";
 			}
 			if (RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
-				Title = "Jovk Engine: DEBUG: RendererAPI: Vulkan";
+				Title = "JoEngine: DEBUG: RendererAPI: Vulkan";
 			}
 			#endif
 		}
