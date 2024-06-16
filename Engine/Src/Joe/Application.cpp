@@ -26,7 +26,7 @@ namespace Joe{
 	}
 
 	Joe::Application::~Application(){
-
+    JOE_CORE_INFO("JOENGINE::CLOSED");
 	}
 
 	void Application::OnEvent(Event& e){
