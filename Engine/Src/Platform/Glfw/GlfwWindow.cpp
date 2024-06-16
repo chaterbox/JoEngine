@@ -34,7 +34,7 @@ namespace Joe {
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
-		JOE_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		JOE_CORE_INFO("GLFW::WINDOW CREATED::TITLE:{0} WIDTH:{1} HEIGHT:{2}", props.Title, props.Width, props.Height);
 		if (!s_GLFWInitialized){
 			auto success = glfwInit();
 			JOE_CORE_ASSERT(success, "Could not init GLFW");
