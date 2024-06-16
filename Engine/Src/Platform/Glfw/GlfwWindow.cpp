@@ -40,7 +40,13 @@ namespace Joe {
 
 		JOE_CORE_INFO("GLFW::WINDOW CREATED::TITLE:{0} WIDTH:{1} HEIGHT:{2}", props.Title, props.Width, props.Height);
 		if (!s_GLFWInitialized){
-			auto success = glfwInit();
+
+#ifdef JOE_DEBUG
+      auto success = glfwInit();
+#else 
+      glfwInit();
+#endif
+
 			JOE_CORE_ASSERT(success, "Could not init GLFW");
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
