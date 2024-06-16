@@ -7,7 +7,7 @@
 
 extern Joe::Application* Joe::CreateApplication();
 
-int main(int argc,char** argv){
+int main(){
 	Joe::Log::Init();
 	JOE_CORE_INFO("JOENGINE::INIT");
 	JOE_CORE_INFO("LOG::INIT");
