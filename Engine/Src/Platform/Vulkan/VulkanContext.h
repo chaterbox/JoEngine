@@ -3,6 +3,7 @@
 #include <vulkan_core.h>
 #include <vulkan.h>
 #include "Joe/Renderer/GraphicsContext.h"
+#include <vk_mem_alloc.h>
 
 struct GLFWwindow;
 
@@ -26,13 +27,15 @@ namespace Joe{
 
 		static VkInstance GetInstanceHandle() { return m_Instance; }
 
-    static inline VkSurfaceKHR GetSurfaceHandle() { return m_Surface;}
+    static inline VkSurfaceKHR GetSurfaceHandle() { return m_Surface; }
 		static VkPhysicalDevice GetPhyDeviceHandle() { return m_PhysDevice; }
 
 		static VkDevice GetLogicalDeviceHandle() { return  m_LogicalDevice; }
 
-    static VkQueue GetGraphicsQueueHandle() { return m_GraphicsQueue;}
-    static uint32_t GetGraphicsQueueFamily() { return m_GraphicsQueueFamily;}
+    static VkQueue GetGraphicsQueueHandle() { return m_GraphicsQueue; }
+    static uint32_t GetGraphicsQueueFamily() { return m_GraphicsQueueFamily; }
+
+    static VmaAllocator GetVmaAllotorHandle() { return m_Allocator; }
 	private:
 		static inline VkInstance m_Instance;
   
@@ -44,6 +47,8 @@ namespace Joe{
 
     static inline VkQueue m_GraphicsQueue;
     static inline uint32_t m_GraphicsQueueFamily;
+
+    static inline VmaAllocator m_Allocator;
 
 		GLFWwindow* m_WindowHandle;
 	};

@@ -1,5 +1,6 @@
 #include "Joe/Log.h"
 #include "Joepch.h"
+#define VMA_IMPLEMENTATION
 #include "VulkanContext.h"
 #include "vulkan_core.h"
 #include <VkBootstrap.h>
@@ -108,8 +109,13 @@ namespace Joe{
 
     std::cout << "\n";
 
-    //TODO: add vma
-
+    VmaAllocatorCreateInfo allocatorInfo = {};
+    allocatorInfo.physicalDevice = m_PhysDevice;
+    allocatorInfo.device = m_LogicalDevice;
+    allocatorInfo.instance = m_Instance;
+    if(vmaCreateAllocator(&allocatorInfo, &m_Allocator)!= VK_SUCCESS){
+      JOE_CORE_INFO("VULKAN::VMA::CREATION::FAILED");
+    }
 	}
 
 	void VulkanContext::Swapbuffers(){
