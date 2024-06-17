@@ -12,14 +12,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDirs = {}
 IncludeDirs["GLFW"] = "Engine/Vendor/glfw/include"
-IncludeDirs["glad"] = "Engine/Vendor/glad/include"
 IncludeDirs["ImGui"] = "Engine/Vendor/imgui"
 IncludeDirs["glm"] = "Engine/Vendor/glm"
 IncludeDirs["vkBootStrap"] = "Engine/Vendor/vkbootstrap"
 IncludeDirs["vma"] = "Engine/Vendor/vma"
 
 include "Engine/Vendor/glfw"
-include "Engine/Vendor/glad"
 include "Engine/Vendor/imgui"
 
 project "Engine"
@@ -57,17 +55,15 @@ includedirs
 	"%{prj.name}/Vendor/spdlog/include",
 	"%{prj.name}/Vendor/vulkan/Include/vulkan",
 	"%{IncludeDirs.GLFW}",
-	"%{IncludeDirs.glad}",
 	"%{IncludeDirs.ImGui}",
 	"%{IncludeDirs.glm}",
-  "%{IncludeDirs.vkBootStrap}",
-  "%{IncludeDirs.vma}"
+  	"%{IncludeDirs.vkBootStrap}",
+  	"%{IncludeDirs.vma}"
 }
 libdirs
 {
 	"%{prj.name}/Vendor/vulkan/Lib"
 }
-
 
 filter "system:windows"
 
@@ -76,7 +72,6 @@ systemversion "latest"
 links
 {
 	"GLFW",
-	"glad",
 	"ImGui",
 	"vulkan-1.lib"
 }
@@ -95,7 +90,6 @@ toolset "clang"
 links
 {
 	"GLFW",
-	"glad",
 	"ImGui",
 	"vulkan-1.lib"
 }
@@ -164,12 +158,9 @@ toolset "clang"
 links
 {
 	"GLFW",
-	"Glad",
 	"ImGui",
 	"Xrandr",
 	"Xi",
-	"GLU",
-	"GL",
 	"X11",
 	"dl",
 	"pthread",
