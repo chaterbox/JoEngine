@@ -92,8 +92,6 @@ filter "system:linux"
 
 toolset "clang"
 
-warnings "Extra"
-
 links
 {
 	"GLFW",
@@ -110,6 +108,7 @@ defines
 
 filter "configurations:Debug"
 defines {"JOE_DEBUG","JOE_ENABLE_ASSERTS","JOE_ENABLE_VK_ASSERT"}
+warnings "Extra"
 symbols "on"
 
 filter "configurations:Release"
@@ -162,8 +161,6 @@ filter "system:linux"
 
 toolset "clang"
 
-warnings "Extra"
-
 links
 {
 	"GLFW",
@@ -187,6 +184,7 @@ defines
 
 filter "configurations:Debug"
 defines "JOE_DEBUG"
+warnings "Extra"
 symbols "on"
 
 filter "configurations:Release"

@@ -29,10 +29,10 @@ project "ImGui"
 		systemversion "latest"
 		cppdialect "C++17"
 		toolset "clang"
-		warnings "Extra"
 
 	filter "configurations:Debug"
 		runtime "Debug"
+		warnings "Extra"
 		symbols "on"
 
 	filter "configurations:Release"

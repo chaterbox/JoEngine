@@ -24,7 +24,6 @@ project "GLFW"
 		staticruntime "On"
 
 		toolset "clang"
-		warnings "Extra"
 
 		files
 		{
@@ -70,6 +69,7 @@ project "GLFW"
 
 	filter "configurations:Debug"
 		runtime "Debug"
+		warnings "Extra"
 		symbols "on"
 
 	filter "configurations:Release"

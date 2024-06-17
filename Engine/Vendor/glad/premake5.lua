@@ -22,10 +22,10 @@ project "glad"
 		
 	filter "system:linux"
 		toolset "clang"
-		warnings "Extra"
 
 	filter "configurations:Debug"
 		runtime "Debug"
+		warnings "Extra"
 		symbols "on"
 
 	filter "configurations:Release"
