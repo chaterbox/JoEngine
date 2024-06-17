@@ -4,8 +4,6 @@
 #include "Joe/Events/ApplicationEvents.h"
 #include "Joe/Events/MouseEvent.h"
 #include "Joe/Events/KeyEvent.h"
-//OpenGL 
-#include "Platform/Opengl/OpenGLContext.h"
 //Vulkan
 #include "Platform/Vulkan/VulkanContext.h"
 #include "Platform/Vulkan/VulkanSwapchain.h"
@@ -57,9 +55,6 @@ namespace Joe {
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
     switch (RendererAPI::GetAPI()) {
-      case Joe::RendererAPI::API::OpenGL:
-        m_Context = new OpenglContext(m_Window);
-        break;
       case Joe::RendererAPI::API::Vulkan:
         m_Context = new VulkanContext(m_Window);
         break;
@@ -164,13 +159,7 @@ namespace Joe {
 	}
 
 	void GlfwWindow::SetVSync(bool enabled){
-		if (RendererAPI::GetAPI() == RendererAPI::API::OpenGL){
-			if (enabled)
-				glfwSwapInterval(1);
-			else
-				glfwSwapInterval(0);
-		}
-			m_Data.VSync = enabled;
+		m_Data.VSync = enabled;
 	}
 
 	bool GlfwWindow::IsVSync() const{

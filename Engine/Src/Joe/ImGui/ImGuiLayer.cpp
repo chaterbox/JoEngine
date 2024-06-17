@@ -3,12 +3,10 @@
 
 #include "imgui.h"
 #include "examples/imgui_impl_glfw.h"
-#include "examples/imgui_impl_opengl3.h"
 
 #include "Joe/Application.h"
 
 #include <GLFW/glfw3.h>
-#include <glad/glad.h>
 
 namespace Joe{
 	ImGuiLayer::ImGuiLayer()
@@ -43,20 +41,17 @@ namespace Joe{
 		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
 
 		// Setup Platform/Renderer bindings
-		ImGui_ImplGlfw_InitForOpenGL(window, true);
-		ImGui_ImplOpenGL3_Init("#version 410");
+		
     //TODO: add ImGui_ImplVulkan_Init
 	}
 
 	void ImGuiLayer::OnDetach(){
-		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
     //TODO: add ImGui_ImplVulkan_Shutdown
 		ImGui::DestroyContext();
 	}
 
 	void ImGuiLayer::Begin(){
-		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
     //TODO: add ImGui_ImplVulkan_NewFrame
 		ImGui::NewFrame();
@@ -69,7 +64,6 @@ namespace Joe{
 
 		// Rendering
 		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     //TODO: add ImGui_ImplVulkan_RenderDrawData
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable){

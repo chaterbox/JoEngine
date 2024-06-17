@@ -19,10 +19,9 @@ namespace Joe{
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallBack(BIND_EVENT_FN(OnEvent));
 
-		if (RendererAPI::GetAPI() == RendererAPI::API::OpenGL){
-			m_ImGuiLayer = new ImGuiLayer();
-			PushOverlay(m_ImGuiLayer);
-		}
+		//m_ImGuiLayer = new ImGuiLayer();
+		//PushOverlay(m_ImGuiLayer);
+		
 	}
 
 	Joe::Application::~Application(){
@@ -57,12 +56,11 @@ namespace Joe{
 
 	void Application::Run(){
 		while (m_running){
-			if (RendererAPI::GetAPI() == RendererAPI::API::OpenGL){
-				m_ImGuiLayer->Begin();
-				for (Layer* layer : m_LayerStack)
-					layer->OnImGuiRender();
-				m_ImGuiLayer->End();
-			}
+			//m_ImGuiLayer->Begin();
+			//for (Layer* layer : m_LayerStack)
+				//layer->OnImGuiRender();
+			//m_ImGuiLayer->End();
+
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
