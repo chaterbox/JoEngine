@@ -6,14 +6,13 @@
 
 struct GLFWwindow;
 
-//TODO: create swapchain
-
 namespace Joe{
 	class VulkanSwapchain{
 	public:
 		static void Create(VkPhysicalDevice phyDevice,VkDevice device,VkSurfaceKHR surface,bool VSync,unsigned int width,unsigned int height);
 
 		static VkSwapchainKHR GetSwapchainKHRHandle() { return m_Swapchain; }
+    static VkExtent2D GetExtentHandle() { return m_Extent;}
 	private:
 		static inline VkSwapchainKHR m_Swapchain;
 		static inline VkFormat m_SwapchainImageFormat;
