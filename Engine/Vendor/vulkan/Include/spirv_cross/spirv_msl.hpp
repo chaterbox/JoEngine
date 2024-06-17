@@ -578,7 +578,7 @@ public:
 	// add_msl_shader_input or the builtin is not used, otherwise returns N in [[attribute(N)]].
 	uint32_t get_automatic_builtin_input_location(spv::BuiltIn builtin) const;
 
-	// NOTE: Only resources which are remapped using add_msl_resource_binding will be reported here.
+	// NOTE Only resources which are remapped using add_msl_resource_binding will be reported here.
 	// Constexpr samplers are always assumed to be emitted.
 	// No specific MSLResourceBinding remapping is required for constexpr samplers as long as they are remapped
 	// by remap_constexpr_sampler(_by_binding).

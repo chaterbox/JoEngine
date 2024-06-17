@@ -114,7 +114,7 @@ typedef enum spv_endianness_t {
 // is a member of an optional tuple of values.  In that case the first member
 // would be optional, and the subsequent members would be required.
 //
-// NOTE: Although we don't promise binary compatibility, as a courtesy, please
+// NOTE Although we don't promise binary compatibility, as a courtesy, please
 // add new enum values at the end.
 typedef enum spv_operand_type_t {
   // A sentinel value.
@@ -171,7 +171,7 @@ typedef enum spv_operand_type_t {
   SPV_OPERAND_TYPE_KERNEL_PROFILING_INFO,         // SPIR-V Sec 3.30
   SPV_OPERAND_TYPE_CAPABILITY,                    // SPIR-V Sec 3.31
 
-  // NOTE: New concrete enum values should be added at the end.
+  // NOTE New concrete enum values should be added at the end.
 
   // Set 5:  Operands that are a single word bitmask.
   // Sometimes a set bit indicates the instruction requires still more operands.
@@ -183,7 +183,7 @@ typedef enum spv_operand_type_t {
   SPV_OPERAND_TYPE_MEMORY_ACCESS,          // SPIR-V Sec 3.26
   SPV_OPERAND_TYPE_FRAGMENT_SHADING_RATE,  // SPIR-V Sec 3.FSR
 
-// NOTE: New concrete enum values should be added at the end.
+// NOTE New concrete enum values should be added at the end.
 
 // The "optional" and "variable"  operand types are only used internally by
 // the assembler and the binary parser.
@@ -192,7 +192,7 @@ typedef enum spv_operand_type_t {
 //    Variable : expands to 0, 1 or many operands or pairs of operands.
 //               This is similar to * in regular expressions.
 
-// NOTE: These FIRST_* and LAST_* enum values are DEPRECATED.
+// NOTE These FIRST_* and LAST_* enum values are DEPRECATED.
 // The concept of "optional" and "variable" operand types are only intended
 // for use as an implementation detail of parsing SPIR-V, either in text or
 // binary form.  Instead of using enum ranges, use characteristic function

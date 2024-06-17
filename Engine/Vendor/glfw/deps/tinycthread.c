@@ -473,7 +473,7 @@ int thrd_sleep(const struct timespec *time_point, struct timespec *remaining)
 
   /* Get the current time */
   if (clock_gettime(CLOCK_REALTIME, &now) != 0)
-    return -2;  // FIXME: Some specific error code?
+    return -2;  // FIXME Some specific error code?
 
 #if defined(_TTHREAD_WIN32_)
   /* Delta in milliseconds */
@@ -521,7 +521,7 @@ void thrd_yield(void)
 int tss_create(tss_t *key, tss_dtor_t dtor)
 {
 #if defined(_TTHREAD_WIN32_)
-  /* FIXME: The destructor function is not supported yet... */
+  /* FIXME The destructor function is not supported yet... */
   if (dtor != NULL)
   {
     return thrd_error;

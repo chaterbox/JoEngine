@@ -204,7 +204,7 @@ void _glfwPollMonitorsWin32(void)
             type = _GLFW_INSERT_LAST;
         }
 
-        // HACK: If an active adapter does not have any display devices
+        // HACK If an active adapter does not have any display devices
         //       (as sometimes happens), add it directly as a monitor
         if (displayIndex == 0)
         {
@@ -449,7 +449,7 @@ GLFWvidmode* _glfwPlatformGetVideoModes(_GLFWmonitor* monitor, int* count)
 
     if (!*count)
     {
-        // HACK: Report the current mode if no valid modes were found
+        // HACK Report the current mode if no valid modes were found
         result = calloc(1, sizeof(GLFWvidmode));
         _glfwPlatformGetVideoMode(monitor, result);
         *count = 1;

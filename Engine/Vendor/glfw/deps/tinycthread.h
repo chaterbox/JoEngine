@@ -155,7 +155,7 @@ int _tthread_clock_gettime(clockid_t clk_id, struct timespec *ts);
 * @hideinitializer
 */
 
-/* FIXME: Check for a PROPER value of __STDC_VERSION__ to know if we have C11 */
+/* FIXME Check for a PROPER value of __STDC_VERSION__ to know if we have C11 */
 #if !(defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201102L)) && !defined(_Thread_local)
  #if defined(__GNUC__) || defined(__INTEL_COMPILER) || defined(__SUNPRO_CC) || defined(__IBMCPP__)
   #define _Thread_local __thread

@@ -666,7 +666,7 @@ public:
         return parse(builtInResources, defaultVersion, ENoProfile, false, forwardCompatible, messages, includer);
     }
 
-    // NOTE: Doing just preprocessing to obtain a correct preprocessed shader string
+    // NOTE Doing just preprocessing to obtain a correct preprocessed shader string
     // is not an officially supported or fully working path.
     GLSLANG_EXPORT bool preprocess(
         const TBuiltInResource* builtInResources, int defaultVersion,
@@ -774,7 +774,7 @@ struct TVarEntryInfo;
 // and calls all other callbacks to validate and to get the
 // bindings, sets, locations, component and color indices.
 //
-// NOTE: that still limit checks are applied to bindings and sets
+// NOTE that still limit checks are applied to bindings and sets
 // and may result in an error.
 class TIoMapResolver
 {

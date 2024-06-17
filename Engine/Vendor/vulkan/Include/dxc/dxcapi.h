@@ -221,7 +221,7 @@ struct IDxcCompilerArgs : public IUnknown {
 // Legacy Interfaces
 /////////////////////////
 
-// NOTE: IDxcUtils replaces IDxcLibrary
+// NOTE IDxcUtils replaces IDxcLibrary
 CROSS_PLATFORM_UUIDOF(IDxcLibrary, "e5204dc7-d18c-4c3c-bdfb-851673980fe7")
 struct IDxcLibrary : public IUnknown {
   virtual HRESULT STDMETHODCALLTYPE SetMalloc(_In_opt_ IMalloc *pMalloc) = 0;
@@ -249,7 +249,7 @@ struct IDxcLibrary : public IUnknown {
     _In_ IDxcBlob *pBlob, _COM_Outptr_ IDxcBlobEncoding **pBlobEncoding) = 0;
 };
 
-// NOTE: IDxcResult replaces IDxcOperationResult
+// NOTE IDxcResult replaces IDxcOperationResult
 CROSS_PLATFORM_UUIDOF(IDxcOperationResult, "CEDB484A-D4E9-445A-B991-CA21CA157DC2")
 struct IDxcOperationResult : public IUnknown {
   virtual HRESULT STDMETHODCALLTYPE GetStatus(_Out_ HRESULT *pStatus) = 0;
@@ -266,7 +266,7 @@ struct IDxcOperationResult : public IUnknown {
   virtual HRESULT STDMETHODCALLTYPE GetErrorBuffer(_COM_Outptr_result_maybenull_ IDxcBlobEncoding **ppErrors) = 0;
 };
 
-// NOTE: IDxcCompiler3 replaces IDxcCompiler and IDxcCompiler2
+// NOTE IDxcCompiler3 replaces IDxcCompiler and IDxcCompiler2
 CROSS_PLATFORM_UUIDOF(IDxcCompiler, "8c210bf3-011f-4422-8d70-6f9acb8db617")
 struct IDxcCompiler : public IUnknown {
   // Compile a single entry point to the target shader model
@@ -304,7 +304,7 @@ struct IDxcCompiler : public IUnknown {
     ) = 0;
 };
 
-// NOTE: IDxcCompiler3 replaces IDxcCompiler and IDxcCompiler2
+// NOTE IDxcCompiler3 replaces IDxcCompiler and IDxcCompiler2
 CROSS_PLATFORM_UUIDOF(IDxcCompiler2, "A005A9D9-B8BB-4594-B5C9-0E633BEC4D37")
 struct IDxcCompiler2 : public IDxcCompiler {
   // Compile a single entry point to the target shader model with debug information.
@@ -353,7 +353,7 @@ public:
 // Latest interfaces. Please use these
 ////////////////////////
 
-// NOTE: IDxcUtils replaces IDxcLibrary
+// NOTE IDxcUtils replaces IDxcLibrary
 CROSS_PLATFORM_UUIDOF(IDxcUtils, "4605C4CB-2019-492A-ADA4-65F20BB7D67F")
 struct IDxcUtils : public IUnknown {
   // Create a sub-blob that holds a reference to the outer blob and points to its memory.

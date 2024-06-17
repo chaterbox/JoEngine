@@ -373,7 +373,7 @@ public:
 	//
 	// To modify dimensions which are *not* specialization constants, set_execution_mode should be used directly.
 	// Arguments to set_execution_mode which are specialization constants are effectively ignored during compilation.
-	// NOTE: This is somewhat different from how SPIR-V works. In SPIR-V, the constant vector will completely replace LocalSize,
+	// NOTE This is somewhat different from how SPIR-V works. In SPIR-V, the constant vector will completely replace LocalSize,
 	// while in this interface, LocalSize is only ignored for specialization constants.
 	//
 	// The specialization constant will be written to x, y and z arguments.

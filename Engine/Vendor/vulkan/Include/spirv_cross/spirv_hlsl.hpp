@@ -103,7 +103,7 @@ class CompilerHLSL : public CompilerGLSL
 public:
 	struct Options
 	{
-		uint32_t shader_model = 30; // TODO: map ps_4_0_level_9_0,... somehow
+		uint32_t shader_model = 30; // TODO map ps_4_0_level_9_0,... somehow
 
 		// Allows the PointSize builtin, and ignores it, as PointSize is not supported in HLSL.
 		bool point_size_compat = false;
@@ -275,7 +275,7 @@ private:
 
 	Options hlsl_options;
 
-	// TODO: Refactor this to be more similar to MSL, maybe have some common system in place?
+	// TODO Refactor this to be more similar to MSL, maybe have some common system in place?
 	bool requires_op_fmod = false;
 	bool requires_fp16_packing = false;
 	bool requires_uint2_packing = false;

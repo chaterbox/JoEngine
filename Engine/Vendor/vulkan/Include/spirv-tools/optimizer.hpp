@@ -803,7 +803,7 @@ Optimizer::PassToken CreateFixStorageClassPass();
 // into storage images (OpImageTexelPointer).  For an cube array image, it
 // assumes the maximum layer count times 6 is at most 0xffffffff.
 //
-// NOTE: This pass will fail with a message if:
+// NOTE This pass will fail with a message if:
 // - The module is not a Shader module.
 // - The module declares VariablePointers, VariablePointersStorageBuffer, or
 //   RuntimeDescriptorArrayEXT capabilities.
@@ -814,7 +814,7 @@ Optimizer::PassToken CreateFixStorageClassPass();
 // - TODO(dneto): The OpImageTexelPointer coordinate component is not 32-bits
 // wide.
 //
-// NOTE: Access chain indices are always treated as signed integers.  So
+// NOTE Access chain indices are always treated as signed integers.  So
 //   if an array has a fixed size of more than 2^31 elements, then elements
 //   from 2^31 and above are never accessible with a 32-bit index,
 //   signed or unsigned.  For this case, this pass will clamp the index

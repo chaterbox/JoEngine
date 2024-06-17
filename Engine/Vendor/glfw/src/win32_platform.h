@@ -70,7 +70,7 @@
 #include <xinput.h>
 #include <dbt.h>
 
-// HACK: Define macros that some windows.h variants don't
+// HACK Define macros that some windows.h variants don't
 #ifndef WM_MOUSEHWHEEL
  #define WM_MOUSEHWHEEL 0x020E
 #endif
@@ -159,7 +159,7 @@ typedef enum
 #define DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 ((HANDLE) -4)
 #endif /*DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2*/
 
-// HACK: Define versionhelpers.h functions manually as MinGW lacks the header
+// HACK Define versionhelpers.h functions manually as MinGW lacks the header
 #define IsWindowsXPOrGreater()                                 \
     _glfwIsWindowsVersionOrGreaterWin32(HIBYTE(_WIN32_WINNT_WINXP),   \
                                         LOBYTE(_WIN32_WINNT_WINXP), 0)
@@ -181,7 +181,7 @@ typedef enum
 #define _glfwIsWindows10CreatorsUpdateOrGreaterWin32() \
     _glfwIsWindows10BuildOrGreaterWin32(15063)
 
-// HACK: Define macros that some xinput.h variants don't
+// HACK Define macros that some xinput.h variants don't
 #ifndef XINPUT_CAPS_WIRELESS
  #define XINPUT_CAPS_WIRELESS 0x0002
 #endif
@@ -210,7 +210,7 @@ typedef enum
  #define XUSER_MAX_COUNT 4
 #endif
 
-// HACK: Define macros that some dinput.h variants don't
+// HACK Define macros that some dinput.h variants don't
 #ifndef DIDFT_OPTIONAL
  #define DIDFT_OPTIONAL 0x80000000
 #endif

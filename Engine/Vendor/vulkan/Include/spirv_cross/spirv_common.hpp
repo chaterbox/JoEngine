@@ -147,7 +147,7 @@ public:
 	template <typename Op>
 	void for_each_bit(const Op &op) const
 	{
-		// TODO: Add ctz-based iteration.
+		// TODO Add ctz-based iteration.
 		for (uint32_t i = 0; i < 64; i++)
 		{
 			if (lower & (1ull << i))

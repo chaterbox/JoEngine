@@ -374,7 +374,7 @@ LINMATH_H_FUNC void mat4x4_ortho(mat4x4 M, float l, float r, float b, float t, f
 }
 LINMATH_H_FUNC void mat4x4_perspective(mat4x4 m, float y_fov, float aspect, float n, float f)
 {
-	/* NOTE: Degrees are an unhandy unit to work with.
+	/* NOTE Degrees are an unhandy unit to work with.
 	 * linmath.h uses radians for everything! */
 	float const a = 1.f / tanf(y_fov / 2.f);
 
@@ -404,7 +404,7 @@ LINMATH_H_FUNC void mat4x4_look_at(mat4x4 m, vec3 eye, vec3 center, vec3 up)
 	/* See the OpenGL GLUT documentation for gluLookAt for a description */
 	/* of the algorithm. We implement it in a straightforward way:       */
 
-	/* TODO: The negation of of can be spared by swapping the order of
+	/* TODO The negation of of can be spared by swapping the order of
 	 *       operands in the following cross products in the right way. */
 	vec3 f;
 	vec3_sub(f, center, eye);	
@@ -550,8 +550,8 @@ LINMATH_H_FUNC void mat4x4_from_quat(mat4x4 M, quat q)
 
 LINMATH_H_FUNC void mat4x4o_mul_quat(mat4x4 R, mat4x4 M, quat q)
 {
-/*  XXX: The way this is written only works for othogonal matrices. */
-/* TODO: Take care of non-orthogonal case. */
+/*  XXX The way this is written only works for othogonal matrices. */
+/* TODO Take care of non-orthogonal case. */
 	quat_mul_vec3(R[0], q, M[0]);
 	quat_mul_vec3(R[1], q, M[1]);
 	quat_mul_vec3(R[2], q, M[2]);

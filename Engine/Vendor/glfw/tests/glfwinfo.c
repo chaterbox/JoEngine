@@ -285,12 +285,12 @@ static int valid_version(void)
 
     if (major != GLFW_VERSION_MAJOR)
     {
-        printf("*** ERROR: GLFW major version mismatch! ***\n");
+        printf("*** ERROR GLFW major version mismatch! ***\n");
         return GLFW_FALSE;
     }
 
     if (minor != GLFW_VERSION_MINOR || revision != GLFW_VERSION_REVISION)
-        printf("*** WARNING: GLFW version mismatch! ***\n");
+        printf("*** WARNING GLFW version mismatch! ***\n");
 
     return GLFW_TRUE;
 }

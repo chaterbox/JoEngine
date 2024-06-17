@@ -3874,13 +3874,13 @@ struct nk_baked_font {
 
 struct nk_font_config {
     struct nk_font_config *next;
-    /* NOTE: only used internally */
+    /* NOTE only used internally */
     void *ttf_blob;
     /* pointer to loaded TTF file memory block.
-     * NOTE: not needed for nk_font_atlas_add_from_memory and nk_font_atlas_add_from_file. */
+     * NOTE not needed for nk_font_atlas_add_from_memory and nk_font_atlas_add_from_file. */
     nk_size ttf_size;
     /* size of the loaded TTF file memory block
-     * NOTE: not needed for nk_font_atlas_add_from_memory and nk_font_atlas_add_from_file. */
+     * NOTE not needed for nk_font_atlas_add_from_memory and nk_font_atlas_add_from_file. */
 
     unsigned char ttf_data_owned_by_atlas;
     /* used inside font atlas: default to: 0*/
@@ -3901,7 +3901,7 @@ struct nk_font_config {
     const nk_rune *range;
     /* list of unicode ranges (2 values per range, zero terminated) */
     struct nk_baked_font *font;
-    /* font to setup in the baking process: NOTE: not needed for font atlas */
+    /* font to setup in the baking process: NOTE not needed for font atlas */
     nk_rune fallback_glyph;
     /* fallback glyph to use if a given rune is not found */
     struct nk_font_config *n;
@@ -11012,7 +11012,7 @@ NK_INTERN int nk_tt_GetGlyphShape(const struct nk_tt_fontinfo *info, struct nk_a
 NK_INTERN nk_uint
 nk_tt__find_table(const nk_byte *data, nk_uint fontstart, const char *tag)
 {
-    /* @OPTIMIZE: binary search */
+    /* @OPTIMIZE binary search */
     nk_int num_tables = nk_ttUSHORT(data+fontstart+4);
     nk_uint tabledir = fontstart + 12;
     nk_int i;
@@ -11098,7 +11098,7 @@ nk_tt_FindGlyphIndex(const struct nk_tt_fontinfo *info, int unicode_codepoint)
             return nk_ttUSHORT(data + index_map + 10 + (unicode_codepoint - (int)first)*2);
         return 0;
     } else if (format == 2) {
-        NK_ASSERT(0); /* @TODO: high-byte mapping for japanese/chinese/korean */
+        NK_ASSERT(0); /* @TODO high-byte mapping for japanese/chinese/korean */
         return 0;
     } else if (format == 4) { /* standard mapping for windows fonts: binary search collection of ranges */
         nk_ushort segcount = nk_ttUSHORT(data+index_map+6) >> 1;

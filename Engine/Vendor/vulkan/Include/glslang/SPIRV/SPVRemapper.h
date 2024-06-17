@@ -208,7 +208,7 @@ private:
    void             countIds(spv::Id id);
 
    // Return next unused new local ID.
-   // NOTE: boost::dynamic_bitset would be more efficient due to find_next(),
+   // NOTE boost::dynamic_bitset would be more efficient due to find_next(),
    // which std::vector<bool> doens't have.
    inline spv::Id   nextUnusedId(spv::Id id);
 

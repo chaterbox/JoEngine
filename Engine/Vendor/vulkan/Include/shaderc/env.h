@@ -24,7 +24,7 @@ extern "C" {
 typedef enum {
   shaderc_target_env_vulkan,  // SPIR-V under Vulkan semantics
   shaderc_target_env_opengl,  // SPIR-V under OpenGL semantics
-  // NOTE: SPIR-V code generation is not supported for shaders under OpenGL
+  // NOTE SPIR-V code generation is not supported for shaders under OpenGL
   // compatibility profile.
   shaderc_target_env_opengl_compat,  // SPIR-V under OpenGL semantics,
                                      // including compatibility profile

@@ -38,7 +38,7 @@
 
 
 // Translate the X11 KeySyms for a key to a GLFW key code
-// NOTE: This is only used as a fallback, in case the XKB method fails
+// NOTE This is only used as a fallback, in case the XKB method fails
 //       It is layout-dependent and will fail partially on most non-US layouts
 //
 static int translateKeySyms(const KeySym* keysyms, int width)
@@ -853,7 +853,7 @@ static GLFWbool initExtensions(void)
     }
 
     // Update the key code LUT
-    // FIXME: We should listen to XkbMapNotify events to track changes to
+    // FIXME We should listen to XkbMapNotify events to track changes to
     // the keyboard mapping.
     createKeyTables();
 
@@ -939,11 +939,11 @@ static GLFWbool initExtensions(void)
 static void getSystemContentScale(float* xscale, float* yscale)
 {
     // Start by assuming the default X11 DPI
-    // NOTE: Some desktop environments (KDE) may remove the Xft.dpi field when it
+    // NOTE Some desktop environments (KDE) may remove the Xft.dpi field when it
     //       would be set to 96, so assume that is the case if we cannot find it
     float xdpi = 96.f, ydpi = 96.f;
 
-    // NOTE: Basing the scale on Xft.dpi where available should provide the most
+    // NOTE Basing the scale on Xft.dpi where available should provide the most
     //       consistent user experience (matches Qt, Gtk, etc), although not
     //       always the most accurate one
     char* rms = XResourceManagerString(_glfw.x11.display);
@@ -1079,7 +1079,7 @@ Cursor _glfwCreateCursorX11(const GLFWimage* image, int xhot, int yhot)
 
 int _glfwPlatformInit(void)
 {
-    // HACK: If the application has left the locale as "C" then both wide
+    // HACK If the application has left the locale as "C" then both wide
     //       character text input and explicit UTF-8 input via XIM will break
     //       This sets the CTYPE part of the current locale from the environment
     //       in the hope that it is set to something more sane than "C"
@@ -1435,7 +1435,7 @@ void _glfwPlatformTerminate(void)
         _glfw.x11.xi.handle = NULL;
     }
 
-    // NOTE: These need to be unloaded after XCloseDisplay, as they register
+    // NOTE These need to be unloaded after XCloseDisplay, as they register
     //       cleanup callbacks that get called by that function
     _glfwTerminateEGL();
     _glfwTerminateGLX();
