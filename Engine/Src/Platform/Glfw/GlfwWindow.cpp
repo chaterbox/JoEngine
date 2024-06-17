@@ -9,8 +9,6 @@
 //Vulkan
 #include "Platform/Vulkan/VulkanContext.h"
 #include "Platform/Vulkan/VulkanSwapchain.h"
-//DX12
-#include "Platform/Dx12/Dx12Context.h"
 
 #include "Joe/Renderer/RendererAPI.h"
 
@@ -64,9 +62,6 @@ namespace Joe {
         break;
       case Joe::RendererAPI::API::Vulkan:
         m_Context = new VulkanContext(m_Window);
-        break;
-      case Joe::RendererAPI::API::DX12:
-        m_Context = new Dx12Context();
         break;
       case Joe::RendererAPI::API::None:
         m_Context = nullptr;

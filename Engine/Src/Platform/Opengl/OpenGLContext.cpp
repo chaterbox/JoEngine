@@ -21,10 +21,14 @@ namespace Joe{
 
 		JOE_CORE_ASSERT(status, "failed to init GLAD!");
 
-		JOE_CORE_INFO("OpenGL Info:");
-		JOE_CORE_INFO(" Vendor: {0}", glGetString(GL_VENDOR));
-		JOE_CORE_INFO(" Renderer: {0}", glGetString(GL_RENDERER));
-		JOE_CORE_INFO(" Version: {0}", glGetString(GL_VERSION));
+    std::cout << "\n";
+
+		JOE_CORE_INFO("OPENGL [DEVICE INFO]");
+		JOE_CORE_INFO("OPENGL [VENDOR] {0}", glGetString(GL_VENDOR));
+		JOE_CORE_INFO("OPENGL [DEVICE NAME] {0}", glGetString(GL_RENDERER));
+		JOE_CORE_INFO("OPENGL [API VERSION] {0}", glGetString(GL_VERSION));
+    
+    std::cout << "\n";
 	}
 
 	void OpenglContext::Swapbuffers(){
