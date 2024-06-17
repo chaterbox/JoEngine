@@ -13,7 +13,6 @@ namespace Joe
 		case RendererAPI::API::None: JOE_CORE_ASSERT(false, "RendererAPI::None is currently not suported!");return nullptr;
 		case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		case RendererAPI::API::Vulkan: return new VulkanVertexBuffer(vertices, size);
-		case RendererAPI::API::DX12: return nullptr;
 			break;
 		default:
 			break;
@@ -27,7 +26,6 @@ namespace Joe
 		case RendererAPI::API::None:  JOE_CORE_ASSERT(false,"RendererAPI::None is currently not suported") return nullptr;
 		case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, size);
 		case RendererAPI::API::Vulkan: return new VulkanIndexBuffer(indices, size);
-		case RendererAPI::API::DX12: return nullptr;
 			break;
 		default:
 			break;
