@@ -76,9 +76,11 @@ namespace Joe {
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
-
-		VulkanSwapchain::Create(IsVSync());
-
+    
+    if(RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
+		VulkanSwapchain::Create(VulkanContext::GetPhyDeviceHandle(), VulkanContext::GetLogicalDeviceHandle(), VulkanContext::GetSurfaceHandle(),IsVSync(), m_Data.Width, m_Data.Height);
+    }
+  
 		//glfw callbacks
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height){
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
