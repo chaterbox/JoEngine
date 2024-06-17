@@ -63,7 +63,7 @@ namespace Joe{
 		////            device info            ////
 		///////////////////////////////////////////
 
-  JOE_CORE_INFO("VULKAN:: [DEVICE INFO]");
+  JOE_CORE_INFO("VULKAN [DEVICE INFO]");
 
   int apiMajor,apiMinor,apiPatch,driverMajor,driverMinor,driverPatch;
 
@@ -76,38 +76,42 @@ namespace Joe{
   driverPatch = VK_VERSION_PATCH(physicalDevice.properties.driverVersion);
 
   if(physicalDevice.properties.vendorID == VendorIDs::AMD){
-    JOE_CORE_INFO("VULKAN:: [VENDOR] AMD");
+    JOE_CORE_INFO("VULKAN [VENDOR] AMD");
   }
 
   if(physicalDevice.properties.vendorID == VendorIDs::NVIDIA){
-    JOE_CORE_INFO("VULKAN:: [VENDOR] NVIDIA");
+    JOE_CORE_INFO("VULKAN [VENDOR] NVIDIA");
   }
 
   if(physicalDevice.properties.vendorID == VendorIDs::INTEL){
-    JOE_CORE_INFO("VULKAN:: [VENDOR] INTEL");
+    JOE_CORE_INFO("VULKAN [VENDOR] INTEL");
   }
 
   if(physicalDevice.properties.vendorID == VendorIDs::APPLE){
-    JOE_CORE_INFO("VULKAN:: [VENDOR] APPLE");
+    JOE_CORE_INFO("VULKAN [VENDOR] APPLE");
   }
 
-  JOE_CORE_INFO("VULKAN:: [DEVICE NAME] {0}", physicalDevice.properties.deviceName);
-  JOE_CORE_INFO("VULKAN:: [DRIVER VERSION] {0},{1},{2}",driverMajor,driverMinor,driverPatch);
-  JOE_CORE_INFO("VULKAN:: [API VERSION] {0},{1},{2}",apiMajor,apiMinor,apiPatch);
+  JOE_CORE_INFO("VULKAN [DEVICE NAME] {0}", physicalDevice.properties.deviceName);
+  JOE_CORE_INFO("VULKAN [DRIVER VERSION] {0},{1},{2}",driverMajor,driverMinor,driverPatch);
+  JOE_CORE_INFO("VULKAN [API VERSION] {0},{1},{2}",apiMajor,apiMinor,apiPatch);
 
   switch (physicalDevice.properties.deviceType) {
     case VK_PHYSICAL_DEVICE_TYPE_CPU:
-      JOE_CORE_INFO("VULKAN:: [DEVICE TYPE] CPU");
+      JOE_CORE_INFO("VULKAN [DEVICE TYPE] CPU");
       break;
     case VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU:
-      JOE_CORE_INFO("VULKAN:: [DEVICE TYPE] DISCRETE GPU");
+      JOE_CORE_INFO("VULKAN [DEVICE TYPE] DISCRETE GPU");
       break;
     case VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU:
-      JOE_CORE_INFO("VULKAN:: [DEVICE TYPE] INTERGRATED GPU");
+      JOE_CORE_INFO("VULKAN [DEVICE TYPE] INTERGRATED GPU");
       break;
   }
 
     std::cout << "\n";
+
+      /////////////////////////////////////////
+      ////              vma                ////
+      /////////////////////////////////////////
 
     VmaAllocatorCreateInfo allocatorInfo = {};
     allocatorInfo.physicalDevice = m_PhysDevice;
