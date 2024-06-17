@@ -11,9 +11,6 @@ namespace Joe{
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
 	private:
-		std::vector<char>ReadFile(const std::string& filename);
-		VkShaderModule CreateShader(const std::string& source);
-
 		VkShaderModule FragShaderModule,VertShaderModule;
 	};
 }
