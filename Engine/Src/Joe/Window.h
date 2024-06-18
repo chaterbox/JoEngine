@@ -16,9 +16,6 @@ namespace Joe{
 			unsigned int height = 720)
 			: Title(title), Width(width), Height(height){
 			#ifdef JOE_DEBUG
-			if(RendererAPI::GetAPI() == RendererAPI::API::OpenGL){
-				Title = "JoEngine: DEBUG: RendererAPI: OpenGL";
-			}
 			if (RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
 				Title = "JoEngine: DEBUG: RendererAPI: Vulkan";
 			}
