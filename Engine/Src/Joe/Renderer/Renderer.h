@@ -1,15 +1,14 @@
 #pragma once
-#include "RenderCommand.h"
-#include "OrthographicCamera.h"
 #include "Shader.h"
+#include "RendererAPI.h"
 
 namespace Joe{
 	class Renderer{
 	public:
-		static void BeginScene(OrthographicCamera& camera);
+		static void BeginScene();
 		static void EndScene();
 		
-		static void Submit(const std::shared_ptr<Shader>& shader,const std::shared_ptr<VertexArray>& vertexArray);
+		static void Submit();
 
 		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 	private:

@@ -10,8 +10,6 @@
 
 #include "Joe/Renderer/Shader.h"
 #include "Renderer/Buffer.h"
-#include "Renderer/VertexArray.h"
-#include "Renderer/OrthographicCamera.h"
 
 namespace Joe{
 	class JOE_API Application{

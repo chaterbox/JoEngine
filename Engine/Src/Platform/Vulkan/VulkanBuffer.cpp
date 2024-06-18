@@ -2,19 +2,7 @@
 #include "VulkanBuffer.h"
 
 Joe::VulkanVertexBuffer::VulkanVertexBuffer(float* vertices, uint32_t size){
-	VkBufferCreateInfo vertexBufferinfo = {};
-	vertexBufferinfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-	//vertexBufferinfo.size 
-	vertexBufferinfo.usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
-	vertexBufferinfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 
-	/*VkResult res = vkCreateBuffer(m_Device.GetLogicalDeviceHandle(), &vertexBufferinfo, nullptr, &m_VertexBuffer);
-
-	if (res != VK_SUCCESS)
-	{
-		JOE_CORE_ERROR("failed to create Vertex buffer");
-	}
-	*/
 }
 
 Joe::VulkanVertexBuffer::~VulkanVertexBuffer(){
