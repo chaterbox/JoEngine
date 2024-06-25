@@ -1,5 +1,6 @@
 #include "Joe/Log.h"
 #include "Joepch.h"
+#define VMA_VULKAN_VERSION 1002000
 #define VMA_IMPLEMENTATION
 #include "VulkanContext.h"
 #include "vulkan_core.h"
@@ -17,20 +18,25 @@ namespace Joe{
 		///////////////////////////////////////////
 		////               instance            ////
 		///////////////////////////////////////////
-	vkb::InstanceBuilder builder;
-	auto inst_ret = builder.set_app_name("JoEngine")
-	.enable_validation_layers(valdation)
-	.use_default_debug_messenger()
-	.require_api_version(1,2,0)
-	.build();
+  vkb::InstanceBuilder builder;
+  auto inst_ret = builder.set_app_name("JoEngine")
+  .enable_validation_layers(valdation)
+  .use_default_debug_messenger()
+  .require_api_version(1,2,0)
+  .build();
 
-  JOE_CORE_INFO("VULKAN::INSTANCE::INIT");
+  vkb::Instance vkb_inst = inst_ret.value();
 
-	vkb::Instance vkb_inst = inst_ret.value();
-	m_Instance = vkb_inst.instance;
+  if(!inst_ret){
+    JOE_CORE_FATAL("VULKAN::INSTANCE::CREATION::FAILED");
+  }else{
+    JOE_CORE_INFO("VULKAN::INSTANCE::CREATION::SUCCESS");
+  }
+
+  m_Instance = vkb_inst.instance;
 
   if(glfwCreateWindowSurface(m_Instance, m_WindowHandle, nullptr,&m_Surface) != VK_SUCCESS){
-    JOE_CORE_FATAL("VULKAN::SURFACE::CREATION::FAILED"); 
+    JOE_CORE_FATAL("VULKAN::SURFACE::CREATION::FAILED");
   }else{
     JOE_CORE_INFO("VULKAN::SURFACE::CREATION::SUCCESS");
   }
@@ -50,12 +56,19 @@ namespace Joe{
   vkb::DeviceBuilder deviceBuilder{physicalDevice};
   vkb::Device vkbDevice = deviceBuilder.build().value();
 
+  if(!vkbDevice){
+    JOE_CORE_FATAL("VULKAN::DEVICE::CREATION::FAILED");
+  }else{
+    JOE_CORE_INFO("VULKAN::DEVICE::CREATION::SUCCESS");
+  }
   m_PhysDevice = physicalDevice.physical_device;
   m_LogicalDevice = vkbDevice.device;
 
   m_GraphicsQueue = vkbDevice.get_queue(vkb::QueueType::graphics).value();
 
   m_GraphicsQueueFamily = vkbDevice.get_queue_index(vkb::QueueType::graphics).value();
+
+  JOE_CORE_INFO("VULKAN::QUEUEFAMILY::GRAPHICS::{0}",m_GraphicsQueueFamily);
 
   std::cout << "\n";
 
@@ -117,9 +130,14 @@ namespace Joe{
     allocatorInfo.physicalDevice = m_PhysDevice;
     allocatorInfo.device = m_LogicalDevice;
     allocatorInfo.instance = m_Instance;
+
     if(vmaCreateAllocator(&allocatorInfo, &m_Allocator)!= VK_SUCCESS){
-      JOE_CORE_INFO("VULKAN::VMA::CREATION::FAILED");
+      JOE_CORE_FATAL("VULKAN::VMA::ALLOCATOR::CREATION::FAILED");
+    }else{
+      JOE_CORE_INFO("VULKAN::VMA::ALLOCATOR::CREATION::SUCCESS");
     }
+
+    std::cout << "\n";
 	}
 
 	void VulkanContext::Swapbuffers(){
