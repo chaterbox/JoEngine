@@ -6,16 +6,21 @@
 #include <SDL2/SDL.h>
 #include <unistd.h>
 
+//TODO: implement sdl input
 namespace Joe{
 	Input* Input::s_Instance = new SdlInput();
+
+  //TODO: implement key pressed input
 	bool SdlInput::IsKeyPressedImpl(int keycode){
 		return false;
 	}
 
+  //TODO: implement mouse button pressed input
 	bool SdlInput::IsMouseButtonPressedImpl(int button){
 		return false;
 	}
 
+  //TODO: implement mouse position
 	std::pair<float, float> SdlInput::GetMousePositionImpl(){
 		double xpos, ypos;
 

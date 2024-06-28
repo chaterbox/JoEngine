@@ -1,6 +1,6 @@
 #pragma once
 #include "Joe/Input.h"
-//TODO: implement input with sdl2
+
 namespace Joe{
 	class SdlInput : public Input{
 	protected:
