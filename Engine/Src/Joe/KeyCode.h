@@ -1,123 +1,86 @@
 #pragma once
-#define JOE_KEY_SPACE              32
-#define JOE_KEY_APOSTROPHE         39  /* ' */
-#define JOE_KEY_COMMA              44  /* , */
-#define JOE_KEY_MINUS              45  /* - */
-#define JOE_KEY_PERIOD             46  /* . */
-#define JOE_KEY_SLASH              47  /* / */
-#define JOE_KEY_0                  48
-#define JOE_KEY_1                  49
-#define JOE_KEY_2                  50
-#define JOE_KEY_3                  51
-#define JOE_KEY_4                  52
-#define JOE_KEY_5                  53
-#define JOE_KEY_6                  54
-#define JOE_KEY_7                  55
-#define JOE_KEY_8                  56
-#define JOE_KEY_9                  57
-#define JOE_KEY_SEMICOLON          59  /* ; */
-#define JOE_KEY_EQUAL              61  /* = */
-#define JOE_KEY_A                  65
-#define JOE_KEY_B                  66
-#define JOE_KEY_C                  67
-#define JOE_KEY_D                  68
-#define JOE_KEY_E                  69
-#define JOE_KEY_F                  70
-#define JOE_KEY_G                  71
-#define JOE_KEY_H                  72
-#define JOE_KEY_I                  73
-#define JOE_KEY_J                  74
-#define JOE_KEY_K                  75
-#define JOE_KEY_L                  76
-#define JOE_KEY_M                  77
-#define JOE_KEY_N                  78
-#define JOE_KEY_O                  79
-#define JOE_KEY_P                  80
-#define JOE_KEY_Q                  81
-#define JOE_KEY_R                  82
-#define JOE_KEY_S                  83
-#define JOE_KEY_T                  84
-#define JOE_KEY_U                  85
-#define JOE_KEY_V                  86
-#define JOE_KEY_W                  87
-#define JOE_KEY_X                  88
-#define JOE_KEY_Y                  89
-#define JOE_KEY_Z                  90
-#define JOE_KEY_LEFT_BRACKET       91  /* [ */
-#define JOE_KEY_BACKSLASH          92  /* \ */
-#define JOE_KEY_RIGHT_BRACKET      93  /* ] */
-#define JOE_KEY_GRAVE_ACCENT       96  /* ` */
-#define JOE_KEY_WORLD_1            161 /* non-US #1 */
-#define JOE_KEY_WORLD_2            162 /* non-US #2 */
-
-/* Function keys */
-#define JOE_KEY_ESCAPE             256
-#define JOE_KEY_ENTER              257
-#define JOE_KEY_TAB                258
-#define JOE_KEY_BACKSPACE          259
-#define JOE_KEY_INSERT             260
-#define JOE_KEY_DELETE             261
-#define JOE_KEY_RIGHT              262
-#define JOE_KEY_LEFT               263
-#define JOE_KEY_DOWN               264
-#define JOE_KEY_UP                 265
-#define JOE_KEY_PAGE_UP            266
-#define JOE_KEY_PAGE_DOWN          267
-#define JOE_KEY_HOME               268
-#define JOE_KEY_END                269
-#define JOE_KEY_CAPS_LOCK          280
-#define JOE_KEY_SCROLL_LOCK        281
-#define JOE_KEY_NUM_LOCK           282
-#define JOE_KEY_PRINT_SCREEN       283
-#define JOE_KEY_PAUSE              284
-#define JOE_KEY_F1                 290
-#define JOE_KEY_F2                 291
-#define JOE_KEY_F3                 292
-#define JOE_KEY_F4                 293
-#define JOE_KEY_F5                 294
-#define JOE_KEY_F6                 295
-#define JOE_KEY_F7                 296
-#define JOE_KEY_F8                 297
-#define JOE_KEY_F9                 298
-#define JOE_KEY_F10                299
-#define JOE_KEY_F11                300
-#define JOE_KEY_F12                301
-#define JOE_KEY_F13                302
-#define JOE_KEY_F14                303
-#define JOE_KEY_F15                304
-#define JOE_KEY_F16                305
-#define JOE_KEY_F17                306
-#define JOE_KEY_F18                307
-#define JOE_KEY_F19                308
-#define JOE_KEY_F20                309
-#define JOE_KEY_F21                310
-#define JOE_KEY_F22                311
-#define JOE_KEY_F23                312
-#define JOE_KEY_F24                313
-#define JOE_KEY_F25                314
-#define JOE_KEY_KP_0               320
-#define JOE_KEY_KP_1               321
-#define JOE_KEY_KP_2               322
-#define JOE_KEY_KP_3               323
-#define JOE_KEY_KP_4               324
-#define JOE_KEY_KP_5               325
-#define JOE_KEY_KP_6               326
-#define JOE_KEY_KP_7               327
-#define JOE_KEY_KP_8               328
-#define JOE_KEY_KP_9               329
-#define JOE_KEY_KP_DECIMAL         330
-#define JOE_KEY_KP_DIVIDE          331
-#define JOE_KEY_KP_MULTIPLY        332
-#define JOE_KEY_KP_SUBTRACT        333
-#define JOE_KEY_KP_ADD             334
-#define JOE_KEY_KP_ENTER           335
-#define JOE_KEY_KP_EQUAL           336
-#define JOE_KEY_LEFT_SHIFT         340
-#define JOE_KEY_LEFT_CONTROL       341
-#define JOE_KEY_LEFT_ALT           342
-#define JOE_KEY_LEFT_SUPER         343
-#define JOE_KEY_RIGHT_SHIFT        344
-#define JOE_KEY_RIGHT_CONTROL      345
-#define JOE_KEY_RIGHT_ALT          346
-#define JOE_KEY_RIGHT_SUPER        347
-#define JOE_KEY_MENU               348
+#include <SDL2/SDL.h>
+namespace KEYS {
+    static const Sint32 JOE_KEY_RIGHTARROW = SDLK_RIGHT;
+    static const Sint32 JOE_KEY_LEFTARROW = SDLK_LEFT;
+    static const Sint32 JOE_KEY_DOWNARROW = SDLK_DOWN;
+    static const Sint32 JOE_KEY_UPARROW = SDLK_UP;
+    static const Sint32 JOE_KEY_LALT = SDLK_LALT;
+    static const Sint32 JOE_KEY_RALT = SDLK_RALT;
+    static const Sint32 JOE_KEY_LEFTBRACKET = SDLK_LEFTBRACKET;
+    static const Sint32 JOE_KEY_RIGHTBRACKET = SDLK_RIGHTBRACKET;
+    static const Sint32 JOE_KEY_ESCAPE = 27;
+    static const Sint32 JOE_KEY_RETURN = 13;
+    static const Sint32 JOE_KEY_LCTRL = SDLK_LCTRL;
+    static const Sint32 JOE_KEY_RCTRL = SDLK_RCTRL;
+    static const Sint32 JOE_KEY_BACKSPACE = SDLK_BACKSPACE;
+    static const Sint32 JOE_KEY_TAB = SDLK_TAB;
+    static const Sint32 JOE_KEY_F1 = SDLK_F1;
+    static const Sint32 JOE_KEY_F2 = SDLK_F2;
+    static const Sint32 JOE_KEY_F3 = SDLK_F3;
+    static const Sint32 JOE_KEY_F4 = SDLK_F4;
+    static const Sint32 JOE_KEY_F5 = SDLK_F5;
+    static const Sint32 JOE_KEY_F6 = SDLK_F6;
+    static const Sint32 JOE_KEY_F7 = SDLK_F7;
+    static const Sint32 JOE_KEY_F8 = SDLK_F8;
+    static const Sint32 JOE_KEY_F9 = SDLK_F9;
+    static const Sint32 JOE_KEY_F10 = SDLK_F10;
+    static const Sint32 JOE_KEY_F11 = SDLK_F11;
+    static const Sint32 JOE_KEY_F12 = SDLK_F12;
+    static const Sint32 JOE_KEY_A = SDLK_a;
+    static const Sint32 JOE_KEY_B = SDLK_b;
+    static const Sint32 JOE_KEY_C = SDLK_c;
+    static const Sint32 JOE_KEY_D = SDLK_d;
+    static const Sint32 JOE_KEY_E = SDLK_e;
+    static const Sint32 JOE_KEY_F = SDLK_f;
+    static const Sint32 JOE_KEY_G = SDLK_g;
+    static const Sint32 JOE_KEY_H = SDLK_h;
+    static const Sint32 JOE_KEY_I = SDLK_i;
+    static const Sint32 JOE_KEY_J = SDLK_j;
+    static const Sint32 JOE_KEY_K = SDLK_k;
+    static const Sint32 JOE_KEY_L = SDLK_l;
+    static const Sint32 JOE_KEY_M = SDLK_m;
+    static const Sint32 JOE_KEY_N = SDLK_n;
+    static const Sint32 JOE_KEY_O = SDLK_o;
+    static const Sint32 JOE_KEY_P = SDLK_p;
+    static const Sint32 JOE_KEY_Q = SDLK_q;
+    static const Sint32 JOE_KEY_R = SDLK_r;
+    static const Sint32 JOE_KEY_S = SDLK_s;
+    static const Sint32 JOE_KEY_T = SDLK_t;
+    static const Sint32 JOE_KEY_U = SDLK_u;
+    static const Sint32 JOE_KEY_V = SDLK_v;
+    static const Sint32 JOE_KEY_W = SDLK_w;
+    static const Sint32 JOE_KEY_X = SDLK_x;
+    static const Sint32 JOE_KEY_Y = SDLK_y;
+    static const Sint32 JOE_KEY_Z = SDLK_z;
+    static const Sint32 JOE_KEY_SPACE = SDLK_SPACE;
+    static const Sint32 JOE_KEY_EXCLAIM = SDLK_EXCLAIM;
+    static const Sint32 JOE_KEY_CARET = SDLK_CARET;
+    static const Sint32 JOE_KEY_UNDERSCORE = SDLK_UNDERSCORE;
+    static const Sint32 JOE_KEY_BACKQOUTE = SDLK_BACKQUOTE;
+    static const Sint32 JOE_KEY_BACKSLASH = SDLK_BACKSLASH;
+    static const Sint32 JOE_KEY_LSHIFT = SDLK_LSHIFT;
+    static const Sint32 JOE_KEY_RSHIFT = SDLK_RSHIFT;
+    static const Sint32 JOE_KEY_0 = SDLK_0;
+    static const Sint32 JOE_KEY_1 = SDLK_1;
+    static const Sint32 JOE_KEY_2 = SDLK_2;
+    static const Sint32 JOE_KEY_3 = SDLK_3;
+    static const Sint32 JOE_KEY_4 = SDLK_4;
+    static const Sint32 JOE_KEY_5 = SDLK_5;
+    static const Sint32 JOE_KEY_6 = SDLK_6;
+    static const Sint32 JOE_KEY_7 = SDLK_7;
+    static const Sint32 JOE_KEY_8 = SDLK_8;
+    static const Sint32 JOE_KEY_9 = SDLK_9;
+    static const Sint32 JOE_KEYPAD_ENTER = SDLK_KP_ENTER;
+    static const Sint32 JOE_KEYPAD_1 = SDLK_KP_1;
+    static const Sint32 JOE_KEYPAD_2 = SDLK_KP_2;
+    static const Sint32 JOE_KEYPAD_3 = SDLK_KP_3;
+    static const Sint32 JOE_KEYPAD_4 = SDLK_KP_4;
+    static const Sint32 JOE_KEYPAD_5 = SDLK_KP_5;
+    static const Sint32 JOE_KEYPAD_6 = SDLK_KP_6;
+    static const Sint32 JOE_KEYPAD_7 = SDLK_KP_7;
+    static const Sint32 JOE_KEYPAD_8 = SDLK_KP_8;
+    static const Sint32 JOE_KEYPAD_9 = SDLK_KP_9;
+    static const Sint32 JOE_KEYPAD_0 = SDLK_KP_0;
+    static const Sint32 JOE_KEYPAD_PERIOD = SDLK_KP_PERIOD;
+}

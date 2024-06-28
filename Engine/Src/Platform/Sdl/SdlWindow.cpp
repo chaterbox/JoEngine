@@ -9,6 +9,7 @@
 #include "Joe/Events/ApplicationEvents.h"
 #include "Joe/Events/MouseEvent.h"
 #include "Joe/Events/KeyEvent.h"
+#include "Joe/KeyCode.h"
 #include "Joe/Application.h"
 //Vulkan
 #include "Platform/Vulkan/VulkanContext.h"
@@ -84,7 +85,7 @@ namespace Joe {
         Application::SetRunning(false);
       }
       
-      if(event.key.keysym.sym == SDLK_ESCAPE){
+      if(event.key.keysym.sym == KEYS::JOE_KEY_ESCAPE){
         Application::SetRunning(false);
       }
     }
