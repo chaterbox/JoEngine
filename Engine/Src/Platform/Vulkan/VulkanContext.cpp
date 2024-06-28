@@ -137,9 +137,6 @@ namespace Joe{
     std::cout << "\n";
 	}
 
-	void VulkanContext::Swapbuffers(){
-	}
-
 	VulkanContext::VulkanContext(SDL_Window* window)
   : m_WindowHandle(window){
 	}

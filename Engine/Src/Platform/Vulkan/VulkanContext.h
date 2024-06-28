@@ -24,7 +24,6 @@ namespace Joe{
 		~VulkanContext();
 
 		virtual void Init() override;
-		virtual void Swapbuffers() override;
 
 		static VkInstance GetInstanceHandle() { return m_Instance; }
 
@@ -54,7 +53,3 @@ namespace Joe{
 		SDL_Window* m_WindowHandle;
 	};
 }
-
-
-
-
