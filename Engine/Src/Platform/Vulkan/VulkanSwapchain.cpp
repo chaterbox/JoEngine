@@ -1,10 +1,15 @@
 #include "Joepch.h"
 #include "vulkan_core.h"
 #include "VulkanSwapchain.h"
+#include "VulkanContext.h"
 #include <VkBootstrap.h>
 #include <vulkan/vulkan_core.h>
 
 namespace Joe{
+  VulkanSwapchain::~VulkanSwapchain(){
+  vkDestroySwapchainKHR(VulkanContext::GetLogicalDeviceHandle(), m_Swapchain, nullptr);
+}
+
 	void VulkanSwapchain::Create(VkPhysicalDevice phyDevice,VkDevice device,VkSurfaceKHR surface,bool VSync,unsigned int width,unsigned int height){
     vkb::SwapchainBuilder swapchainBuilder{phyDevice,device,surface};
     vkb::Swapchain vkbSwapchain;
@@ -20,7 +25,7 @@ namespace Joe{
     else{
       vkbSwapchain = swapchainBuilder
         .use_default_format_selection()
-        .set_desired_present_mode(VK_PRESENT_MODE_IMMEDIATE_KHR)
+        .set_desired_present_mode(VK_PRESENT_MODE_MAILBOX_KHR)
         .set_desired_extent(width,height)
         .set_old_swapchain(VK_NULL_HANDLE)
         .build()

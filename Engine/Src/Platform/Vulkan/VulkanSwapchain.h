@@ -7,6 +7,9 @@
 namespace Joe{
 	class VulkanSwapchain{
 	public:
+    VulkanSwapchain() = default;
+    ~VulkanSwapchain();
+  
 		static void Create(VkPhysicalDevice phyDevice,VkDevice device,VkSurfaceKHR surface,bool VSync,unsigned int width,unsigned int height);
 
 		static VkSwapchainKHR GetSwapchainKHRHandle() { return m_Swapchain; }
