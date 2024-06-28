@@ -41,7 +41,7 @@ namespace Joe {
     if(SDL_Init(SDL_INIT_VIDEO) != 0){
     JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
     }else{
-    JOE_CORE_INFO("SDL::INIT::SUCCESS");
+    JOE_CORE_INFO("SDL::INIT");
     }
     s_SdlInitialized = true;
   }
