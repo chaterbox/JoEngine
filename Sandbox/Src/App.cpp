@@ -14,9 +14,7 @@ public:
 
 	void OnUpdate() override
 	{
-		if(Joe::Input::IsKeyPressed(KEYS::JOE_KEY_W)){
-			JOE_INFO("W key pressed");
-		}
+
 	}
 
 	void OnEvent(Joe::Event& event)override
