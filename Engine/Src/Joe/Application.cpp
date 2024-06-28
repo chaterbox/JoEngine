@@ -67,4 +67,12 @@ namespace Joe{
 			m_Window->OnUpdate();
 		}
 	}
+
+	void Application::SetRunning(bool run){
+		if(run){
+			m_running = true;
+		}else{
+			m_running = false;
+    }
+  }
 }
