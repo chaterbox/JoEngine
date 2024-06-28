@@ -21,7 +21,11 @@ namespace Joe{
 		///////////////////////////////////////////
   vkb::InstanceBuilder builder;
   auto inst_ret = builder.set_app_name("JoEngine")
-  .enable_validation_layers(valdation)
+  .request_validation_layers(valdation)
+  .add_debug_messenger_severity(VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT)
+  .add_debug_messenger_severity(VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT)
+  .add_debug_messenger_type(VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT)
+  .add_debug_messenger_type(VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT)
   .use_default_debug_messenger()
   .require_api_version(1,2,0)
   .build();
@@ -143,5 +147,8 @@ namespace Joe{
 
 	VulkanContext::~VulkanContext(){
 		vkDestroyInstance(m_Instance, nullptr);
+    //vkDestroySurfaceKHR(m_Instance, m_Surface, nullptr);
+    vkDestroyDevice(m_LogicalDevice, nullptr);
+    vmaDestroyAllocator(m_Allocator);
 	}
 }
