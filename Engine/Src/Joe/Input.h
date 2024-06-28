@@ -1,10 +1,11 @@
 #pragma once
 #include "Joe/Core.h"
+#include <SDL2/SDL_stdinc.h>
 
 namespace Joe{
 	class JOE_API Input{
 	public:
-		static inline bool IsKeyPressed(int keycode) { return s_Instance->IsKeyPressedImpl(keycode); }
+		static inline bool IsKeyPressed(Sint32 keycode) { return s_Instance->IsKeyPressedImpl(keycode); }
 
 		static inline bool IsMouseButtonPressed(int button) { return s_Instance->IsMouseButtonPressedImpl(button); }
 		static inline std::pair<float, float>GetMousePosition() { return s_Instance->GetMousePositionImpl(); }
@@ -13,7 +14,7 @@ namespace Joe{
 	protected:
 		virtual bool IsKeyPressedImpl(int keycode) = 0;
 
-		virtual bool IsMouseButtonPressedImpl(int button) = 0;
+		virtual bool IsMouseButtonPressedImpl(Sint32 button) = 0;
 		virtual std::pair<float, float> GetMousePositionImpl() = 0;
 		virtual float GetMouseXImpl() = 0;
 		virtual float GetMouseYImpl() = 0;

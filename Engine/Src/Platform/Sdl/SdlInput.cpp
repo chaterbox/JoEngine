@@ -1,3 +1,4 @@
+#include "Joe/KeyCode.h"
 #include "Joepch.h"
 #include "SdlInput.h"
 
@@ -10,8 +11,13 @@
 namespace Joe{
 	Input* Input::s_Instance = new SdlInput();
 
-  //TODO: implement key pressed input
-	bool SdlInput::IsKeyPressedImpl(int keycode){
+	bool SdlInput::IsKeyPressedImpl(Sint32 keycode){
+		while(SDL_PollEvent(&event) != 0){
+			if(event.key.keysym.sym == keycode){
+			return true;
+			break;
+			}
+		}
 		return false;
 	}
 
