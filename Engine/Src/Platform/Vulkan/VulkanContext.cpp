@@ -1,11 +1,12 @@
 #include "Joe/Log.h"
 #include "Joepch.h"
+#include "Platform/Sdl/SdlWindow.h"
 #define VMA_VULKAN_VERSION 1002000
 #define VMA_IMPLEMENTATION
 #include "VulkanContext.h"
 #include "vulkan_core.h"
 #include <VkBootstrap.h>
-#include <GLFW/glfw3.h>
+#include <SDL2/SDL_vulkan.h>
 #include <iostream>
 
 namespace Joe{
@@ -34,12 +35,8 @@ namespace Joe{
   }
 
   m_Instance = vkb_inst.instance;
-
-  if(glfwCreateWindowSurface(m_Instance, m_WindowHandle, nullptr,&m_Surface) != VK_SUCCESS){
-    JOE_CORE_FATAL("VULKAN::SURFACE::CREATION::FAILED");
-  }else{
-    JOE_CORE_INFO("VULKAN::SURFACE::CREATION::SUCCESS");
-  }
+  
+  SDL_Vulkan_CreateSurface(m_WindowHandle, m_Instance, &m_Surface);
 
   vkb::PhysicalDeviceSelector selector{vkb_inst};
 
@@ -143,7 +140,7 @@ namespace Joe{
 	void VulkanContext::Swapbuffers(){
 	}
 
-	VulkanContext::VulkanContext(GLFWwindow* window)
+	VulkanContext::VulkanContext(SDL_Window* window)
   : m_WindowHandle(window){
 	}
 

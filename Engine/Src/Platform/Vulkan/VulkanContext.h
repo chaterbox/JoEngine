@@ -4,8 +4,9 @@
 #include <vulkan.h>
 #include "Joe/Renderer/GraphicsContext.h"
 #include <vk_mem_alloc.h>
+#include <SDL2/SDL.h>
 
-struct GLFWwindow;
+struct SDLwindow;
 
 namespace Joe{
   struct VendorIDs{
@@ -19,7 +20,7 @@ namespace Joe{
 
 	class JOE_API VulkanContext :public GraphicsContext{
 	public:
-		VulkanContext(GLFWwindow* window);
+		VulkanContext(SDL_Window* window);
 		~VulkanContext();
 
 		virtual void Init() override;
@@ -27,30 +28,30 @@ namespace Joe{
 
 		static VkInstance GetInstanceHandle() { return m_Instance; }
 
-    static inline VkSurfaceKHR GetSurfaceHandle() { return m_Surface; }
+		static inline VkSurfaceKHR GetSurfaceHandle() { return m_Surface; }
 		static VkPhysicalDevice GetPhyDeviceHandle() { return m_PhysDevice; }
 
 		static VkDevice GetLogicalDeviceHandle() { return  m_LogicalDevice; }
 
-    static VkQueue GetGraphicsQueueHandle() { return m_GraphicsQueue; }
-    static uint32_t GetGraphicsQueueFamily() { return m_GraphicsQueueFamily; }
+		static VkQueue GetGraphicsQueueHandle() { return m_GraphicsQueue; }
+		static uint32_t GetGraphicsQueueFamily() { return m_GraphicsQueueFamily; }
 
-    static VmaAllocator GetVmaAllotorHandle() { return m_Allocator; }
+		static VmaAllocator GetVmaAllotorHandle() { return m_Allocator; }
 	private:
 		static inline VkInstance m_Instance;
   
-    static inline VkSurfaceKHR m_Surface;
+		static inline VkSurfaceKHR m_Surface;
 		static inline VkPhysicalDevice m_PhysDevice;
 		static inline VkPhysicalDeviceProperties m_DeviceProp;
 
 		static inline VkDevice m_LogicalDevice;
 
-    static inline VkQueue m_GraphicsQueue;
-    static inline uint32_t m_GraphicsQueueFamily;
+		static inline VkQueue m_GraphicsQueue;
+		static inline uint32_t m_GraphicsQueueFamily;
 
-    static inline VmaAllocator m_Allocator;
+		static inline VmaAllocator m_Allocator;
 
-		GLFWwindow* m_WindowHandle;
+		SDL_Window* m_WindowHandle;
 	};
 }
 

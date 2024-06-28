@@ -11,13 +11,11 @@ configurations
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDirs = {}
-IncludeDirs["GLFW"] = "Engine/Vendor/glfw/include"
 IncludeDirs["ImGui"] = "Engine/Vendor/imgui"
 IncludeDirs["glm"] = "Engine/Vendor/glm"
 IncludeDirs["vkBootStrap"] = "Engine/Vendor/vkbootstrap"
 IncludeDirs["vma"] = "Engine/Vendor/vma"
 
-include "Engine/Vendor/glfw"
 include "Engine/Vendor/imgui"
 
 project "Engine"
@@ -54,15 +52,16 @@ includedirs
 	"%{prj.name}/Src",
 	"%{prj.name}/Vendor/spdlog/include",
 	"%{prj.name}/Vendor/vulkan/Include/vulkan",
-	"%{IncludeDirs.GLFW}",
 	"%{IncludeDirs.ImGui}",
 	"%{IncludeDirs.glm}",
   	"%{IncludeDirs.vkBootStrap}",
-  	"%{IncludeDirs.vma}"
+  	"%{IncludeDirs.vma}",
+  os.findlib("sdl2")
 }
 libdirs
 {
-	"%{prj.name}/Vendor/vulkan/Lib"
+	"%{prj.name}/Vendor/vulkan/Lib",
+  os.findlib("sdl2")
 }
 
 filter "system:windows"
@@ -71,7 +70,7 @@ systemversion "latest"
 
 links
 {
-	"GLFW",
+	"sdl2",
 	"ImGui",
 	"vulkan-1.lib"
 }
@@ -80,7 +79,6 @@ defines
 {
 	"JOE_PLATFORM_WINDOWS",
 	"JOE_BUILD_DLL",
-	"GLFW_INCLUDE_NONE"
 }
 
 filter "system:linux"
@@ -89,7 +87,7 @@ toolset "clang"
 
 links
 {
-	"GLFW",
+	"sdl2",
 	"ImGui",
 	"vulkan-1.lib"
 }
@@ -97,7 +95,6 @@ links
 defines
 {
 	"JOE_PLATFORM_LINUX",
-	"GLFW_INCLUDE_NONE"
 }
 
 filter "configurations:Debug"
@@ -137,6 +134,10 @@ includedirs
 	"%{IncludeDirs.glm}"
 }
 
+libdirs{
+  os.findlib("sdl2")
+}
+
 links
 {
 	"Engine"
@@ -157,7 +158,7 @@ toolset "clang"
 
 links
 {
-	"GLFW",
+	"SDL2",
 	"ImGui",
 	"Xrandr",
 	"Xi",

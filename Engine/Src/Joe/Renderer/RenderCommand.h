@@ -12,8 +12,8 @@ namespace Joe{
 			s_RendererAPI->SetClearColor(color);
 		}
 
-		static inline void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray){
-			s_RendererAPI->DrawIndexed(vertexArray);
+		static inline void DrawIndexed(){
+			s_RendererAPI->DrawIndexed();
 		}
 	private:
 		static RendererAPI* s_RendererAPI;

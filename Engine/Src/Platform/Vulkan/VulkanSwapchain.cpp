@@ -1,7 +1,6 @@
 #include "Joepch.h"
 #include "vulkan_core.h"
 #include "VulkanSwapchain.h"
-#include <GLFW/glfw3.h>
 #include <VkBootstrap.h>
 #include <vulkan/vulkan_core.h>
 

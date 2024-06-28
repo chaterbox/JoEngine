@@ -7,13 +7,13 @@
 
 namespace Joe{
 	struct WindowProps{
-		std::string Title;
-		unsigned int Width;
-		unsigned int Height;
+		const char* Title;
+		int Width;
+		int Height;
 		
-		WindowProps(const std::string& title = "JoEngine",
-			unsigned int width = 1280,
-			unsigned int height = 720)
+		WindowProps(const char* title = "JoEngine",
+			int width = 1280,
+			int height = 720)
 			: Title(title), Width(width), Height(height){
 			#ifdef JOE_DEBUG
 			if (RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
@@ -31,8 +31,8 @@ namespace Joe{
 
 		virtual void OnUpdate() = 0;
 
-		virtual unsigned int GetWidth() const = 0;
-		virtual unsigned int GetHeight() const = 0;
+		virtual int GetWidth() const = 0;
+		virtual int GetHeight() const = 0;
 
 		virtual void SetEventCallBack(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;

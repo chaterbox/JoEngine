@@ -2,11 +2,8 @@
 #include "ImGuiLayer.h"
 
 #include "imgui.h"
-#include "examples/imgui_impl_glfw.h"
 
 #include "Joe/Application.h"
-
-#include <GLFW/glfw3.h>
 
 namespace Joe{
 	ImGuiLayer::ImGuiLayer()
@@ -38,7 +35,6 @@ namespace Joe{
 		}
 
 		Application& app = Application::Get();
-		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
 
 		// Setup Platform/Renderer bindings
 		
@@ -46,13 +42,11 @@ namespace Joe{
 	}
 
 	void ImGuiLayer::OnDetach(){
-		ImGui_ImplGlfw_Shutdown();
     //TODO: add ImGui_ImplVulkan_Shutdown
 		ImGui::DestroyContext();
 	}
 
 	void ImGuiLayer::Begin(){
-		ImGui_ImplGlfw_NewFrame();
     //TODO: add ImGui_ImplVulkan_NewFrame
 		ImGui::NewFrame();
 	}
@@ -67,10 +61,8 @@ namespace Joe{
     //TODO: add ImGui_ImplVulkan_RenderDrawData
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable){
-			GLFWwindow* backup_current_context = glfwGetCurrentContext();
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
-			glfwMakeContextCurrent(backup_current_context);
 		}
 	}
 
