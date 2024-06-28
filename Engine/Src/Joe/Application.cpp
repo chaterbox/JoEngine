@@ -25,6 +25,7 @@ namespace Joe{
 	}
 
 	Joe::Application::~Application(){
+    std::cout << "\n";
     JOE_CORE_INFO("JOENGINE::CLOSED");
 	}
 
