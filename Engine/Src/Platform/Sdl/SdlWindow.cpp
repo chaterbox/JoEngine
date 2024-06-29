@@ -33,51 +33,60 @@ namespace Joe {
 	}
 
 	void SdlWindow::Init(const WindowProps& props){
-		m_Data.Title = props.Title;
-		m_Data.Width = props.Width;
-		m_Data.Height = props.Height;
+      m_Data.Title = props.Title;
+      m_Data.Width = props.Width;
+      m_Data.Height = props.Height;
 
-  if(!s_SdlInitialized){
-    if(SDL_Init(SDL_INIT_VIDEO) != 0){
-    JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
-    }else{
-    JOE_CORE_INFO("SDL::INIT");
-    }
-    s_SdlInitialized = true;
-  }
-    SDL_WindowFlags windowFlags = {};
-    windowFlags = (SDL_WindowFlags)(SDL_WINDOW_VULKAN);
+      if(!s_SdlInitialized){
+        if(SDL_Init(SDL_INIT_VIDEO) != 0){
+          JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
+        }else{
+          JOE_CORE_INFO("SDL::INIT");
+        }
+        s_SdlInitialized = true;
+      }
 
-    m_Window = SDL_CreateWindow(props.Title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, props.Width, props.Height, windowFlags);
-    if(m_Window != NULL){  
-		  JOE_CORE_INFO("SDL::WINDOW::CREATION::SUCCESS:TITLE:{0} WIDTH:{1} HEIGHT:{2}", props.Title, props.Width, props.Height);
-    }else{
-      JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
-    }
+      SDL_WindowFlags windowFlags = {};
     
-    SDL_SetWindowMinimumSize(m_Window,300,300);
+      switch (RendererAPI::GetAPI()) {
+        case Joe::RendererAPI::API::Vulkan:
+          windowFlags = (SDL_WindowFlags)(SDL_WINDOW_VULKAN);
+          break;
+        case Joe::RendererAPI::API::None:
+          break;
+      }
 
-    switch (RendererAPI::GetAPI()){
-      case Joe::RendererAPI::API::Vulkan:
-        m_Context = new VulkanContext(m_Window);
-        break;
-      case Joe::RendererAPI::API::None:
-        m_Context = nullptr;
-    }
+      m_Window = SDL_CreateWindow(props.Title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, props.Width, props.Height, windowFlags);
+
+      if(m_Window != NULL){
+        JOE_CORE_INFO("SDL::WINDOW::CREATION::SUCCESS:TITLE:{0} WIDTH:{1} HEIGHT:{2}", props.Title, props.Width, props.Height);
+      }else{
+        JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
+      }
+    
+      SDL_SetWindowMinimumSize(m_Window,300,300);
+
+      switch (RendererAPI::GetAPI()){
+        case Joe::RendererAPI::API::Vulkan:
+          m_Context = new VulkanContext(m_Window);
+          break;
+        case Joe::RendererAPI::API::None:
+          m_Context = nullptr;
+      }
 		
-    m_Context->Init();
+      m_Context->Init();
 
-		SetVSync(true);
+      SetVSync(true);
     
-    if(RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
-		VulkanSwapchain::Create(VulkanContext::GetPhyDeviceHandle(), VulkanContext::GetLogicalDeviceHandle(), VulkanContext::GetSurfaceHandle(),IsVSync(), m_Data.Width, m_Data.Height);
-    }
+      if(RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
+        VulkanSwapchain::Create(VulkanContext::GetPhyDeviceHandle(), VulkanContext::GetLogicalDeviceHandle(), VulkanContext::GetSurfaceHandle(),IsVSync(), m_Data.Width, m_Data.Height);
+      }
 	}
 
-  void SdlWindow::Shutdown(){
-    SDL_DestroyWindow(m_Window);
-    SDL_Quit();
-  }
+    void SdlWindow::Shutdown(){
+      SDL_DestroyWindow(m_Window);
+      SDL_Quit();
+    }
 
 	void SdlWindow::OnUpdate(){
       while(SDL_PollEvent(&event) != 0){
