@@ -12,6 +12,7 @@
 #include "Joe/KeyCode.h"
 #include "Joe/Application.h"
 //Vulkan
+#include "Platform/Sdl/SdlInput.h"
 #include "Platform/Vulkan/VulkanContext.h"
 #include "Platform/Vulkan/VulkanSwapchain.h"
 
@@ -37,6 +38,8 @@ namespace Joe {
       m_Data.Width = props.Width;
       m_Data.Height = props.Height;
 
+      std::cout << "\n";
+
       if(!s_SdlInitialized){
         if(SDL_Init(SDL_INIT_VIDEO) != 0){
           JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
@@ -45,6 +48,8 @@ namespace Joe {
         }
         s_SdlInitialized = true;
       }
+
+      SdlInput::InitGamepad();    
 
       SDL_WindowFlags windowFlags = {};
     
@@ -63,6 +68,8 @@ namespace Joe {
       }else{
         JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
       }
+
+      std::cout << "\n";
     
       SDL_SetWindowMinimumSize(m_Window,300,300);
 

@@ -1,10 +1,12 @@
 #include "Joe/KeyCode.h"
+#include "Joe/Log.h"
 #include "Joepch.h"
 #include "SdlInput.h"
 
 #include "Joe/Application.h"
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_gamecontroller.h>
 #include <unistd.h>
 
 //TODO: implement sdl input
@@ -12,8 +14,8 @@ namespace Joe{
 	Input* Input::s_Instance = new SdlInput();
 
 	bool SdlInput::IsKeyPressedImpl(Sint32 keycode){
-		while(SDL_PollEvent(&event) != 0){
-			if(event.key.keysym.sym == keycode){
+		while(SDL_PollEvent(&m_Event) != 0){
+			if(m_Event.key.keysym.sym == keycode){
 			return true;
 			break;
 			}
@@ -41,5 +43,19 @@ namespace Joe{
 	float SdlInput::GetMouseYImpl(){
 		auto [x, y] = GetMousePositionImpl();
 		return y;
+	}
+
+	void SdlInput::InitGamepad(){
+		SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER);
+    
+		for(int i = 0; i < SDL_NumJoysticks();i++){
+			if(SDL_IsGameController(i)){
+				m_Controller = SDL_GameControllerOpen(i);
+        
+				std::string ControllerString = SDL_GameControllerName(m_Controller);
+				JOE_CORE_INFO("SDL::INPUT::GAMEPAD::FOUND");
+				JOE_CORE_INFO("SDL::INPUT::GAMEPAD::{0}", ControllerString);
+			}
+		}
 	}
 }
