@@ -1,28 +1,5 @@
-#include <Joe.h>
-
-class ExampleLayer : public Joe::Layer
-{
-public:
-	ExampleLayer()
-		: Layer("Example")
-	{
-	}
-
-	virtual void OnImGuiRender() override
-	{
-	}
-
-	void OnUpdate() override
-	{
-
-	}
-
-	void OnEvent(Joe::Event& event)override
-	{
-
-	}
-private:
-};
+#include <Joe/EntryPoint.h>
+#include "Actor.h"
 
 class SandBox : public Joe::Application
 {
@@ -30,7 +7,7 @@ public:
 	SandBox()
 	{
 		JOE_INFO("APP::INIT");
-		PushLayer(new ExampleLayer());
+		PushLayer(new Actor());
 	}
 	~SandBox()
 	{

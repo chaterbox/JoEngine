@@ -20,7 +20,3 @@
 #include "Joe/Renderer/Buffer.h"
 #include "Joe/Renderer/Shader.h"
 //---------------------------------
-
-// --entry point-------------------
-#include "Joe/EntryPoint.h"
-//---------------------------------
