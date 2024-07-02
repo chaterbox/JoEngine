@@ -42,11 +42,7 @@ namespace Joe{
 		}
 	}
 
-	void Application::SetRunning(bool run){
-		if(run){
-			m_running = true;
-		}else{
-			m_running = false;
-    }
+	void Application::Quit(){
+		m_running = false;
   }
 }

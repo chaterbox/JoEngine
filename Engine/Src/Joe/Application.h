@@ -21,7 +21,7 @@ namespace Joe{
 		static inline Application& Get() { return *s_Instance; }
 		inline Window& GetWindow() { return *m_Window; }
 
-		static void SetRunning(bool run);
+		static void Quit();
 	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
