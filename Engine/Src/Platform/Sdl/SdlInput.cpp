@@ -14,12 +14,6 @@ namespace Joe{
 	Input* Input::s_Instance = new SdlInput();
 
 	bool SdlInput::IsKeyPressedImpl(Sint32 keycode){
-		while(SDL_PollEvent(&m_Event) != 0){
-			if(m_Event.key.keysym.sym == keycode){
-			return true;
-			break;
-			}
-		}
 		return false;
 	}
 

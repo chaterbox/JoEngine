@@ -1,21 +1,22 @@
 #pragma once
 #include "Event.h"
+#include <SDL2/SDL_stdinc.h>
 
 namespace Joe{
 	class JOE_API KeyEvent : public Event{
 	public:
-		inline int GetKeyCode() const { return m_KeyCode; }
+		inline Sint32 GetKeyCode() const { return m_KeyCode; }
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
-		KeyEvent(int keycode)
+		KeyEvent(Sint32 keycode)
 			: m_KeyCode(keycode){}
 
-		int m_KeyCode;
+		Sint32 m_KeyCode;
 	};
 
 	class JOE_API KeyPressedEvent : public KeyEvent{
 	public:
-		KeyPressedEvent(int keycode,int repeatCount)
+		KeyPressedEvent(Sint32 keycode,int repeatCount)
 			:KeyEvent(keycode), m_RepeatCount(repeatCount){}
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
@@ -32,7 +33,7 @@ namespace Joe{
 
 	class JOE_API KeyReleasedEvent : public KeyEvent{
 	public:
-		KeyReleasedEvent(int keycode)
+		KeyReleasedEvent(Sint32 keycode)
 			: KeyEvent(keycode){}
 
 		std::string ToString() const override{
@@ -45,7 +46,7 @@ namespace Joe{
 
 	class JOE_API KeyTypedEvent : public KeyEvent{
 	public:
-		KeyTypedEvent(int keycode)
+		KeyTypedEvent(Sint32 keycode)
 			:KeyEvent(keycode) {}
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
