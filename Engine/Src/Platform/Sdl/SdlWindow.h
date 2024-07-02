@@ -3,6 +3,7 @@
 #include "Joe/Renderer/GraphicsContext.h"
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_events.h>
 
 namespace Joe{
 	class SdlWindow : public Window{
@@ -17,6 +18,8 @@ namespace Joe{
 
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
+
+    static void SdlQuitEvent(SDL_Event event);
 
 		inline virtual void* GetNativeWindow() const override { return m_Window; }
 	private:
