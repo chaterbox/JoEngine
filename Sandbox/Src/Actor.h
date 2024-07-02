@@ -11,8 +11,6 @@
 
     void OnUpdate() override;
 
-    void OnEvent(Joe::Event& event)override;
-
  private:
     SDL_Event event;
  };

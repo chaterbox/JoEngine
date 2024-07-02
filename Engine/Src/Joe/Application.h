@@ -3,8 +3,6 @@
 
 #include "Window.h"
 #include "LayerStack.h"
-#include "Events/Event.h"
-#include "Joe/Events/ApplicationEvents.h"
 
 #include "Joe/ImGui/ImGuiLayer.h"
 
@@ -17,7 +15,6 @@ namespace Joe{
 		Application();
 		virtual ~Application();
 		void Run();
-		void OnEvent(Event& e);
 
 		void PushLayer(Layer* Layer);
 		void PushOverlay(Layer* Layer);
@@ -26,8 +23,6 @@ namespace Joe{
 
 		static void SetRunning(bool run);
 	private:
-		bool OnWindowClose(WindowCloseEvent& e);
-
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		static inline bool m_running = true;

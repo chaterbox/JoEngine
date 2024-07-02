@@ -6,9 +6,6 @@
 #include <SDL2/SDL_video.h>
 #include "SdlWindow.h"
 
-#include "Joe/Events/ApplicationEvents.h"
-#include "Joe/Events/MouseEvent.h"
-#include "Joe/Events/KeyEvent.h"
 #include "Joe/KeyCode.h"
 #include "Joe/Application.h"
 //Vulkan

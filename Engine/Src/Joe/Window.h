@@ -2,7 +2,6 @@
 #include "Joepch.h"
 
 #include "Joe/Core.h"
-#include "Joe/Events/Event.h"
 #include "Renderer/RendererAPI.h"
 
 namespace Joe{
@@ -25,8 +24,6 @@ namespace Joe{
 
 	class JOE_API Window{
 	public:
-		using EventCallbackFn = std::function<void(Event&)>;
-
 		virtual ~Window(){}
 
 		virtual void OnUpdate() = 0;
@@ -34,7 +31,6 @@ namespace Joe{
 		virtual int GetWidth() const = 0;
 		virtual int GetHeight() const = 0;
 
-		virtual void SetEventCallBack(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
 
