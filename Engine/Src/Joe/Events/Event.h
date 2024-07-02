@@ -1,26 +1,15 @@
 #pragma once
 #include "Joepch.h"
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_stdinc.h>
+#include <functional>
 
 namespace Joe{
+  
 	class JOE_API Event{
-	};
-
-	class EventDispatcher{
-		template<typename T>
-		using EventFn = std::function<bool(T&)>;
-	public:
-		EventDispatcher(Event& event)
-			: m_Event(event){}
-
-		template<typename T>
-		bool Dispatch(EventFn<T>func){
-			if (m_Event.GetEventType() == T::GetStaticType()){
-				m_Event.m_Handled = func(*(T*)&m_Event);
-				return true;
-			}
-			return false;
-		}
-	private:
-		Event& m_Event;
-	};
+    static inline SDL_Event event;
+  public:
+    static bool PollEvent(SDL_Event event);
+    static SDL_Event* GetEventHandle(){ return &event;}
+  };
 }

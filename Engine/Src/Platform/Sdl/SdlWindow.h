@@ -19,8 +19,6 @@ namespace Joe{
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
-    static void SdlQuitEvent(SDL_Event event);
-
 		inline virtual void* GetNativeWindow() const override { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);

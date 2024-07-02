@@ -93,7 +93,15 @@ namespace Joe {
     }
 
 	void SdlWindow::OnUpdate(){
-    
+      
+      if(SDL_WaitEvent(&event)){
+        if(event.type == SDL_QUIT){
+          Application::Quit();
+        }
+        if(event.key.keysym.sym == KEYS::JOE_KEY_ESCAPE){
+          Application::Quit();
+        }
+      }
 	}
 
 	void SdlWindow::SetVSync(bool enabled){
@@ -103,14 +111,5 @@ namespace Joe {
 	bool SdlWindow::IsVSync() const{
 		return m_Data.VSync;
 	}
-
-  void SdlWindow::SdlQuitEvent(SDL_Event event){
-    if(event.type == SDL_QUIT){
-      Application::Quit();
-    }
-    if(event.key.keysym.sym == KEYS::JOE_KEY_ESCAPE){
-      Application::Quit();
-    }
-  }
 }
 
