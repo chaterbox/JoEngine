@@ -6,6 +6,7 @@
 #include "Joe/Application.h"
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_events.h>
 #include <SDL2/SDL_gamecontroller.h>
 #include <unistd.h>
 
@@ -14,7 +15,18 @@ namespace Joe{
 	Input* Input::s_Instance = new SdlInput();
 
 	bool SdlInput::IsKeyPressedImpl(Sint32 keycode){
-		return false;
+    SDL_Event event;
+    if(SDL_WaitEvent(&event)){
+      if(event.type == SDL_KEYDOWN){
+        if(event.key.keysym.sym == keycode){
+          return true;
+        }
+        else{
+          SDL_PumpEvents();
+          return false;
+        }
+      }
+    }
 	}
 
   //TODO: implement mouse button pressed input
