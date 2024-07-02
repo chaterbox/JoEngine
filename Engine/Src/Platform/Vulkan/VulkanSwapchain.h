@@ -12,6 +12,8 @@ namespace Joe{
   
 		static void Create(VkPhysicalDevice phyDevice,VkDevice device,VkSurfaceKHR surface,bool VSync,unsigned int width,unsigned int height);
 
+    static void RecreateSwapchain();
+
 		static VkSwapchainKHR GetSwapchainKHRHandle() { return m_Swapchain; }
 		static VkExtent2D GetExtentHandle() { return m_Extent;}
 	private:

@@ -40,4 +40,8 @@ namespace Joe{
     
     m_SwapchainImageFormat = vkbSwapchain.image_format;
 	}
+
+  void VulkanSwapchain::RecreateSwapchain(){
+
+  }
 }
