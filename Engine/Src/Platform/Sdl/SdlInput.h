@@ -15,6 +15,8 @@ namespace Joe{
 		virtual float GetMouseXImpl() override;
 		virtual float GetMouseYImpl() override;
 
+    virtual bool IsGamePadButtonPressedImpl() override;
+
 		SDL_Event m_Event;
 		static inline SDL_GameController* m_Controller;
 	};

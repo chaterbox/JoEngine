@@ -64,4 +64,8 @@ namespace Joe{
 			}
 		}
 	}
+
+  bool SdlInput::IsGamePadButtonPressedImpl(){
+    return false;
+  }
 }

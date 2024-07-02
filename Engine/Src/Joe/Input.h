@@ -11,6 +11,8 @@ namespace Joe{
 		static inline std::pair<float, float>GetMousePosition() { return s_Instance->GetMousePositionImpl(); }
 		static inline float GetMouseX() { return s_Instance->GetMouseXImpl(); }
 		static inline float GetMouseY() { return s_Instance->GetMouseYImpl(); }
+
+    static inline bool IsGamePadButtonPressed(){ return s_Instance->IsGamePadButtonPressed();}
 	protected:
 		virtual bool IsKeyPressedImpl(int keycode) = 0;
 
@@ -18,6 +20,8 @@ namespace Joe{
 		virtual std::pair<float, float> GetMousePositionImpl() = 0;
 		virtual float GetMouseXImpl() = 0;
 		virtual float GetMouseYImpl() = 0;
+    
+    virtual inline bool IsGamePadButtonPressedImpl() = 0;
 	private:
 		static Input* s_Instance;
 	};
