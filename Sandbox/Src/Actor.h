@@ -1,5 +1,6 @@
 #pragma once 
 #include <Joe.h>
+#include <SDL2/SDL_events.h>
 
  class Actor : public Joe::Layer
  {
@@ -13,5 +14,5 @@
     void OnEvent(Joe::Event& event)override;
 
  private:
-
+    SDL_Event event;
  };

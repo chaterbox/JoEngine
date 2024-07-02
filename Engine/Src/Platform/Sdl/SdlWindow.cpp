@@ -96,12 +96,7 @@ namespace Joe {
     }
 
 	void SdlWindow::OnUpdate(){
-      while(SDL_PollEvent(&event) != 0){
-        if(event.type == SDL_QUIT)
-          Application::SetRunning(false);
-        if(event.key.keysym.sym == KEYS::JOE_KEY_ESCAPE)
-          Application::SetRunning(false);
-      }
+    
 	}
 
 	void SdlWindow::SetVSync(bool enabled){
