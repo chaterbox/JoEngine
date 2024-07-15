@@ -107,16 +107,14 @@ namespace Joe{
   JOE_CORE_INFO("VULKAN [DRIVER VERSION] {0},{1},{2}",driverMajor,driverMinor,driverPatch);
   JOE_CORE_INFO("VULKAN [API VERSION] {0},{1},{2}",apiMajor,apiMinor,apiPatch);
 
-  switch (physicalDevice.properties.deviceType) {
-    case VK_PHYSICAL_DEVICE_TYPE_CPU:
-      JOE_CORE_INFO("VULKAN [DEVICE TYPE] CPU");
-      break;
-    case VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU:
-      JOE_CORE_INFO("VULKAN [DEVICE TYPE] DISCRETE GPU");
-      break;
-    case VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU:
-      JOE_CORE_INFO("VULKAN [DEVICE TYPE] INTERGRATED GPU");
-      break;
+  if(physicalDevice.properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_CPU){
+    JOE_CORE_INFO("VULKAN [DEVICE TYPE] CPU");
+  }
+  if(physicalDevice.properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU){
+    JOE_CORE_INFO("VULKAN [DEVICE TYPE] DISCRETE GPU");
+  }
+  if(physicalDevice.properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU){
+    JOE_CORE_INFO("VULKAN [DEVICE TYPE] INTERGRATED GPU");
   }
 
     std::cout << "\n";
