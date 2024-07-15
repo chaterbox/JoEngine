@@ -143,7 +143,7 @@ namespace Joe{
 
 	VulkanContext::~VulkanContext(){
 		vkDestroyInstance(m_Instance, nullptr);
-    //vkDestroySurfaceKHR(m_Instance, m_Surface, nullptr);
+    vkDestroySurfaceKHR(m_Instance, m_Surface, nullptr);
     vkDestroyDevice(m_LogicalDevice, nullptr);
     vmaDestroyAllocator(m_Allocator);
 	}
