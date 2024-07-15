@@ -34,6 +34,7 @@ project "ImGui"
 		runtime "Debug"
 		warnings "Extra"
 		symbols "on"
+		optimize "on"
 
 	filter "configurations:Release"
 		runtime "Release"
