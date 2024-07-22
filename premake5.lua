@@ -54,14 +54,16 @@ includedirs
 	"%{prj.name}/Vendor/vulkan/Include/vulkan",
 	"%{IncludeDirs.ImGui}",
 	"%{IncludeDirs.glm}",
-  	"%{IncludeDirs.vkBootStrap}",
-  	"%{IncludeDirs.vma}",
-  os.findlib("sdl2")
+	"%{IncludeDirs.vkBootStrap}",
+	"%{IncludeDirs.vma}",
+	os.findlib("sdl2"),
+	os.findlib("shaderc")
 }
 libdirs
 {
 	"%{prj.name}/Vendor/vulkan/Lib",
-  os.findlib("sdl2")
+	os.findlib("sdl2"),
+	os.findlib("shaderc")
 }
 
 filter "system:windows"
@@ -136,7 +138,8 @@ includedirs
 }
 
 libdirs{
-  os.findlib("sdl2")
+  os.findlib("sdl2"),
+  os.findlib("shaderc")
 }
 
 links
@@ -160,6 +163,7 @@ toolset "clang"
 links
 {
 	"SDL2",
+	"shaderc",
 	"ImGui",
 	"Xrandr",
 	"Xi",
