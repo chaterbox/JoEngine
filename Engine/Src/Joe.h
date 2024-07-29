@@ -18,5 +18,7 @@
 #include "Joe/Renderer/Renderer.h"
 
 #include "Joe/Renderer/Buffer.h"
-#include "Joe/Renderer/Shader.h"
 //---------------------------------
+
+// Mesh
+#include "Joe/Mesh.h"
