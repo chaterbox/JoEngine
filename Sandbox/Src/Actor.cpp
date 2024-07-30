@@ -1,6 +1,4 @@
-#include "Actor.h" 
-#include "Joe/KeyCode.h"
-#include "Joe/Input.h"
+#include "Actor.h"  
 
 Actor::Actor() : Layer("Actor"){
   JOE_INFO("ACTOR::INIT");
