@@ -1,4 +1,4 @@
-#include "Joe/KeyCode.h"
+#include "Joe/KeyCodes/KeyCode.h"
 #include "Joe/Log.h"
 #include "Joepch.h"
 #include "SdlInput.h"

@@ -6,7 +6,7 @@
 #include <SDL2/SDL_video.h>
 #include "SdlWindow.h"
 
-#include "Joe/KeyCode.h"
+#include "Joe/KeyCodes/KeyCode.h"
 #include "Joe/Application.h"
 //Vulkan
 #include "Platform/Sdl/SdlInput.h"
