@@ -1,7 +1,7 @@
 #include "Joepch.h"
 #include "ImGuiLayer.h"
 
-#include "imgui.h"
+//#include "imgui.h"
 
 #include "Joe/Application.h"
 
@@ -13,7 +13,7 @@ namespace Joe{
 
 	void ImGuiLayer::OnAttach(){
 		// Setup Dear ImGui context
-		IMGUI_CHECKVERSION();
+		/*IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO(); (void)io;
 		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
@@ -33,7 +33,7 @@ namespace Joe{
 			style.WindowRounding = 0.0f;
 			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 		}
-
+    */
 		Application& app = Application::Get();
 
 		// Setup Platform/Renderer bindings
@@ -43,16 +43,16 @@ namespace Joe{
 
 	void ImGuiLayer::OnDetach(){
     //TODO: add ImGui_ImplVulkan_Shutdown
-		ImGui::DestroyContext();
+		//ImGui::DestroyContext();
 	}
 
 	void ImGuiLayer::Begin(){
     //TODO: add ImGui_ImplVulkan_NewFrame
-		ImGui::NewFrame();
+		//ImGui::NewFrame();
 	}
 
 	void ImGuiLayer::End(){
-		ImGuiIO& io = ImGui::GetIO();
+		/*ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
 
@@ -63,7 +63,7 @@ namespace Joe{
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable){
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
-		}
+		}*/
 	}
 
 	void ImGuiLayer::OnImGuiRender(){
