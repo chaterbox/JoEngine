@@ -3,9 +3,10 @@
 #include "Joe/Application.h"
 // input
 #include "Joe/Input.h"
-// key and mouse codes
-#include "Joe/KeyCode.h"
-#include "Joe/MouseButtonCodes.h"
+// key, mouse and gamepad codes
+#include "Joe/KeyCodes/KeyCode.h"
+#include "Joe/KeyCodes/MouseButtonCodes.h"
+#include "Joe/KeyCodes/GamePadCodes.h"
 // layer
 #include "Joe/Layer.h"
 // logging
