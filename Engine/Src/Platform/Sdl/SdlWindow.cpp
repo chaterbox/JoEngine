@@ -52,7 +52,7 @@ namespace Joe {
     
       switch (RendererAPI::GetAPI()) {
         case Joe::RendererAPI::API::Vulkan:
-          windowFlags = (SDL_WindowFlags)(SDL_WINDOW_VULKAN);
+          windowFlags = (SDL_WindowFlags)(SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE);
           break;
         case Joe::RendererAPI::API::None:
           break;
@@ -100,6 +100,14 @@ namespace Joe {
         }
         if(event.key.keysym.sym == KEYS::JOE_KEY_ESCAPE){
           Application::Quit();
+        }
+        if(event.type == SDL_WINDOWEVENT_RESIZED){
+          m_Data.Width = event.window.data1;
+          m_Data.Height = event.window.data2;
+
+          vkDestroySwapchainKHR(VulkanContext::GetLogicalDeviceHandle(), VulkanSwapchain::GetSwapchainKHRHandle(), nullptr);
+
+          VulkanSwapchain::Create(VulkanContext::GetPhyDeviceHandle(), VulkanContext::GetLogicalDeviceHandle(), VulkanContext::GetSurfaceHandle(), IsVSync(), m_Data.Width, m_Data.Height);
         }
       }
 	}
