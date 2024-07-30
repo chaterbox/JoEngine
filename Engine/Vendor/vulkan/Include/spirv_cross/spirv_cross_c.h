@@ -977,7 +977,7 @@ SPVC_PUBLIC_API spvc_result spvc_compiler_get_active_buffer_ranges(spvc_compiler
  * No stdint.h until C99, sigh :(
  * For smaller types, the result is sign or zero-extended as appropriate.
  * Maps to C++ API.
- * TODO: The SPIRConstant query interface and modification interface is not quite complete.
+ *  The SPIRConstant query interface and modification interface is not quite complete.
  */
 SPVC_PUBLIC_API float spvc_constant_get_scalar_fp16(spvc_constant constant, unsigned column, unsigned row);
 SPVC_PUBLIC_API float spvc_constant_get_scalar_fp32(spvc_constant constant, unsigned column, unsigned row);
