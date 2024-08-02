@@ -6,7 +6,6 @@
 
 #include "Joe/ImGui/ImGuiLayer.h"
 
-#include "Joe/Renderer/Shader.h"
 #include "Renderer/Buffer.h"
 
 namespace Joe{

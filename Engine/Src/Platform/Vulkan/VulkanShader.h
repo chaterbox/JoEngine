@@ -1,16 +1,20 @@
 #pragma once
+#include <cstdint>
+#include <shaderc/shaderc.h>
 #include <vulkan.h>
-#include "Joe/Renderer/Shader.h"
+#include "vulkan_core.h"
 #include <vector>
+#include <shaderc/shaderc.hpp>
 
 namespace Joe{
-	class VulkanShader : public Shader{
+  struct ShaderType{
+    static const uint8_t frag = 0;
+    static const uint8_t vert = 1;
+  };
+	class VulkanShader{
 	public:
-		VulkanShader(const std::string vertexSrc, const std::string& fragmentSrc);
+		VulkanShader() = default;
 
-		virtual void Bind() const override;
-		virtual void Unbind() const override;
-	private:
-		VkShaderModule FragShaderModule,VertShaderModule;
+    static VkShaderModule Create(const std::string& ShaderSrc,uint8_t kind);
 	};
 }

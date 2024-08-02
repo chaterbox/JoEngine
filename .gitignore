@@ -3,4 +3,5 @@ bin-int
 Makefile
 .cache/
 compile_commands.json
+Assets/Shaders
 Sandbox/imgui.ini

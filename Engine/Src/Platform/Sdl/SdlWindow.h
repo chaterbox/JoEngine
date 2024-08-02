@@ -1,6 +1,7 @@
 #pragma once
 #include "Joe/Window.h"
 #include "Joe/Renderer/GraphicsContext.h"
+#include "vulkan_core.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
@@ -27,6 +28,9 @@ namespace Joe{
 		SDL_Window* m_Window;
 		SDL_Event event;
 		GraphicsContext* m_Context;
+
+    VkShaderModule m_VertexShader;
+    VkShaderModule m_FragmentShader;
 
 		struct WindowData{
 			const char* Title;
