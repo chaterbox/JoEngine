@@ -101,13 +101,17 @@ namespace Joe {
         if(event.key.keysym.sym == KEYS::JOE_KEY_ESCAPE){
           Application::Quit();
         }
-        if(event.type == SDL_WINDOWEVENT_RESIZED){
-          m_Data.Width = event.window.data1;
-          m_Data.Height = event.window.data2;
+        if(event.type == SDL_WINDOWEVENT){
+          if(event.window.event == SDL_WINDOWEVENT_RESIZED){
+            m_Data.Width = event.window.data1;
+            m_Data.Height = event.window.data2;
+            
+            JOE_CORE_INFO("WINDOW::RESIZED::WIDTH:{0} HEIGHT:{1}",m_Data.Width,m_Data.Height);
 
-          vkDestroySwapchainKHR(VulkanContext::GetLogicalDeviceHandle(), VulkanSwapchain::GetSwapchainKHRHandle(), nullptr);
+            vkDestroySwapchainKHR(VulkanContext::GetLogicalDeviceHandle(), VulkanSwapchain::GetSwapchainKHRHandle(), nullptr);
 
-          VulkanSwapchain::Create(VulkanContext::GetPhyDeviceHandle(), VulkanContext::GetLogicalDeviceHandle(), VulkanContext::GetSurfaceHandle(), IsVSync(), m_Data.Width, m_Data.Height);
+            VulkanSwapchain::Create(VulkanContext::GetPhyDeviceHandle(), VulkanContext::GetLogicalDeviceHandle(), VulkanContext::GetSurfaceHandle(), IsVSync(), m_Data.Width, m_Data.Height);
+          }
         }
       }
 	}
