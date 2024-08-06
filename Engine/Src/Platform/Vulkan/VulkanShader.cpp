@@ -10,7 +10,7 @@
 #include <string>
 
 namespace Joe{
-  VkShaderModule VulkanShader::Create(const std::string& ShaderSrc,uint8_t kind){
+  VkShaderModule VulkanShader::Create(const std::string& ShaderSrc,ShaderType shaderType){
     std::string ShaderCode;
     std::ifstream ShaderFile(ShaderSrc.c_str());
 
@@ -19,7 +19,7 @@ namespace Joe{
     }
 
     //TODO: compile shaders into spirv at runtime
-    if(kind == ShaderType::vert){
+    if(shaderType == ShaderType::Vert){
 
     }
     //TODO: create VkShaderModule

@@ -7,14 +7,15 @@
 #include <shaderc/shaderc.hpp>
 
 namespace Joe{
-  struct ShaderType{
-    static const uint8_t frag = 0;
-    static const uint8_t vert = 1;
-  };
+    enum class ShaderType{
+      Frag,
+      Vert
+    };
+
 	class VulkanShader{
 	public:
-		VulkanShader() = default;
+      VulkanShader() = default;
 
-    static VkShaderModule Create(const std::string& ShaderSrc,uint8_t kind);
+      static VkShaderModule Create(const std::string& ShaderSrc,ShaderType shaderType);
 	};
 }
