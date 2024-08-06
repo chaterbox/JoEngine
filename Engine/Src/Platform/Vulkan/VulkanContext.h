@@ -9,13 +9,13 @@
 struct SDLwindow;
 
 namespace Joe{
-  struct VendorIDs{
-	  static const uint32_t AMD = 0x1002;
-	  static const uint32_t NVIDIA = 0x10DE;
-	  static const uint32_t INTEL = 0x8086;
-    static const uint32_t APPLE = 0x106B;
-	  static const uint32_t ARM = 0x13B5;
-	  static const uint32_t Qualcomm = 0x5143;
+  enum VendorIDs{
+	AMD = 0x1002,
+	NVIDIA = 0x10DE,
+	INTEL = 0x8086,
+	APPLE = 0x106B,
+	ARM = 0x13B5,
+	Qualcomm = 0x5143
   };
 
 	class JOE_API VulkanContext :public GraphicsContext{
