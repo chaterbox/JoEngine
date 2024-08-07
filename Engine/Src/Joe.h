@@ -22,4 +22,4 @@
 //---------------------------------
 
 // Mesh
-#include "Joe/Mesh.h"
+#include "Joe/Components/Mesh.h"
