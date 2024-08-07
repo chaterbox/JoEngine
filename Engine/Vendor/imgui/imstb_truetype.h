@@ -903,7 +903,7 @@ STBTT_DEF void stbtt_GetGlyphBitmapBox(const stbtt_fontinfo *font, int glyph, fl
 STBTT_DEF void stbtt_GetGlyphBitmapBoxSubpixel(const stbtt_fontinfo *font, int glyph, float scale_x, float scale_y,float shift_x, float shift_y, int *ix0, int *iy0, int *ix1, int *iy1);
 
 
-// @TODO: don't expose this structure
+// @TODO don't expose this structure
 typedef struct
 {
    int w,h,stride;
