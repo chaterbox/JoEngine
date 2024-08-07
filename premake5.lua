@@ -11,12 +11,12 @@ configurations
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDirs = {}
---IncludeDirs["ImGui"] = "Engine/Vendor/imgui"
+IncludeDirs["ImGui"] = "Engine/Vendor/imgui"
 IncludeDirs["glm"] = "Engine/Vendor/glm"
 IncludeDirs["vkBootStrap"] = "Engine/Vendor/vkbootstrap"
 IncludeDirs["vma"] = "Engine/Vendor/vma"
 
---include "Engine/Vendor/imgui"
+include "Engine/Vendor/imgui"
 
 project "Engine"
 location "Engine"
@@ -52,7 +52,7 @@ includedirs
 	"%{prj.name}/Src",
 	"%{prj.name}/Vendor/spdlog/include",
 	"%{prj.name}/Vendor/vulkan/Include/vulkan",
-	--"%{IncludeDirs.ImGui}",
+	"%{IncludeDirs.ImGui}",
 	"%{IncludeDirs.glm}",
 	"%{IncludeDirs.vkBootStrap}",
 	"%{IncludeDirs.vma}",
@@ -164,7 +164,7 @@ links
 {
 	"SDL2",
 	"shaderc",
-	--"ImGui",
+	"ImGui",
 	"Xrandr",
 	"Xi",
 	"X11",
