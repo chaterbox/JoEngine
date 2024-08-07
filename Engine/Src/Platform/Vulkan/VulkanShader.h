@@ -8,7 +8,16 @@
 
 namespace Joe{
     enum class ShaderType{
+      AnyHitRTX,
+      ClosestHitRTX,
+      Compute,    
       Frag,
+      Geometry,
+      IntersectionRTX,
+      MissRTX,
+      RayGenRTX,
+      TessellationControl,
+      TessellationEvaluation,
       Vert
     };
 
