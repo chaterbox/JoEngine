@@ -1,4 +1,4 @@
-#include <Joe/EntryPoint.h>
+#include <Joe/Core/EntryPoint.h>
 #include "Actor.h"
 
 class SandBox : public Joe::Application

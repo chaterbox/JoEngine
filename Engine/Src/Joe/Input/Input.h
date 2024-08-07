@@ -1,5 +1,5 @@
 #pragma once
-#include "Joe/Core.h"
+#include "Joe/Core/Core.h"
 #include <SDL2/SDL_stdinc.h>
 
 namespace Joe{

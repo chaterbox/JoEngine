@@ -1,18 +1,18 @@
 #pragma once
 // application
-#include "Joe/Application.h"
+#include "Joe/Core/Application.h"
 // input
-#include "Joe/Input.h"
+#include "Joe/Input/Input.h"
 // key, mouse and gamepad codes
-#include "Joe/KeyCodes/KeyCode.h"
-#include "Joe/KeyCodes/MouseButtonCodes.h"
-#include "Joe/KeyCodes/GamePadCodes.h"
+#include "Joe/Input/KeyCodes/KeyCode.h"
+#include "Joe/Input/KeyCodes/MouseButtonCodes.h"
+#include "Joe/Input/KeyCodes/GamePadCodes.h"
 // layer
-#include "Joe/Layer.h"
+#include "Joe/Core/Layer.h"
 // logging
-#include "Joe/Log.h"
+#include "Joe/Core/Log.h"
 // input 
-#include "Joe/Input.h"
+#include "Joe/Input/Input.h"
 //imgui
 #include "Joe/ImGui/ImGuiLayer.h"
 //--renderer-----------------------

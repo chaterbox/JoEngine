@@ -1,8 +1,8 @@
 #pragma once
 #include "Joepch.h"
 
-#include "Joe/Core.h"
-#include "Renderer/RendererAPI.h"
+#include "Core.h"
+#include <Joe/Renderer/RendererAPI.h>
 
 namespace Joe{
 	struct WindowProps{

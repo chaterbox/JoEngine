@@ -1,5 +1,5 @@
 #pragma once
-#include "Joe/Core.h"
+#include "Core.h"
 #include "Layer.h"
 
 #include <vector>

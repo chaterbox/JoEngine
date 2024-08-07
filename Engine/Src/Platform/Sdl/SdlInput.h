@@ -1,5 +1,5 @@
 #pragma once
-#include "Joe/Input.h"
+#include "Joe/Input/Input.h"
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_gamecontroller.h>
 

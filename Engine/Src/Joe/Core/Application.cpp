@@ -1,11 +1,11 @@
 #include "Joepch.h"
 #include "Application.h"
 
-#include "Joe/Log.h"
+#include "Log.h"
 
 #include "Joe/Renderer/Renderer.h"
 
-#include "Input.h"
+#include <Joe/Input/Input.h>
 
 namespace Joe{
 	Application* Application::s_Instance = nullptr;

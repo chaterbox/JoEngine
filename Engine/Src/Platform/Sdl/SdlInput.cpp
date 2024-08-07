@@ -1,9 +1,9 @@
-#include "Joe/KeyCodes/KeyCode.h"
-#include "Joe/Log.h"
+#include "Joe/Input/KeyCodes/KeyCode.h"
+#include "Joe/Core/Log.h"
 #include "Joepch.h"
 #include "SdlInput.h"
 
-#include "Joe/Application.h"
+#include "Joe/Core/Application.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>

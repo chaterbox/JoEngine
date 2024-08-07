@@ -1,5 +1,5 @@
 #pragma once
-#include "Joe/Core.h"
+#include "Joe/Core/Core.h"
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 

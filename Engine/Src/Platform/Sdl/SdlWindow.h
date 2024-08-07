@@ -1,5 +1,5 @@
 #pragma once
-#include "Joe/Window.h"
+#include "Joe/Core/Window.h"
 #include "Joe/Renderer/GraphicsContext.h"
 #include "vulkan_core.h"
 

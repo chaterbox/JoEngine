@@ -4,9 +4,9 @@
 #include "Window.h"
 #include "LayerStack.h"
 
-#include "Joe/ImGui/ImGuiLayer.h"
+#include <Joe/ImGui/ImGuiLayer.h>
 
-#include "Renderer/Buffer.h"
+#include <Joe/Renderer/Buffer.h>
 
 namespace Joe{
 	class JOE_API Application{

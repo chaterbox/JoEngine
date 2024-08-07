@@ -1,5 +1,5 @@
 #pragma once
-#include "Joe/Core.h"
+#include "Core.h"
 
 namespace Joe{
 	class JOE_API Layer{

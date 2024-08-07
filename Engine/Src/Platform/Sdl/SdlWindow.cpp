@@ -1,4 +1,4 @@
-#include "Joe/Log.h"
+#include "Joe/Core/Log.h"
 #include "Joepch.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_error.h>
@@ -6,8 +6,8 @@
 #include <SDL2/SDL_video.h>
 #include "SdlWindow.h"
 
-#include "Joe/KeyCodes/KeyCode.h"
-#include "Joe/Application.h"
+#include "Joe/Input/KeyCodes/KeyCode.h"
+#include "Joe/Core/Application.h"
 //Vulkan
 #include "Platform/Sdl/SdlInput.h"
 #include "Platform/Vulkan/VulkanContext.h"
