@@ -12,6 +12,7 @@
 #include "Platform/Sdl/SdlInput.h"
 #include "Platform/Vulkan/VulkanContext.h"
 #include "Platform/Vulkan/VulkanSwapchain.h"
+#include "Platform/Vulkan/VulkanShader.h"
 
 #include "Joe/Renderer/RendererAPI.h"
 
@@ -84,6 +85,8 @@ namespace Joe {
     
       if(RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
         VulkanSwapchain::Create(VulkanContext::GetPhyDeviceHandle(), VulkanContext::GetLogicalDeviceHandle(), VulkanContext::GetSurfaceHandle(),IsVSync(), m_Data.Width, m_Data.Height);
+        m_VertexShader = VulkanShader::Create("",ShaderType::Vert);
+        m_FragmentShader = VulkanShader::Create("", ShaderType::Frag);
       }
 	}
 
