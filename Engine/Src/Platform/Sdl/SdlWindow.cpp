@@ -85,8 +85,9 @@ namespace Joe {
     
       if(RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
         VulkanSwapchain::Create(VulkanContext::GetPhyDeviceHandle(), VulkanContext::GetLogicalDeviceHandle(), VulkanContext::GetSurfaceHandle(),IsVSync(), m_Data.Width, m_Data.Height);
-        m_VertexShader = VulkanShader::Create("",ShaderType::Vert);
-        m_FragmentShader = VulkanShader::Create("", ShaderType::Frag);
+
+        m_VertexShader = VulkanShader::Create("../../../Assets/Shaders/SPIR-V/triVert.spv",ShaderType::Vert);
+        m_FragmentShader = VulkanShader::Create("../../../Assets/Shaders/SPIR-V/triFrag.spv", ShaderType::Frag);
       }
 	}
 
