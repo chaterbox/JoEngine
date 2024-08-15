@@ -13,6 +13,7 @@
 #include "Platform/Vulkan/VulkanContext.h"
 #include "Platform/Vulkan/VulkanSwapchain.h"
 #include "Platform/Vulkan/VulkanShader.h"
+#include "Platform/Vulkan/VulkanPipeline.h"
 
 #include "Joe/Renderer/RendererAPI.h"
 
@@ -88,6 +89,8 @@ namespace Joe {
 
         m_VertexShader = VulkanShader::Create("../../../Assets/Shaders/SPIR-V/triVert.spv",ShaderType::Vert);
         m_FragmentShader = VulkanShader::Create("../../../Assets/Shaders/SPIR-V/triFrag.spv", ShaderType::Frag);
+
+        pipeline = VulkanPipeline::Create(PipelineType::Rasterisation);
       }
 	}
 

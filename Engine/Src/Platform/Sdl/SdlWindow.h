@@ -32,6 +32,8 @@ namespace Joe{
     VkShaderModule m_VertexShader;
     VkShaderModule m_FragmentShader;
 
+    VkPipeline pipeline;
+
 		struct WindowData{
 			const char* Title;
 			int Width, Height;
