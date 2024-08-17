@@ -87,8 +87,8 @@ namespace Joe {
       if(RendererAPI::GetAPI() == RendererAPI::API::Vulkan){
         VulkanSwapchain::Create(VulkanContext::GetPhyDeviceHandle(), VulkanContext::GetLogicalDeviceHandle(), VulkanContext::GetSurfaceHandle(),IsVSync(), m_Data.Width, m_Data.Height);
 
-        m_VertexShader = VulkanShader::Create("../../../Engine/Src/Platform/Vulkan/Shaders/triangleFrag.glsl",ShaderType::Vert);
-        m_FragmentShader = VulkanShader::Create("../../../Engine/Src/Platform/Vulkan/Shaders/triangleVert.glsl", ShaderType::Frag);
+        m_VertexShader = VulkanShader::Create("../../../Engine/Src/Platform/Vulkan/Shaders/triangleVert.glsl","triangleVert",ShaderType::Vert);
+        m_FragmentShader = VulkanShader::Create("../../../Engine/Src/Platform/Vulkan/Shaders/triangleFrag.glsl","triangleFrag", ShaderType::Frag);
 
         pipeline = VulkanPipeline::Create(PipelineType::Rasterisation);
       }

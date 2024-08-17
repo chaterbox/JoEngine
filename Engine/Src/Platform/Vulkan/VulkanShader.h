@@ -25,6 +25,6 @@ namespace Joe{
 	public:
       VulkanShader() = default;
 
-      static VkShaderModule Create(const std::string& ShaderSrc,ShaderType shaderType);
+      static VkShaderModule Create(const std::string& ShaderPath,const std::string ShaderName,ShaderType shaderType);
 	};
 }
