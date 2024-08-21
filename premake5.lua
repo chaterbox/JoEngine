@@ -111,7 +111,8 @@ optimize "on"
 
 filter "configurations:Dist"
 defines "JOE_DIST"
-symbols "on"
+optimize	 "on"
+targetdir ("bin/%{prj.name}")
 
 project "Sandbox"
 location "Sandbox"
@@ -191,4 +192,5 @@ optimize "on"
 
 filter "configurations:Dist"
 defines "JOE_DIST"
-symbols "on"
+optimize "on"
+targetdir ("bin/%{prj.name}")

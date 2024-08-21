@@ -27,7 +27,11 @@ namespace Joe{
                 ///////////////////////////////////////////
 
     //TODO: compile shaders into spirv at runtime
-    std::ifstream shaderSpirVFile("../../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv", std::ios::ate | std::ios::binary);
+    #ifdef JOE_DIST
+      std::ifstream shaderSpirVFile("../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv", std::ios::ate | std::ios::binary);
+    #else
+      std::ifstream shaderSpirVFile("../../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv", std::ios::ate | std::ios::binary);
+    #endif
     //check if spirv file found and log type of shader found or not found 
     if(!shaderSpirVFile.is_open()){
       if(shaderType == ShaderType::Vert)
