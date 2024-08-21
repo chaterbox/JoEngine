@@ -5,3 +5,4 @@ Makefile
 compile_commands.json
 Assets/Shaders
 Sandbox/imgui.ini
+JoEngine_Linux.tar.gz
