@@ -56,14 +56,8 @@ includedirs
 	"%{IncludeDirs.glm}",
 	"%{IncludeDirs.vkBootStrap}",
 	"%{IncludeDirs.vma}",
-	os.findlib("sdl2"),
-	os.findlib("shaderc")
-}
-libdirs
-{
-	"%{prj.name}/Vendor/vulkan/Lib",
-	os.findlib("sdl2"),
-	os.findlib("shaderc")
+	"%{prj.name}/Vendor/SDL2/include",
+	"%{prj.name}/Vendor/vulkan/Include/shaderc"
 }
 
 filter "system:windows"
@@ -72,7 +66,7 @@ systemversion "latest"
 
 links
 {
-	"sdl2",
+	"sdl",
 	"ImGui",
 	"vulkan-1.lib"
 }
@@ -87,9 +81,15 @@ filter "system:linux"
 
 toolset "clang"
 
+libdirs
+{
+	"%{prj.name}/Vendor/vulkan/Lib",
+	"%{prj.name}/Vendor/SDL2/lib/linux",
+}
+
 links
 {
-	"sdl2",
+	"SDL",
 	"ImGui",
 	"vulkan-1.lib"
 }
@@ -138,11 +138,6 @@ includedirs
 	"%{IncludeDirs.glm}"
 }
 
-libdirs{
-  os.findlib("sdl2"),
-  os.findlib("shaderc")
-}
-
 links
 {
 	"Engine"
@@ -161,10 +156,16 @@ filter "system:linux"
 
 toolset "clang"
 
+libdirs{
+	"Engine/Vendor/vulkan/Lib/linux",
+ 	"Engine/Vendor/SDL2/lib/linux",
+  	
+}
+
 links
 {
 	"SDL2",
-	"shaderc",
+	"shaderc_combined",
 	"ImGui",
 	"Xrandr",
 	"Xi",
