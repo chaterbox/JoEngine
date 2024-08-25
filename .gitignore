@@ -6,3 +6,8 @@ compile_commands.json
 Assets/Shaders
 Sandbox/imgui.ini
 JoEngine_Linux.tar.gz
+*.vs
+*.sln
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
