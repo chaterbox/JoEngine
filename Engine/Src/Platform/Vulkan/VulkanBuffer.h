@@ -1,6 +1,6 @@
 #pragma once
 #include "Joe/Renderer/Buffer.h"
-#include <vulkan.h>
+#include <vulkan/vulkan.h>
 
 namespace Joe{
 	class VulkanVertexBuffer : public VertexBuffer{

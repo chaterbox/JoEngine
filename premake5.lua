@@ -51,13 +51,12 @@ includedirs
 {
 	"%{prj.name}/Src",
 	"%{prj.name}/Vendor/spdlog/include",
-	"%{prj.name}/Vendor/vulkan/Include/vulkan",
 	"%{IncludeDirs.ImGui}",
 	"%{IncludeDirs.glm}",
 	"%{IncludeDirs.vkBootStrap}",
 	"%{IncludeDirs.vma}",
 	"%{prj.name}/Vendor/SDL2/include",
-	"%{prj.name}/Vendor/vulkan/Include/shaderc"
+	"%{prj.name}/Vendor/vulkan/Include"
 }
 
 filter "system:windows"
@@ -83,7 +82,7 @@ toolset "clang"
 
 libdirs
 {
-	"%{prj.name}/Vendor/vulkan/Lib",
+	"%{prj.name}/Vendor/vulkan/Lib/linux",
 	"%{prj.name}/Vendor/SDL2/lib/linux",
 }
 
@@ -159,7 +158,6 @@ toolset "clang"
 libdirs{
 	"Engine/Vendor/vulkan/Lib/linux",
  	"Engine/Vendor/SDL2/lib/linux",
-  	
 }
 
 links

@@ -1,8 +1,6 @@
 #pragma once
 #include <cstdint>
-#include <shaderc/shaderc.h>
-#include <vulkan.h>
-#include "vulkan_core.h"
+#include <vulkan/vulkan.h>
 #include <vector>
 #include <shaderc/shaderc.hpp>
 

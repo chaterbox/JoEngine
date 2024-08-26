@@ -2,7 +2,7 @@
 #include "Joepch.h"
 #include "Platform/Sdl/SdlWindow.h"
 #include "VulkanContext.h"
-#include "vulkan_core.h"
+#include <vulkan/vulkan.h>
 #include <VkBootstrap.h>
 #include <SDL2/SDL_vulkan.h>
 #include <iostream>

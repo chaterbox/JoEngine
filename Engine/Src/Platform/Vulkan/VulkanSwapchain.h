@@ -1,7 +1,6 @@
 #pragma once
-#include "vulkan_core.h"
 #include <cstdint>
-#include <vulkan.h>
+#include <vulkan/vulkan.h>
 #include <vector>
 
 namespace Joe{

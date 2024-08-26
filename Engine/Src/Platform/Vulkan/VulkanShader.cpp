@@ -1,11 +1,10 @@
-#include "Joe/Core/Log.h"
 #include "Joepch.h"
 #include "VulkanShader.h"
 #include "VulkanContext.h"
-#include "vulkan_core.h"
+#include <vulkan/vulkan.h>
+#include <shaderc/shaderc.hpp>
 #include <cstdint>
 #include <fstream>
-#include <shaderc/shaderc.h>
 #include <sstream>
 #include <string>
 

@@ -1,9 +1,8 @@
 #include "Joepch.h"
-#include "vulkan_core.h"
 #include "VulkanSwapchain.h"
 #include "VulkanContext.h"
 #include <VkBootstrap.h>
-#include <vulkan/vulkan_core.h>
+#include <vulkan/vulkan.h>
 
 namespace Joe{
   VulkanSwapchain::~VulkanSwapchain(){

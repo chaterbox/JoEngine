@@ -1,7 +1,6 @@
 #pragma once
 #include <cstdint>
-#include <vulkan_core.h>
-#include <vulkan.h>
+#include <vulkan/vulkan.h>
 #include "Joe/Renderer/GraphicsContext.h"
 #include <vk_mem_alloc.h>
 #include <SDL2/SDL.h>

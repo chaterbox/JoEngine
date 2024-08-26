@@ -1,7 +1,7 @@
 #pragma once
 #include "Joe/Core/Window.h"
 #include "Joe/Renderer/GraphicsContext.h"
-#include "vulkan_core.h"
+#include <vulkan/vulkan.h>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
