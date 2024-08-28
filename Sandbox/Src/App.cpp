@@ -6,7 +6,6 @@ class SandBox : public Joe::Application
 public:
 	SandBox()
 	{
-		std::cout << "\n";
 		JOE_INFO("APP::INIT");
 		PushLayer(new Actor());
 	}
