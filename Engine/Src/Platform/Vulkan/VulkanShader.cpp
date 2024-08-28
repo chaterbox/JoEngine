@@ -27,18 +27,54 @@ namespace Joe{
 
     //check if spirv bin exist else compile one
     if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv")){
-      JOE_CORE_ERROR("VULKAN::SHADER::SPIR-V::NONE-EXIST");
+      JOE_CORE_ERROR("VULKAN::SHADER::SPIR-V::{0}.spv::NON_EXIST",ShaderName);
 
                 ///////////////////////////////////////////
                 //////   COMPILE SHADER TO SPIR-V    //////
                 ///////////////////////////////////////////
-    //TODO: copy shader file to string  
+      //copy shader to string
       std::ifstream ShaderFile(ShaderPath);
     
-      if(ShaderFile.is_open()){
-
+      if(!ShaderFile.is_open()){
+        JOE_CORE_ERROR("GLSL::FILE::NOT_EXIST");
       }
+      
+      std::stringstream ss{};
+      ss << ShaderFile.rdbuf();
+      ShaderFile.close();
+    
       JOE_CORE_INFO("VULKAN::SHADER::SPIR-V::{0}::COMPILING",ShaderName);
+      
+      //compiling shader
+      shaderc::Compiler compiler;
+      shaderc::CompileOptions options;
+      options.SetTargetEnvironment(shaderc_target_env_vulkan, shaderc_env_version_vulkan_1_2);
+      options.SetOptimizationLevel(shaderc_optimization_level_performance);
+      
+      shaderc::SpvCompilationResult module;
+      if(shaderType == ShaderType::Vert)
+        module = compiler.CompileGlslToSpv(ss.str(),shaderc_vertex_shader,"../../../Assets/Shaders/SPIR-V/",options);
+      if(shaderType == ShaderType::Frag)
+        module = compiler.CompileGlslToSpv(ss.str(),shaderc_fragment_shader,"../../../Assets/Shaders/SPIR-V/",options);
+
+      if(module.GetCompilationStatus() != shaderc_compilation_status_success)
+        JOE_CORE_ERROR("VULKAN::SHADER::SPIR-V::{0}::COMPILING::FAILED",ShaderName);
+      else
+        JOE_CORE_INFO("VULKAN::SHADER::SPIR-V::{0}::COMPILING::SUCCESS",ShaderName);
+
+      auto Sdata = std::vector<uint32_t>(module.cbegin(),module.cend());
+
+                ///////////////////////////////////////////
+                //////////   WRITE SPIR-V file   //////////
+                ///////////////////////////////////////////
+
+      std::ofstream out("../../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv",std::ios::out | std::ios::binary);
+      if(out.is_open()){
+        auto data = Sdata;
+        out.write((char*)data.data(), data.size() * sizeof(uint32_t));
+        out.flush();
+        out.close();
+      }
     }
     else{
       JOE_CORE_INFO("SPIR-V::{0}::FOUND",ShaderName);
@@ -47,7 +83,6 @@ namespace Joe{
                 //////////   READ SPIR-V file    //////////
                 ///////////////////////////////////////////
   
-    //TODO: compile shaders into spirv at runtime
     #ifdef JOE_DIST
       std::ifstream shaderSpirVFile("../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv", std::ios::ate | std::ios::binary);
     #else
