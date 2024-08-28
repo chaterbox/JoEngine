@@ -12,15 +12,26 @@
 namespace Joe{
   VkShaderModule VulkanShader::Create(const std::string& ShaderPath,const std::string ShaderName,ShaderType shaderType){
                 ///////////////////////////////////////////
-                //////   COMPILE SHADER TO SPIR-V    //////
+                //////    FOLDER AND SPIR-V CHECK    //////
                 ///////////////////////////////////////////
-    bool dev = false;
-    if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V")){
-      std::filesystem::create_directory("../../../Assets/Shaders/SPIR-V");
+    //check if folders exist if not create them
+    if(!std::filesystem::exists("../../../Assets")){
+      std::filesystem::create_directory("../../../Assets");
+      if(!std::filesystem::exists("../../../Assets/Shaders")){
+        std::filesystem::create_directory("../../../Assets/Shaders");
+        if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V")){
+          std::filesystem::create_directory("../../../Assets/Shaders/SPIR-V");
+        }
+      }
     }
+
+    //check if spirv bin exist else compile one
     if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv")){
       JOE_CORE_ERROR("VULKAN::SHADER::SPIR-V::NONE-EXIST");
 
+                ///////////////////////////////////////////
+                //////   COMPILE SHADER TO SPIR-V    //////
+                ///////////////////////////////////////////
     //TODO: copy shader file to string  
       std::ifstream ShaderFile(ShaderPath);
     
