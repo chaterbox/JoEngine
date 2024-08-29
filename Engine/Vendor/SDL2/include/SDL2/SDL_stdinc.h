@@ -60,6 +60,9 @@
 # include <string.h>
 #endif
 #ifdef HAVE_STRINGS_H
+#ifdef JOE_PLATFORM_WINDOWS
+#include <string.h>
+#else
 # include <strings.h>
 #endif
 #ifdef HAVE_WCHAR_H
@@ -90,7 +93,7 @@
 #endif
 #if defined(HAVE_ALLOCA) && !defined(alloca)
 # if defined(HAVE_ALLOCA_H)
-#  include <alloca.h>
+//#  include <alloca.h>
 # elif defined(__GNUC__)
 #  define alloca __builtin_alloca
 # elif defined(_MSC_VER)
@@ -843,5 +846,5 @@ SDL_FORCE_INLINE int _SDL_size_add_overflow_builtin (size_t a,
 #include "close_code.h"
 
 #endif /* SDL_stdinc_h_ */
-
+#endif
 /* vi: set ts=4 sw=4 expandtab: */

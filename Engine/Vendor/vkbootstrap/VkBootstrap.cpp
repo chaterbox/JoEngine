@@ -13,7 +13,7 @@
  *
  * Copyright © 2020 Charles Giessen (charles@lunarg.com)
  */
-
+#include <Joepch.h>
 #include "VkBootstrap.h"
 
 #include <cstring>

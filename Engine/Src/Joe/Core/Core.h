@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 
-#if defined(JOE_PLATFORM_LINUX)
+#if defined(JOE_PLATFORM_LINUX) || defined(JOE_PLATFORM_WINDOWS)
 	#define JOE_API
 	#else
 	#error "ERROR: Platform Not Linux"

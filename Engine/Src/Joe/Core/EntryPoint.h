@@ -1,9 +1,8 @@
 #pragma once
-#include <sys/uio.h>
 #include "Log.h"
 #include "Application.h"
 
-#if defined(JOE_PLATFORM_LINUX)
+#if defined(JOE_PLATFORM_LINUX) || defined(JOE_PLATFORM_WINDOWS)
 
 extern Joe::Application* Joe::CreateApplication();
 
@@ -21,7 +20,7 @@ int main(){
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd){
 	Joe::Log::Init();
 	JOE_CORE_INFO("init log");
-	auto app = Jovk::CreateApplication();
+	auto app = Joe::CreateApplication();
 	app->Run();
 	delete app;
 }

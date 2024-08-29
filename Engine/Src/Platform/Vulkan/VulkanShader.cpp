@@ -15,16 +15,13 @@ namespace Joe{
                 //////    FOLDER AND SPIR-V CHECK    //////
                 ///////////////////////////////////////////
     //check if folders exist if not create them
-    if(!std::filesystem::exists("../../../Assets")){
-      std::filesystem::create_directory("../../../Assets");
-      if(!std::filesystem::exists("../../../Assets/Shaders")){
+    if(!std::filesystem::exists("../../../Assets"))
+        std::filesystem::create_directory("../../../Assets");
+    if(!std::filesystem::exists("../../../Assets/Shaders"))
         std::filesystem::create_directory("../../../Assets/Shaders");
-        if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V")){
-          std::filesystem::create_directory("../../../Assets/Shaders/SPIR-V");
-        }
-      }
-    }
-
+    if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V"))
+        std::filesystem::create_directory("../../../Assets/Shaders/SPIR-V");
+   
     //check if spirv bin exist else compile one
     if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv")){
       JOE_CORE_ERROR("VULKAN::SHADER::SPIR-V::{0}.spv::NON_EXIST",ShaderName);

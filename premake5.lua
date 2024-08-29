@@ -55,7 +55,7 @@ includedirs
 	"%{IncludeDirs.glm}",
 	"%{IncludeDirs.vkBootStrap}",
 	"%{IncludeDirs.vma}",
-	"%{prj.name}/Vendor/SDL2/include",
+	"%{prj.name}/Vendor/SDL2/include/",
 	"%{prj.name}/Vendor/vulkan/Include"
 }
 
@@ -63,9 +63,15 @@ filter "system:windows"
 
 systemversion "latest"
 
+libdirs
+{
+	"%{prj.name}/Vendor/vulkan/Lib/WIN32",
+	"%{prj.name}/Vendor/SDL2/lib/WIN32",
+}
+
 links
 {
-	"sdl",
+	"SDL2",
 	"ImGui",
 	"vulkan-1.lib"
 }
@@ -134,7 +140,8 @@ includedirs
 	"Engine/Vendor/spdlog/include",
 	"Engine/Src",
 	"Engine/Vendor",
-	"%{IncludeDirs.glm}"
+	"%{IncludeDirs.glm}",
+	"Engine/Vendor/SDL2/include/"
 }
 
 links
@@ -149,6 +156,16 @@ systemversion "latest"
 defines
 {
 	"JOE_PLATFORM_WINDOWS"
+}
+
+libdirs{
+	"Engine/Vendor/vulkan/Lib/WIN32",
+ 	"Engine/Vendor/SDL2/lib/WIN32",
+}
+
+links 
+{
+	"shaderc_combined"
 }
 
 filter "system:linux"
