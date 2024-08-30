@@ -5,9 +5,16 @@ Makefile
 compile_commands.json
 Assets/Shaders
 Sandbox/imgui.ini
+.vscode/
+# linux ignores
 JoEngine_Linux.tar.gz
+# windows ignore
 *.vs
 *.sln
 *.vcxproj
 *.vcxproj.user
 *.vcxproj.filters
+# apple ignores
+*.DS_Store
+*.xcworkspace
+*.xcodeproj
