@@ -40,7 +40,7 @@ namespace Joe{
       ss << ShaderFile.rdbuf();
       ShaderFile.close();
     
-      JOE_CORE_INFO("VULKAN::SHADER::SPIR-V::{0}::COMPILING",ShaderName);
+      JOE_CORE_INFO("VULKAN::SHADER::SPIR-V::{0}::COMPILING::STARTING",ShaderName);
       
       //compiling shader
       shaderc::Compiler compiler;
