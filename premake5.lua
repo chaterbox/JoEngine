@@ -25,8 +25,8 @@ language "C++"
 cppdialect "C++17"
 staticruntime "on"
 
-targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+targetdir ("Bin/" .. outputdir .. "/%{prj.name}")
+objdir ("Bin-int/" .. outputdir .. "/%{prj.name}")
 
 pchheader "Joepch.h"
 pchsource "Engine/Src/Joepch.cpp"
@@ -126,8 +126,8 @@ language "C++"
 cppdialect "C++17"
 staticruntime "on"
 
-targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+targetdir ("Bin/" .. outputdir .. "/%{prj.name}")
+objdir ("Bin-int/" .. outputdir .. "/%{prj.name}")
 
 files
 {
