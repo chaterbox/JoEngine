@@ -10,7 +10,7 @@
 #include <string>
 
 namespace Joe{
-  VkShaderModule VulkanShader::Create(const std::string& ShaderPath,const std::string ShaderName,ShaderType shaderType){
+  VkShaderModule VulkanShader::Create(const std::string& ShaderPath,ShaderType shaderType){
                 ///////////////////////////////////////////
                 //////    FOLDER AND SPIR-V CHECK    //////
                 ///////////////////////////////////////////
@@ -21,7 +21,16 @@ namespace Joe{
         std::filesystem::create_directory("../../../Assets/Shaders");
     if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V"))
         std::filesystem::create_directory("../../../Assets/Shaders/SPIR-V");
-   
+    
+    //get shader file name from path
+    std::string ShaderName = ShaderPath;
+    //delete begining of the path
+    std::size_t beginStringToDelete = ShaderName.find_last_of("/");
+    ShaderName.erase(0,beginStringToDelete + 1);
+    //delete file extension
+    std::size_t lastStringToDelete = ShaderName.find_last_of(".");
+    ShaderName.erase(lastStringToDelete,ShaderName.length() - lastStringToDelete);
+
     //check if spirv bin exist else compile one
     if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv")){
       JOE_CORE_ERROR("VULKAN::SHADER::SPIR-V::{0}.spv::NON_EXIST",ShaderName);
