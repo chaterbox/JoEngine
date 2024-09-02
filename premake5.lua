@@ -168,6 +168,11 @@ links
 	"shaderc_combined"
 }
 
+postbuildcommands
+{
+	{"xcopy /y /d $(SolutionDir)Engine\\Vendor\\SDL2\\lib\\WIN32\\SDL2.dll $(TargetDir)"}
+}
+
 filter "system:linux"
 
 toolset "clang"
