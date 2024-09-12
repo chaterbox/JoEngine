@@ -31,15 +31,19 @@ objdir ("Bin-int/" .. outputdir .. "/%{prj.name}")
 pchheader "Joepch.h"
 pchsource "Engine/Src/Joepch.cpp"
 
+filter "system:windows"
+
+systemversion "latest"
+
 files
 {
-"%{prj.name}/Src/**.h",
-"%{prj.name}/Src/**.cpp",
-"%{prj.name}/Vendor/glm/glm/**.hpp",
-"%{prj.name}/Vendor/glm/glm/**.inl",
-"%{prj.name}/Vendor/vkbootstrap/**.h",
-"%{prj.name}/Vendor/vkbootstrap/**.cpp",
-"%{prj.name}/Vendor/vma/**.h"
+	"%{prj.name}/Src/**.h",
+	"%{prj.name}/Src/**.cpp",
+	"%{prj.name}/Vendor/glm/glm/**.hpp",
+	"%{prj.name}/Vendor/glm/glm/**.inl",
+	"%{prj.name}/Vendor/vkbootstrap/**.h",
+	"%{prj.name}/Vendor/vkbootstrap/**.cpp",
+	"%{prj.name}/Vendor/vma/**.h"
 }
 
 defines
@@ -58,10 +62,6 @@ includedirs
 	"%{prj.name}/Vendor/SDL2/include/",
 	"%{prj.name}/Vendor/vulkan/Include"
 }
-
-filter "system:windows"
-
-systemversion "latest"
 
 libdirs
 {
@@ -86,6 +86,34 @@ filter "system:linux"
 
 toolset "clang"
 
+files
+{
+	"%{prj.name}/Src/**.h",
+	"%{prj.name}/Src/**.cpp",
+	"%{prj.name}/Vendor/glm/glm/**.hpp",
+	"%{prj.name}/Vendor/glm/glm/**.inl",
+	"%{prj.name}/Vendor/vkbootstrap/**.h",
+	"%{prj.name}/Vendor/vkbootstrap/**.cpp",
+	"%{prj.name}/Vendor/vma/**.h"
+}
+
+defines
+{
+	"_CRT_SECURE_NO_WARNINGS"
+}
+
+includedirs
+{
+	"%{prj.name}/Src",
+	"%{prj.name}/Vendor/spdlog/include",
+	"%{IncludeDirs.ImGui}",
+	"%{IncludeDirs.glm}",
+	"%{IncludeDirs.vkBootStrap}",
+	"%{IncludeDirs.vma}",
+	"%{prj.name}/Vendor/SDL2/include/",
+	"%{prj.name}/Vendor/vulkan/Include"
+}
+
 libdirs
 {
 	"%{prj.name}/Vendor/vulkan/Lib/linux",
@@ -102,6 +130,56 @@ links
 defines
 {
 	"JOE_PLATFORM_LINUX",
+}
+
+filter "system:macosx"
+
+files
+{
+	"%{prj.name}/Src/**.h",
+	"%{prj.name}/Src/**.cpp",
+	"%{prj.name}/Vendor/glm/glm/**.hpp",
+	"%{prj.name}/Vendor/glm/glm/**.inl",
+	"%{prj.name}/Vendor/vkbootstrap/**.h",
+	"%{prj.name}/Vendor/vkbootstrap/**.cpp",
+	"%{prj.name}/Vendor/vma/**.h"
+}
+
+defines
+{
+	"_CRT_SECURE_NO_WARNINGS"
+}
+
+includedirs
+{
+	"%{prj.name}/Src",
+	"%{prj.name}/Vendor/spdlog/include",
+	"%{IncludeDirs.ImGui}",
+	"%{IncludeDirs.glm}",
+	"%{IncludeDirs.vkBootStrap}",
+	"%{IncludeDirs.vma}",
+	"%{prj.name}/Vendor/SDL2/include/",
+	"%{prj.name}/Vendor/vulkan/Include"
+}
+
+
+libdirs
+{
+	"%{prj.name}/Vendor/vulkan/Lib/",
+	"%{prj.name}/Vendor/SDL2/lib/",
+}
+
+links
+{
+	"SDL2",
+	"ImGui",
+	"vulkan-1.lib"
+}
+
+defines
+{
+	"JOE_PLATFORM_MACOS",
+	"JOE_BUILD_DLL",
 }
 
 filter "configurations:Debug"
@@ -129,10 +207,96 @@ staticruntime "on"
 targetdir ("Bin/" .. outputdir .. "/%{prj.name}")
 objdir ("Bin-int/" .. outputdir .. "/%{prj.name}")
 
+filter "system:windows"
+
+systemversion "latest"
+
 files
 {
-"%{prj.name}/Src/**.h",
-"%{prj.name}/Src/**.cpp"
+	"%{prj.name}/Src/**.h",
+	"%{prj.name}/Src/**.cpp"
+}
+
+includedirs
+{
+	"Engine/Vendor/spdlog/include",
+	"Engine/Src",
+	"Engine/Vendor",
+	"%{IncludeDirs.glm}",
+	"Engine/Vendor/SDL2/include/"
+}
+
+defines
+{
+	"JOE_PLATFORM_WINDOWS"
+}
+
+libdirs{
+	"Engine/Vendor/vulkan/Lib/WIN32",
+ 	"Engine/Vendor/SDL2/lib/WIN32",
+}
+
+links 
+{
+	"Engine",
+	"shaderc_combined"
+}
+
+postbuildcommands
+{
+	{"xcopy /y /d $(SolutionDir)Engine\\Vendor\\SDL2\\lib\\WIN32\\SDL2.dll $(TargetDir)"}
+}
+
+filter "system:linux"
+
+toolset "clang"
+
+files
+{
+	"%{prj.name}/Src/**.h",
+	"%{prj.name}/Src/**.cpp"
+}
+
+includedirs
+{
+	"Engine/Vendor/spdlog/include",
+	"Engine/Src",
+	"Engine/Vendor",
+	"%{IncludeDirs.glm}",
+	"Engine/Vendor/SDL2/include/"
+}
+
+libdirs{
+	"Engine/Vendor/vulkan/Lib/linux",
+ 	"Engine/Vendor/SDL2/lib/linux",
+}
+
+links
+{
+	"Engine",
+	"SDL2",
+	"shaderc_combined",
+	"ImGui",
+	"Xrandr",
+	"Xi",
+	"X11",
+	"dl",
+	"pthread",
+	"stdc++fs",
+	"vulkan"
+}
+
+defines
+{
+	"JOE_PLATFORM_LINUX"
+}
+
+filter "system:macosx"
+
+files
+{
+	"%{prj.name}/Src/**.h",
+	"%{prj.name}/Src/**.cpp"
 }
 
 includedirs
@@ -149,56 +313,14 @@ links
 	"Engine"
 }
 
-filter "system:windows"
-
-systemversion "latest"
-
-defines
-{
-	"JOE_PLATFORM_WINDOWS"
-}
-
 libdirs{
-	"Engine/Vendor/vulkan/Lib/WIN32",
- 	"Engine/Vendor/SDL2/lib/WIN32",
-}
-
-links 
-{
-	"shaderc_combined"
-}
-
-postbuildcommands
-{
-	{"xcopy /y /d $(SolutionDir)Engine\\Vendor\\SDL2\\lib\\WIN32\\SDL2.dll $(TargetDir)"}
-}
-
-filter "system:linux"
-
-toolset "clang"
-
-libdirs{
-	"Engine/Vendor/vulkan/Lib/linux",
- 	"Engine/Vendor/SDL2/lib/linux",
-}
-
-links
-{
-	"SDL2",
-	"shaderc_combined",
-	"ImGui",
-	"Xrandr",
-	"Xi",
-	"X11",
-	"dl",
-	"pthread",
-	"stdc++fs",
-	"vulkan"
+	"Engine/Vendor/vulkan/Lib/",
+ 	"Engine/Vendor/SDL2/lib/",
 }
 
 defines
 {
-	"JOE_PLATFORM_LINUX"
+	"JOE_PLATFORM_MACOS"
 }
 
 filter "configurations:Debug"
