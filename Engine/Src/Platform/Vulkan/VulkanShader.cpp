@@ -58,10 +58,32 @@ namespace Joe{
       options.SetOptimizationLevel(shaderc_optimization_level_performance);
       
       shaderc::SpvCompilationResult module;
+
+      shaderc_shader_kind shadercKind;
       if(shaderType == ShaderType::Vert)
-        module = compiler.CompileGlslToSpv(ss.str(),shaderc_vertex_shader,"../../../Assets/Shaders/SPIR-V/",options);
+        shadercKind = shaderc_vertex_shader;
       if(shaderType == ShaderType::Frag)
-        module = compiler.CompileGlslToSpv(ss.str(),shaderc_fragment_shader,"../../../Assets/Shaders/SPIR-V/",options);
+        shadercKind = shaderc_fragment_shader;
+      if(shaderType == ShaderType::Compute)
+        shadercKind = shaderc_compute_shader;
+      if(shaderType == ShaderType::Geometry)
+        shadercKind = shaderc_geometry_shader;
+      if(shaderType == ShaderType::TessellationControl)
+        shadercKind = shaderc_tess_control_shader;
+      if(shaderType == ShaderType::TessellationEvaluation)
+        shadercKind = shaderc_tess_evaluation_shader;
+      if(shaderType == ShaderType::RayGenRTX)
+        shadercKind = shaderc_raygen_shader;
+      if(shaderType == ShaderType::AnyHitRTX)
+        shadercKind = shaderc_anyhit_shader;
+      if(shaderType == ShaderType::ClosestHitRTX)
+        shadercKind = shaderc_closesthit_shader;
+      if(shaderType == ShaderType::MissRTX)
+        shadercKind = shaderc_miss_shader;
+      if(shaderType == ShaderType::IntersectionRTX)
+        shadercKind = shaderc_intersection_shader;
+
+      module = compiler.CompileGlslToSpv(ss.str(),shadercKind,"../../../Assets/Shaders/SPIR-V/",options);
 
       if(module.GetCompilationStatus() != shaderc_compilation_status_success)
         JOE_CORE_ERROR("VULKAN::SHADER::SPIR-V::{0}::COMPILING::FAILED",ShaderName);
