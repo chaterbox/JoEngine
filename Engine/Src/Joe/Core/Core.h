@@ -2,10 +2,10 @@
 #include <memory>
 #include <string>
 
-#if defined(JOE_PLATFORM_LINUX) || defined(JOE_PLATFORM_WINDOWS)
+#if defined(JOE_PLATFORM_LINUX) || defined(JOE_PLATFORM_WINDOWS) || defined (JOE_PLATFORM_MACOS)
 	#define JOE_API
 	#else
-	#error "ERROR: Platform Not Linux"
+	#error "ERROR: Platform Not Linux,Windows or Mac Os"
 #endif
 
 #ifdef JOE_ENABLE_ASSERTS

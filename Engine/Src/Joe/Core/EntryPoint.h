@@ -5,7 +5,7 @@
 #include <sys/utsname.h>
 #endif // LINUX
 
-#if defined(JOE_PLATFORM_LINUX) || defined(JOE_PLATFORM_WINDOWS)
+#if defined(JOE_PLATFORM_LINUX) || defined(JOE_PLATFORM_WINDOWS) || defined(JOE_PLATFORM_MACOS)
 
 extern Joe::Application* Joe::CreateApplication();
 
