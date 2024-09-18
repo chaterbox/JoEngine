@@ -22,7 +22,8 @@ int main(){
     if(ret == 0){
       JOE_CORE_INFO("OS::{0}",details.sysname);
       JOE_CORE_INFO("OS::DISTRO::{0}",details.nodename);
-      JOE_CORE_INFO("OS::DISTRO::VERSION::{0}",details.release);
+      JOE_CORE_INFO("OS::DISTRO::VERSION::{0}",details.version);
+      JOE_CORE_INFO("OS::KERNEL::VERSION::{0}",details.release);
       JOE_CORE_INFO("OS::ARCHITECTURE::{0}",details.machine);
     }
   #endif // LINUX
