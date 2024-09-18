@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <string>
 
 #if defined(JOE_PLATFORM_LINUX) || defined(JOE_PLATFORM_WINDOWS)
 	#define JOE_API
@@ -25,4 +26,16 @@ namespace Joe{
 
 	template<typename T>
 	using Ref = std::shared_ptr<T>;
+
+  class Core{
+  public:
+    static std::string GetFileExtension(const std::string path){
+      std::string extensionName = path;
+      size_t extensionindex = extensionName.find_last_of(".") + 1;
+
+      extensionName.erase(0,extensionindex);
+    
+      return extensionName;
+    }
+  };
 }
