@@ -32,6 +32,14 @@ int main(){
       JOE_CORE_INFO("OS::DESKTOP_ENVIROMENT::{0}",deName);
     }
   #endif // LINUX
+#ifdef JOE_PLATFORM_WINDOWS
+    std::string arch = std::getenv("PROCESSOR_ARCHITECTURE");
+    std::string os = std::getenv("OS");
+
+    JOE_CORE_INFO("OS::{0}", os);
+    JOE_CORE_INFO("OS::ACHITECTURE::{0}", arch);
+#endif // JOE_PLATFORM_WINDOWS
+
   auto app = Joe::CreateApplication();
   app->Run();
   delete app;
