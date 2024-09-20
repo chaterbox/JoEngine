@@ -23,32 +23,28 @@ int main(){
     std::string wProtocolName = std::getenv("XDG_SESSION_TYPE");
     std::string deName = std::getenv("XDG_SESSION_DESKTOP");
 
-    std::ifstream lsb_release("/etc/os-release");
+    std::ifstream lsb_release("/etc/lsb-release");
     std::stringstream lsbStringStream
   ;
     std::string distro;
     std::string distroVersion;
 
     lsbStringStream << lsb_release.rdbuf();
-
     distro = lsbStringStream.str();
-    size_t FindID = distro.find("PRETTY_NAME");
-    size_t endString = distro.find_first_of("\n");
-    distro.erase(FindID,endString);
-    FindID = distro.find("NAME");
+    size_t FindID = distro.find("DISTRIB_ID");
     distro.erase(0,FindID);
     size_t beginString = distro.find_first_of("=");
-    distro.erase(FindID - 1,beginString);
-    endString = distro.find_first_of("\n");
+    distro.erase(0,beginString + 1);
+    size_t endString = distro.find_first_of("\n");
     distro.erase(endString,distro.size());
-    
+
     distroVersion = lsbStringStream.str();
-    size_t FindVersion = distroVersion.find("VERSION=");
-    distroVersion.erase(0,FindVersion);
-    size_t versionBeginString = distroVersion.find_first_of("=");
-    distroVersion.erase(FindVersion,versionBeginString + 1);
-    size_t versionEndString = distroVersion.find_first_of("\n");
-    distroVersion.erase(versionEndString,distroVersion.size());
+    FindID = distroVersion.find("DISTRIB_RELEASE");
+    distroVersion.erase(0,FindID);
+    beginString = distroVersion.find_first_of("=");
+    distroVersion.erase(0,beginString + 1);
+    endString = distroVersion.find_first_of("\n");
+    distroVersion.erase(endString,distroVersion.size());
 
     if(ret == 0){
       JOE_CORE_INFO("OS::{0}",details.sysname);
