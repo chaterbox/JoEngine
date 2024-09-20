@@ -39,9 +39,9 @@ int main(){
     distro.erase(endString,distro.size());
 
     distroVersion = osStringStream.str();
-    FindID = distroVersion.find("VERSION_ID");
-    if(!FindID){
-      distroVersion.erase(0,FindID);
+    size_t FindVersionID = distroVersion.find("VERSION_ID");
+    if(FindVersionID){
+      distroVersion.erase(0,FindVersionID);
       beginString = distroVersion.find_first_of("=");
       distroVersion.erase(0,beginString + 1);
       endString = distroVersion.find_first_of("\n");
