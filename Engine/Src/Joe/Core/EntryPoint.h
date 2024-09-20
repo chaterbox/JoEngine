@@ -1,6 +1,7 @@
 #pragma once
 #include "Log.h"
 #include "Application.h"
+#include <fstream>
 #ifdef JOE_PLATFORM_LINUX
 #include <sys/utsname.h>
 #endif // LINUX
@@ -22,10 +23,33 @@ int main(){
     std::string wProtocolName = std::getenv("XDG_SESSION_TYPE");
     std::string deName = std::getenv("XDG_SESSION_DESKTOP");
 
+    std::ifstream lsb_release("/etc/lsb-release");
+    std::stringstream lsbStringStream
+  ;
+    std::string distro;
+    std::string distroVersion;
+
+    lsbStringStream << lsb_release.rdbuf();
+    distro = lsbStringStream.str();
+    size_t FindID = distro.find("DISTRIB_ID");
+    distro.erase(0,FindID);
+    size_t beginString = distro.find_first_of("=");
+    distro.erase(0,beginString + 1);
+    size_t endString = distro.find_first_of("\n");
+    distro.erase(endString,distro.size());
+
+    distroVersion = lsbStringStream.str();
+    FindID = distroVersion.find("DISTRIB_RELEASE");
+    distroVersion.erase(0,FindID);
+    beginString = distroVersion.find_first_of("=");
+    distroVersion.erase(0,beginString + 1);
+    endString = distroVersion.find_first_of("\n");
+    distroVersion.erase(endString,distroVersion.size());
+
     if(ret == 0){
       JOE_CORE_INFO("OS::{0}",details.sysname);
-      JOE_CORE_INFO("OS::DISTRO::{0}",details.nodename);
-      JOE_CORE_INFO("OS::DISTRO::VERSION::{0}",details.version);
+      JOE_CORE_INFO("OS::DISTRO::{0}",distro);
+      JOE_CORE_INFO("OS::DISTRO::VERSION::{0}",distroVersion);
       JOE_CORE_INFO("OS::KERNEL::VERSION::{0}",details.release);
       JOE_CORE_INFO("OS::ARCHITECTURE::{0}\n",details.machine);
       JOE_CORE_INFO("OS::DISPLAY::PROTOCOL::{0}",wProtocolName);
