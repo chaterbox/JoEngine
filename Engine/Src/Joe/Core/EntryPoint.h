@@ -23,23 +23,23 @@ int main(){
     std::string wProtocolName = std::getenv("XDG_SESSION_TYPE");
     std::string deName = std::getenv("XDG_SESSION_DESKTOP");
 
-    std::ifstream lsb_release("/etc/lsb-release");
-    std::stringstream lsbStringStream
+    std::ifstream os_release("/etc/os-release");
+    std::stringstream osStringStream
   ;
     std::string distro;
     std::string distroVersion;
 
-    lsbStringStream << lsb_release.rdbuf();
-    distro = lsbStringStream.str();
-    size_t FindID = distro.find("DISTRIB_ID");
+    osStringStream << os_release.rdbuf();
+    distro = osStringStream.str();
+    size_t FindID = distro.find("PRETTY_NAME");
     distro.erase(0,FindID);
     size_t beginString = distro.find_first_of("=");
     distro.erase(0,beginString + 1);
     size_t endString = distro.find_first_of("\n");
     distro.erase(endString,distro.size());
 
-    distroVersion = lsbStringStream.str();
-    FindID = distroVersion.find("DISTRIB_RELEASE");
+    distroVersion = osStringStream.str();
+    FindID = distroVersion.find("VERSION_ID");
     distroVersion.erase(0,FindID);
     beginString = distroVersion.find_first_of("=");
     distroVersion.erase(0,beginString + 1);
