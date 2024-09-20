@@ -46,14 +46,13 @@ int main(){
       distroVersion.erase(0,beginString + 1);
       endString = distroVersion.find_first_of("\n");
       distroVersion.erase(endString,distroVersion.size());
-    }else{
-      distroVersion = "rolling";
     }
 
     if(ret == 0){
       JOE_CORE_INFO("OS::{0}",details.sysname);
       JOE_CORE_INFO("OS::DISTRO::{0}",distro);
-      JOE_CORE_INFO("OS::DISTRO::VERSION::{0}",distroVersion);
+      if(FindID != std::string::npos)
+        JOE_CORE_INFO("OS::DISTRO::VERSION::{0}",distroVersion);
       JOE_CORE_INFO("OS::KERNEL::VERSION::{0}",details.release);
       JOE_CORE_INFO("OS::ARCHITECTURE::{0}\n",details.machine);
       JOE_CORE_INFO("OS::DISPLAY::PROTOCOL::{0}",wProtocolName);
