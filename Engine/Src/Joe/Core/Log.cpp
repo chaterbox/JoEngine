@@ -7,7 +7,7 @@
 #include <spdlog/sinks/basic_file_sink.h>
 
 namespace Joe{
-  std::shared_ptr<spdlog::logger> Log::s_CoreLogger = std::make_shared<spdlog::logger>("JOVK");
+  std::shared_ptr<spdlog::logger> Log::s_CoreLogger = std::make_shared<spdlog::logger>("JOE");
   std::shared_ptr<spdlog::logger> Log::s_ClientLogger = std::make_shared<spdlog::logger>("APP");
 
   void Log::Init(){
