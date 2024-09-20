@@ -40,11 +40,15 @@ int main(){
 
     distroVersion = osStringStream.str();
     FindID = distroVersion.find("VERSION_ID");
-    distroVersion.erase(0,FindID);
-    beginString = distroVersion.find_first_of("=");
-    distroVersion.erase(0,beginString + 1);
-    endString = distroVersion.find_first_of("\n");
-    distroVersion.erase(endString,distroVersion.size());
+    if(!FindID){
+      distroVersion.erase(0,FindID);
+      beginString = distroVersion.find_first_of("=");
+      distroVersion.erase(0,beginString + 1);
+      endString = distroVersion.find_first_of("\n");
+      distroVersion.erase(endString,distroVersion.size());
+    }else{
+      distroVersion = "rolling";
+    }
 
     if(ret == 0){
       JOE_CORE_INFO("OS::{0}",details.sysname);
