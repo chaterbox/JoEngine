@@ -4,6 +4,7 @@ Makefile
 .cache/
 compile_commands.json
 Assets/Shaders
+Assets/Logs
 Sandbox/imgui.ini
 .vscode/
 # linux ignores
