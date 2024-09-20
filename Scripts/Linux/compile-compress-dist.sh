@@ -4,10 +4,10 @@ make config=dist
 echo 
 echo compressing build 
 echo
-tar -czvf JoEngine_Linux.tar.gz bin/Sandbox/Sandbox bin/Engine/libEngine.a Assets
+tar -czvf JoEngine_Linux.tar.gz Bin/Sandbox/Sandbox Bin/Engine/libEngine.a Assets
 echo
 echo compression of JoEngine_Linux DONE
-rm bin/Sandbox/Sandbox
-rmdir bin/Sandbox
-rm bin/Engine/libEngine.a
-rmdir bin/Engine
+rm Bin/Sandbox/Sandbox
+rmdir Bin/Sandbox
+rm Bin/Engine/libEngine.a
+rmdir Bin/Engine
