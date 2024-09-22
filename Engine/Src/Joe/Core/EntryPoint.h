@@ -35,19 +35,21 @@ int main(){
     osStringStream << os_release.rdbuf();
     distro = osStringStream.str();
     size_t FindID = distro.find("PRETTY_NAME");
-    distro.erase(0,FindID);
-    size_t beginString = distro.find_first_of("=");
-    distro.erase(0,beginString + 1);
-    size_t endString = distro.find_first_of("\n");
-    distro.erase(endString,distro.size());
+    if(FindID != std::string::npos){
+      distro.erase(0,FindID);
+      size_t beginString = distro.find_first_of("=");
+      distro.erase(0,beginString + 1);
+      size_t endString = distro.find_first_of("\n");
+      distro.erase(endString,distro.size());
+    }
 
     distroVersion = osStringStream.str();
     FindID = distroVersion.find("VERSION_ID");
     if(FindID != std::string::npos){
       distroVersion.erase(0,FindID);
-      beginString = distroVersion.find_first_of("=");
+      size_t beginString = distroVersion.find_first_of("=");
       distroVersion.erase(0,beginString + 1);
-      endString = distroVersion.find_first_of("\n");
+      size_t endString = distroVersion.find_first_of("\n");
       distroVersion.erase(endString,distroVersion.size());
     }
 
