@@ -45,6 +45,10 @@ namespace Joe{
     void init(std::string type){
       if(!std::filesystem::exists("../../../Config"))
         std::filesystem::create_directory("../../../Config");
+      #ifdef JOE_DIST
+        if(!std::filesystem::exists("../../Config"))
+          std::filesystem::create_directory("../../Config"); 
+      #endif // DEBUG
     }
   };
 }
