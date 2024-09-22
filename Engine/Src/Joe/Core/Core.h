@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <string>
+#include <filesystem>
 
 #if defined(JOE_PLATFORM_LINUX) || defined(JOE_PLATFORM_WINDOWS) || defined (JOE_PLATFORM_MACOS)
 	#define JOE_API
@@ -36,6 +37,14 @@ namespace Joe{
       extensionName.erase(0,extensionindex);
     
       return extensionName;
+    }
+  };
+
+  class Config{
+  public:
+    void init(std::string type){
+      if(!std::filesystem::exists("../../../Config"))
+        std::filesystem::create_directory("../../../Config");
     }
   };
 }

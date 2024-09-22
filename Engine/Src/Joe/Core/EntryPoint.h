@@ -1,6 +1,7 @@
 #pragma once
 #include "Log.h"
-#include "Application.h"
+#include "Application.h"  
+#include "Core.h"
 #include <fstream>
 #ifdef JOE_PLATFORM_LINUX
 #include <sys/utsname.h>
@@ -12,6 +13,8 @@ extern Joe::Application* Joe::CreateApplication();
 
 int main(){
 	Joe::Log::Init();
+  Joe::Config engine;
+  engine.init("Engine");
 
   JOE_CORE_INFO("JOENGINE::INIT");
   JOE_CORE_INFO("LOG::INIT\n");
