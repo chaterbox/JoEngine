@@ -15,12 +15,12 @@ namespace Joe{
                 //////    FOLDER AND SPIR-V CHECK    //////
                 ///////////////////////////////////////////
     //check if folders exist if not create them
-    if(!std::filesystem::exists("../../../Assets"))
-        std::filesystem::create_directory("../../../Assets");
-    if(!std::filesystem::exists("../../../Assets/Shaders"))
-        std::filesystem::create_directory("../../../Assets/Shaders");
-    if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V"))
-        std::filesystem::create_directory("../../../Assets/Shaders/SPIR-V");
+    if(!std::filesystem::exists("../../../Intermediate"))
+        std::filesystem::create_directory("../../../Intermediate");
+    if(!std::filesystem::exists("../../../Intermediate/Shaders"))
+        std::filesystem::create_directory("../../../Intermediate/Shaders");
+    if(!std::filesystem::exists("../../../Assets/Intermediate/Vulkan"))
+        std::filesystem::create_directory("../../../Intermediate/Shaders/Vulkan");
     
     //get shader file name from path
     std::string ShaderName = ShaderPath;
@@ -32,7 +32,7 @@ namespace Joe{
     ShaderName.erase(lastStringToDelete,ShaderName.length() - lastStringToDelete);
 
     //check if spirv bin exist else compile one
-    if(!std::filesystem::exists("../../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv")){
+    if(!std::filesystem::exists("../../../Intermediate/Shaders/Vulkan/" + ShaderName + ".spv")){
       JOE_CORE_ERROR("VULKAN::SHADER::SPIR-V::{0}.spv::NON_EXIST",ShaderName);
 
                 ///////////////////////////////////////////
@@ -83,7 +83,7 @@ namespace Joe{
       if(shaderType == ShaderType::IntersectionRTX)
         shadercKind = shaderc_intersection_shader;
 
-      module = compiler.CompileGlslToSpv(ss.str(),shadercKind,"../../../Assets/Shaders/SPIR-V/",options);
+      module = compiler.CompileGlslToSpv(ss.str(),shadercKind,"../../../Intermediate/Shaders/Vulkan/",options);
 
       if(module.GetCompilationStatus() != shaderc_compilation_status_success)
         JOE_CORE_ERROR("VULKAN::SHADER::SPIR-V::{0}::COMPILING::FAILED",ShaderName);
@@ -96,7 +96,7 @@ namespace Joe{
                 //////////   WRITE SPIR-V file   //////////
                 ///////////////////////////////////////////
 
-      std::ofstream out("../../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv",std::ios::out | std::ios::binary);
+      std::ofstream out("../../../Intermediate/Shaders/Vulkan/" + ShaderName + ".spv",std::ios::out | std::ios::binary);
       if(out.is_open()){
         auto data = Sdata;
         out.write((char*)data.data(), data.size() * sizeof(uint32_t));
@@ -112,9 +112,9 @@ namespace Joe{
                 ///////////////////////////////////////////
   
     #ifdef JOE_DIST
-      std::ifstream shaderSpirVFile("../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv", std::ios::ate | std::ios::binary);
+      std::ifstream shaderSpirVFile("../../Intermediate/Shaders/Vulkan/" + ShaderName + ".spv", std::ios::ate | std::ios::binary);
     #else
-      std::ifstream shaderSpirVFile("../../../Assets/Shaders/SPIR-V/" + ShaderName + ".spv", std::ios::ate | std::ios::binary);
+      std::ifstream shaderSpirVFile("../../../Intermediate/Shaders/Vulkan/" + ShaderName + ".spv", std::ios::ate | std::ios::binary);
     #endif
     //check if spirv file found and log type of shader found or not found 
     if(!shaderSpirVFile.is_open()){

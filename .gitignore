@@ -3,8 +3,8 @@ Bin-int
 Makefile
 .cache/
 compile_commands.json
-Assets/Shaders
-Assets/Logs
+Intermediate/Shaders
+Intermediate/Logs
 Sandbox/imgui.ini
 .vscode/
 # linux ignores

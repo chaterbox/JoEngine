@@ -14,12 +14,12 @@ namespace Joe{
     std::string engineLogPath,appLogPath;
 
     #ifndef JOE_DIST
-      engineLogPath = "../../../Assets/Logs/Engine.txt";
-      appLogPath = "../../../Assets/Logs/App.txt";
+      engineLogPath = "../../../Intermediate/Logs/Engine.txt";
+      appLogPath = "../../../Intermediate/Logs/App.txt";
     #endif
     #ifdef JOE_DIST
-      engineLogPath = "../../Assets/Logs/Engine.txt";
-      appLogPath = "../../Assets/Logs/App.txt";
+      engineLogPath = "../../Intermediate/Logs/Engine.txt";
+      appLogPath = "../../Intermediate/Logs/App.txt";
     #endif
 
     spdlog::set_pattern("%^ [%T] %n: %v%$");
