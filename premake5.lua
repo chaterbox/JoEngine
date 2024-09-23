@@ -60,7 +60,8 @@ includedirs
 	"%{IncludeDirs.vkBootStrap}",
 	"%{IncludeDirs.vma}",
 	"%{prj.name}/Vendor/SDL2/include/",
-	"%{prj.name}/Vendor/vulkan/Include"
+	"%{prj.name}/Vendor/vulkan/Include",
+	"%{prj.name}/Vendor/mINI/Include/"
 }
 
 libdirs
@@ -111,7 +112,8 @@ includedirs
 	"%{IncludeDirs.vkBootStrap}",
 	"%{IncludeDirs.vma}",
 	"%{prj.name}/Vendor/SDL2/include/",
-	"%{prj.name}/Vendor/vulkan/Include"
+	"%{prj.name}/Vendor/vulkan/Include",
+	"%{prj.name}/Vendor/mINI/Include"
 }
 
 libdirs
@@ -263,7 +265,8 @@ includedirs
 	"Engine/Src",
 	"Engine/Vendor",
 	"%{IncludeDirs.glm}",
-	"Engine/Vendor/SDL2/include/"
+	"Engine/Vendor/SDL2/include/",
+	"Engine/Vendor/mINI/Include/"
 }
 
 libdirs{
