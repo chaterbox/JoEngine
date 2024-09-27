@@ -158,12 +158,10 @@ namespace Joe{
     
     //create shader module
     if(vkCreateShaderModule(VulkanContext::GetLogicalDeviceHandle(), &createInfo, nullptr, &shader) != VK_SUCCESS){
-        JOE_CORE_FATAL("VULKAN::SHADER::{0}::MODULE::CREATION::FAILED",ShaderName);
+        JOE_CORE_FATAL("VULKAN::SHADER::{0}::MODULE::CREATION::FAILED\n",ShaderName);
     }else{
-        JOE_CORE_INFO("VULKAN::SHADER::{0}::MODULE::CREATION::SUCCESS",ShaderName);
-    }
-
-    std::cout << "\n";    
+        JOE_CORE_INFO("VULKAN::SHADER::{0}::MODULE::CREATION::SUCCESS\n",ShaderName);
+    }    
 
     return shader;
   }

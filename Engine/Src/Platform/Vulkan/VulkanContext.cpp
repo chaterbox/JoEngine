@@ -67,9 +67,7 @@ namespace Joe{
 
   m_GraphicsQueueFamily = vkbDevice.get_queue_index(vkb::QueueType::graphics).value();
 
-  JOE_CORE_INFO("VULKAN::QUEUEFAMILY::GRAPHICS::{0}",m_GraphicsQueueFamily);
-
-  std::cout << "\n";
+  JOE_CORE_INFO("VULKAN::QUEUEFAMILY::GRAPHICS::{0}\n",m_GraphicsQueueFamily);
 
   	///////////////////////////////////////////
 		////            device info            ////
@@ -108,16 +106,14 @@ namespace Joe{
   JOE_CORE_INFO("VULKAN [API VERSION] {0},{1},{2}",apiMajor,apiMinor,apiPatch);
 
   if(physicalDevice.properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_CPU){
-    JOE_CORE_INFO("VULKAN [DEVICE TYPE] CPU");
+    JOE_CORE_INFO("VULKAN [DEVICE TYPE] CPU\n");
   }
   if(physicalDevice.properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU){
-    JOE_CORE_INFO("VULKAN [DEVICE TYPE] DISCRETE GPU");
+    JOE_CORE_INFO("VULKAN [DEVICE TYPE] DISCRETE GPU\n");
   }
   if(physicalDevice.properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU){
-    JOE_CORE_INFO("VULKAN [DEVICE TYPE] INTERGRATED GPU");
+    JOE_CORE_INFO("VULKAN [DEVICE TYPE] INTERGRATED GPU\n");
   }
-
-    std::cout << "\n";
 
       /////////////////////////////////////////
       ////              vma                ////
@@ -129,12 +125,10 @@ namespace Joe{
     allocatorInfo.instance = m_Instance;
 
     if(vmaCreateAllocator(&allocatorInfo, &m_Allocator)!= VK_SUCCESS){
-      JOE_CORE_FATAL("VULKAN::VMA::ALLOCATOR::CREATION::FAILED");
+      JOE_CORE_FATAL("VULKAN::VMA::ALLOCATOR::CREATION::FAILED\n");
     }else{
-      JOE_CORE_INFO("VULKAN::VMA::ALLOCATOR::CREATION::SUCCESS");
+      JOE_CORE_INFO("VULKAN::VMA::ALLOCATOR::CREATION::SUCCESS\n");
     }
-
-    std::cout << "\n";
 	}
 
 	VulkanContext::VulkanContext(SDL_Window* window)

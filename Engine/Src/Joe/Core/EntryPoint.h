@@ -61,7 +61,7 @@ int main(){
       JOE_CORE_INFO("OS::KERNEL::VERSION::{0}",details.release);
       JOE_CORE_INFO("OS::ARCHITECTURE::{0}\n",details.machine);
       JOE_CORE_INFO("OS::DISPLAY::PROTOCOL::{0}",wProtocolName);
-      JOE_CORE_INFO("OS::DESKTOP_ENVIROMENT::{0}",deName);
+      JOE_CORE_INFO("OS::DESKTOP_ENVIROMENT::{0}\n",deName);
     }
   #endif // LINUX
 #ifdef JOE_PLATFORM_WINDOWS
@@ -69,7 +69,7 @@ int main(){
     std::string os = std::getenv("OS");
 
     JOE_CORE_INFO("OS::{0}", os);
-    JOE_CORE_INFO("OS::ACHITECTURE::{0}", arch);
+    JOE_CORE_INFO("OS::ACHITECTURE::{0}\n", arch);
 #endif // JOE_PLATFORM_WINDOWS
 
   auto app = Joe::CreateApplication();

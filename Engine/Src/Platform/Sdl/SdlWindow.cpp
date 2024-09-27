@@ -36,8 +36,6 @@ namespace Joe {
       m_Data.Width = props.Width;
       m_Data.Height = props.Height;
 
-      std::cout << "\n";
-
       if(!s_SdlInitialized){
         if(SDL_Init(SDL_INIT_VIDEO) != 0){
           JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
@@ -62,12 +60,10 @@ namespace Joe {
       m_Window = SDL_CreateWindow(props.Title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, props.Width, props.Height, windowFlags);
 
       if(m_Window != NULL){
-        JOE_CORE_INFO("SDL::WINDOW::CREATION::SUCCESS:TITLE:{0} WIDTH:{1} HEIGHT:{2}", props.Title, props.Width, props.Height);
+        JOE_CORE_INFO("SDL::WINDOW::CREATION::SUCCESS:TITLE:{0} WIDTH:{1} HEIGHT:{2}\n", props.Title, props.Width, props.Height);
       }else{
-        JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
+        JOE_CORE_FATAL("SDL::ERROR::{0}\n", SDL_GetError());
       }
-
-      std::cout << "\n";
     
       SDL_SetWindowMinimumSize(m_Window,300,300);
 
