@@ -36,9 +36,12 @@ namespace Joe {
       m_Data.Width = props.Width;
       m_Data.Height = props.Height;
 
+      const int SDLversion = SDL_GetVersion();
+
       if(!s_SdlInitialized){
         if(SDL_Init(SDL_INIT_VIDEO)){
           JOE_CORE_INFO("SDL::INIT");
+          JOE_CORE_INFO("SDL::VERSION::{0}.{1}.{2}",SDL_VERSIONNUM_MAJOR(SDLversion),SDL_VERSIONNUM_MINOR(SDLversion),SDL_VERSIONNUM_MICRO(SDLversion));
         }else{
           JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
         }
