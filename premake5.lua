@@ -72,7 +72,7 @@ libdirs
 
 links
 {
-	"SDL2",
+	"libSDL3",
 	"ImGui",
 	"vulkan-1.lib"
 }
@@ -111,7 +111,7 @@ includedirs
 	"%{IncludeDirs.glm}",
 	"%{IncludeDirs.vkBootStrap}",
 	"%{IncludeDirs.vma}",
-	"%{prj.name}/Vendor/SDL2/include/",
+	"%{prj.name}/Vendor/SDL3/include/",
 	"%{prj.name}/Vendor/vulkan/Include",
 	"%{prj.name}/Vendor/mINI/Include"
 }
@@ -119,7 +119,7 @@ includedirs
 libdirs
 {
 	"%{prj.name}/Vendor/vulkan/Lib/linux",
-	"%{prj.name}/Vendor/SDL2/lib/linux",
+	"%{prj.name}/Vendor/SDL3/lib/linux",
 }
 
 links
@@ -265,19 +265,19 @@ includedirs
 	"Engine/Src",
 	"Engine/Vendor",
 	"%{IncludeDirs.glm}",
-	"Engine/Vendor/SDL2/include/",
+	"Engine/Vendor/SDL3/include/",
 	"Engine/Vendor/mINI/Include/"
 }
 
 libdirs{
 	"Engine/Vendor/vulkan/Lib/linux",
- 	"Engine/Vendor/SDL2/lib/linux",
+ 	"Engine/Vendor/SDL3/lib/linux",
 }
 
 links
 {
 	"Engine",
-	"SDL2",
+	"SDL3",
 	"shaderc_combined",
 	"ImGui",
 	"Xrandr",
