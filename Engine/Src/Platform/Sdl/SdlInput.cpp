@@ -8,7 +8,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_events.h>
 
-//TODO: implement sdl input
+//TODO: SDL::Implement sdl input
 namespace Joe{
 	Input* Input::s_Instance = new SdlInput();
 
@@ -27,12 +27,12 @@ namespace Joe{
 		}
 	}
 
-	//TODO: implement mouse button pressed input
+	//TODO: SDL::Implement mouse button pressed input
 	bool SdlInput::IsMouseButtonPressedImpl(int button){
 		return false;
 	}
 
-	//TODO: implement mouse position
+	//TODO: SDL::Implement mouse position
 	std::pair<float, float> SdlInput::GetMousePositionImpl(){
 		double xpos, ypos;
 
@@ -51,7 +51,7 @@ namespace Joe{
 
 	void SdlInput::InitGamepad(){
 		SDL_InitSubSystem(SDL_INIT_GAMEPAD);
-    
+    //TODO: SDL3::fix connecting and opening gamepad
 		if(SDL_HasGamepad()){
 			//m_GamePad = SDL_OpenGamepad(i);
 			if(SDL_GamepadConnected(m_GamePad)){

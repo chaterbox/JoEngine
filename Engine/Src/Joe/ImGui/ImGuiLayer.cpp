@@ -38,16 +38,16 @@ namespace Joe{
 
 		// Setup Platform/Renderer bindings
 		
-    //TODO: add ImGui_ImplVulkan_Init
+    //TODO: ImGui::Add ImGui_ImplVulkan_Init
 	}
 
 	void ImGuiLayer::OnDetach(){
-    //TODO: add ImGui_ImplVulkan_Shutdown
+    //TODO: ImGui::Add ImGui_ImplVulkan_Shutdown
 		ImGui::DestroyContext();
 	}
 
 	void ImGuiLayer::Begin(){
-    //TODO: add ImGui_ImplVulkan_NewFrame
+    //TODO: ImGui::Add ImGui_ImplVulkan_NewFrame
 		ImGui::NewFrame();
 	}
 
@@ -58,7 +58,7 @@ namespace Joe{
 
 		// Rendering
 		ImGui::Render();
-    //TODO: add ImGui_ImplVulkan_RenderDrawData
+    //TODO: ImGui::Add ImGui_ImplVulkan_RenderDrawData
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable){
 			ImGui::UpdatePlatformWindows();

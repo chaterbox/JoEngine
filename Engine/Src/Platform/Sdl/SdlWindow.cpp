@@ -37,6 +37,7 @@ namespace Joe {
       m_Data.Height = props.Height;
 
       if(!s_SdlInitialized){
+        //TODO: SDL3:: sdl changed function returns bool 
         if(SDL_Init(SDL_INIT_VIDEO) != 0){
           JOE_CORE_FATAL("SDL::ERROR::{0}", SDL_GetError());
         }else{
@@ -95,6 +96,7 @@ namespace Joe {
     }
 
 	void SdlWindow::OnUpdate(){
+      //TODO: SDL:: add a controller connected check
       
       if(SDL_WaitEvent(&event)){
         if(event.type == SDL_EVENT_QUIT){
