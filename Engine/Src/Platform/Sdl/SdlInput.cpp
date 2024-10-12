@@ -13,26 +13,26 @@ namespace Joe{
 	Input* Input::s_Instance = new SdlInput();
 
 	bool SdlInput::IsKeyPressedImpl(Sint32 keycode){
-    SDL_Event event;
-    if(SDL_WaitEvent(&event)){
-      if(event.type == SDL_EVENT_KEY_DOWN){
-        if(event.key.key == keycode){
-          return true;
-        }
-        else{
-          SDL_PumpEvents();
-          return false;
-        }
-      }
-    }
+		SDL_Event event;
+		if(SDL_WaitEvent(&event)){
+			if(event.type == SDL_EVENT_KEY_DOWN){
+				if(event.key.key == keycode){
+					return true;
+				}
+				else{
+					SDL_PumpEvents();
+					return false;
+				}
+			}
+		}
 	}
 
-  //TODO: implement mouse button pressed input
+	//TODO: implement mouse button pressed input
 	bool SdlInput::IsMouseButtonPressedImpl(int button){
 		return false;
 	}
 
-  //TODO: implement mouse position
+	//TODO: implement mouse position
 	std::pair<float, float> SdlInput::GetMousePositionImpl(){
 		double xpos, ypos;
 
@@ -53,15 +53,16 @@ namespace Joe{
 		SDL_InitSubSystem(SDL_INIT_GAMEPAD);
     
 		if(SDL_HasGamepad()){
-				//m_GamePad = SDL_OpenGamepad(i);
-        
+			//m_GamePad = SDL_OpenGamepad(i);
+			if(SDL_GamepadConnected(m_GamePad)){
 				std::string ControllerString = SDL_GetGamepadName(m_GamePad);
 				JOE_CORE_INFO("SDL::INPUT::GAMEPAD::FOUND");
 				JOE_CORE_INFO("SDL::INPUT::GAMEPAD::{0}", ControllerString);
 			}
+		}
 	}
 
-  bool SdlInput::IsGamePadButtonPressedImpl(){
-    return false;
-  }
+	bool SdlInput::IsGamePadButtonPressedImpl(){
+    	return false;
+	}
 }
