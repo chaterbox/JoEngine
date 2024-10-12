@@ -5,9 +5,8 @@
 
 #include "Joe/Core/Application.h"
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_gamecontroller.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_events.h>
 
 //TODO: implement sdl input
 namespace Joe{
@@ -16,8 +15,8 @@ namespace Joe{
 	bool SdlInput::IsKeyPressedImpl(Sint32 keycode){
     SDL_Event event;
     if(SDL_WaitEvent(&event)){
-      if(event.type == SDL_KEYDOWN){
-        if(event.key.keysym.sym == keycode){
+      if(event.type == SDL_EVENT_KEY_DOWN){
+        if(event.key.key == keycode){
           return true;
         }
         else{
@@ -51,17 +50,15 @@ namespace Joe{
 	}
 
 	void SdlInput::InitGamepad(){
-		SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER);
+		SDL_InitSubSystem(SDL_INIT_GAMEPAD);
     
-		for(int i = 0; i < SDL_NumJoysticks();i++){
-			if(SDL_IsGameController(i)){
-				m_Controller = SDL_GameControllerOpen(i);
+		if(SDL_HasGamepad()){
+				//m_GamePad = SDL_OpenGamepad(i);
         
-				std::string ControllerString = SDL_GameControllerName(m_Controller);
+				std::string ControllerString = SDL_GetGamepadName(m_GamePad);
 				JOE_CORE_INFO("SDL::INPUT::GAMEPAD::FOUND");
 				JOE_CORE_INFO("SDL::INPUT::GAMEPAD::{0}", ControllerString);
 			}
-		}
 	}
 
   bool SdlInput::IsGamePadButtonPressedImpl(){

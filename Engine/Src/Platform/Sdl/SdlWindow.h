@@ -3,8 +3,8 @@
 #include "Joe/Renderer/GraphicsContext.h"
 #include <vulkan/vulkan.h>
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_events.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_events.h>
 
 namespace Joe{
 	class SdlWindow : public Window{

@@ -3,7 +3,7 @@
 #include <vulkan/vulkan.h>
 #include "Joe/Renderer/GraphicsContext.h"
 #include <vk_mem_alloc.h>
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 struct SDLwindow;
 

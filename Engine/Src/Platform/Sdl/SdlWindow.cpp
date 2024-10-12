@@ -1,8 +1,8 @@
 #include "Joepch.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_error.h>
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_video.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_error.h>
+#include <SDL3/SDL_events.h>
+#include <SDL3/SDL_video.h>
 #include "SdlWindow.h"
 
 #include "Joe/Input/KeyCodes/KeyCode.h"
@@ -57,7 +57,7 @@ namespace Joe {
           break;
       }
 
-      m_Window = SDL_CreateWindow(props.Title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, props.Width, props.Height, windowFlags);
+      m_Window = SDL_CreateWindow(props.Title, props.Width, props.Height, windowFlags);
 
       if(m_Window != NULL){
         JOE_CORE_INFO("SDL::WINDOW::CREATION::SUCCESS:TITLE:{0} WIDTH:{1} HEIGHT:{2}\n", props.Title, props.Width, props.Height);
@@ -97,14 +97,13 @@ namespace Joe {
 	void SdlWindow::OnUpdate(){
       
       if(SDL_WaitEvent(&event)){
-        if(event.type == SDL_QUIT){
+        if(event.type == SDL_EVENT_QUIT){
           Application::Quit();
         }
-        if(event.key.keysym.sym == KEYS::JOE_KEY_ESCAPE){
+        if(event.key.key == KEYS::JOE_KEY_ESCAPE){
           Application::Quit();
         }
-        if(event.type == SDL_WINDOWEVENT){
-          if(event.window.event == SDL_WINDOWEVENT_RESIZED){
+          if(event.window.type == SDL_EVENT_WINDOW_RESIZED){
             m_Data.Width = event.window.data1;
             m_Data.Height = event.window.data2;
             
@@ -115,8 +114,7 @@ namespace Joe {
             VulkanSwapchain::Create(VulkanContext::GetPhyDeviceHandle(), VulkanContext::GetLogicalDeviceHandle(), VulkanContext::GetSurfaceHandle(), IsVSync(), m_Data.Width, m_Data.Height);
           }
         }
-      }
-	}
+  }
 
 	void SdlWindow::SetVSync(bool enabled){
 		m_Data.VSync = enabled;

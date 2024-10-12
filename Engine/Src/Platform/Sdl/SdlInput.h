@@ -1,7 +1,7 @@
 #pragma once
 #include "Joe/Input/Input.h"
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_gamecontroller.h>
+#include <SDL3/SDL_events.h>
+#include <SDL3/SDL_gamepad.h>
 
 namespace Joe{
 	class SdlInput : public Input{
@@ -18,6 +18,6 @@ namespace Joe{
     virtual bool IsGamePadButtonPressedImpl() override;
 
 		SDL_Event m_Event;
-		static inline SDL_GameController* m_Controller;
+		static inline SDL_Gamepad* m_GamePad;
 	};
 }

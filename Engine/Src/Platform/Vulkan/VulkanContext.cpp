@@ -4,7 +4,7 @@
 #include "VulkanContext.h"
 #include <vulkan/vulkan.h>
 #include <VkBootstrap.h>
-#include <SDL2/SDL_vulkan.h>
+#include <SDL3/SDL_vulkan.h>
 #include <iostream>
 
 namespace Joe{
@@ -38,7 +38,7 @@ namespace Joe{
 
   m_Instance = vkb_inst.instance;
   
-  SDL_Vulkan_CreateSurface(m_WindowHandle, m_Instance, &m_Surface);
+  SDL_Vulkan_CreateSurface(m_WindowHandle, m_Instance,nullptr, &m_Surface);
 
   vkb::PhysicalDeviceSelector selector{vkb_inst};
 
