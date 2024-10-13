@@ -50,14 +50,14 @@ namespace Joe{
 	}
 
 	void SdlInput::InitGamepad(){
-		SDL_InitSubSystem(SDL_INIT_GAMEPAD);
-    //TODO: SDL3::fix connecting and opening gamepad
-		if(SDL_HasGamepad()){
-			//m_GamePad = SDL_OpenGamepad(i);
-			if(SDL_GamepadConnected(m_GamePad)){
-				std::string ControllerString = SDL_GetGamepadName(m_GamePad);
-				JOE_CORE_INFO("SDL::INPUT::GAMEPAD::FOUND");
-				JOE_CORE_INFO("SDL::INPUT::GAMEPAD::{0}", ControllerString);
+		if(SDL_InitSubSystem(SDL_INIT_GAMEPAD)){
+        	//TODO: SDL3::fix connecting and opening gamepad
+			if(SDL_HasGamepad()){
+				if(SDL_GamepadConnected(m_GamePad)){
+					std::string ControllerString = SDL_GetGamepadName(m_GamePad);
+					JOE_CORE_INFO("SDL::INPUT::GAMEPAD::FOUND");
+					JOE_CORE_INFO("SDL::INPUT::GAMEPAD::{0}", ControllerString);
+				}
 			}
 		}
 	}
