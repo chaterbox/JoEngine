@@ -59,7 +59,7 @@ includedirs
 	"%{IncludeDirs.glm}",
 	"%{IncludeDirs.vkBootStrap}",
 	"%{IncludeDirs.vma}",
-	"%{prj.name}/Vendor/SDL2/include/",
+	"%{prj.name}/Vendor/SDL3/include/",
 	"%{prj.name}/Vendor/vulkan/Include",
 	"%{prj.name}/Vendor/mINI/Include/"
 }
@@ -67,12 +67,12 @@ includedirs
 libdirs
 {
 	"%{prj.name}/Vendor/vulkan/Lib/WIN32",
-	"%{prj.name}/Vendor/SDL2/lib/WIN32",
+	"%{prj.name}/Vendor/SDL3/lib/WIN32",
 }
 
 links
 {
-	"libSDL3",
+	"SDL3",
 	"ImGui",
 	"vulkan-1.lib"
 }
@@ -225,7 +225,7 @@ includedirs
 	"Engine/Src",
 	"Engine/Vendor",
 	"%{IncludeDirs.glm}",
-	"Engine/Vendor/SDL2/include/"
+	"Engine/Vendor/SDL3/include/"
 }
 
 defines
@@ -235,7 +235,7 @@ defines
 
 libdirs{
 	"Engine/Vendor/vulkan/Lib/WIN32",
- 	"Engine/Vendor/SDL2/lib/WIN32",
+ 	"Engine/Vendor/SDL3/lib/WIN32",
 }
 
 links 
@@ -246,7 +246,7 @@ links
 
 postbuildcommands
 {
-	{"xcopy /y /d $(SolutionDir)Engine\\Vendor\\SDL2\\lib\\WIN32\\SDL2.dll $(TargetDir)"}
+	{"xcopy /y /d $(SolutionDir)Engine\\Vendor\\SDL3\\lib\\WIN32\\SDL3.dll $(TargetDir)"}
 }
 
 filter "system:linux"
