@@ -25,7 +25,9 @@ set makeprg=bear\ --\ make
 ### Release 
 Stable, runs with little to no major bugs.
 ### development
-For delelopment.
+For development.
+### development-MacOS
+For adding mac support without breaking regular dev branch
 
 ## Future Plans:
  
