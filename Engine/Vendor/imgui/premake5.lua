@@ -3,8 +3,8 @@ project "ImGui"
 	language "C++"
     staticruntime "on"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("Bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("Bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
@@ -28,10 +28,13 @@ project "ImGui"
 		pic "On"
 		systemversion "latest"
 		cppdialect "C++17"
+		toolset "clang"
 
 	filter "configurations:Debug"
 		runtime "Debug"
+		warnings "Extra"
 		symbols "on"
+		optimize "on"
 
 	filter "configurations:Release"
 		runtime "Release"

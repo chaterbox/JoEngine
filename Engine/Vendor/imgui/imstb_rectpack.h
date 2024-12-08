@@ -23,7 +23,7 @@
 //
 // This library currently uses the Skyline Bottom-Left algorithm.
 //
-// Please note: better rectangle packers are welcome! Please
+// Please NOTE better rectangle packers are welcome! Please
 // implement them to the same API, but with a different init
 // function.
 //
@@ -138,7 +138,7 @@ STBRP_DEF void stbrp_init_target (stbrp_context *context, int width, int height,
 // the following stbrp_pack_rects() call (or calls), but can be freed after
 // the call (or calls) finish.
 //
-// Note: to guarantee best results, either:
+// NOTE to guarantee best results, either:
 //       1. make sure 'num_nodes' >= 'width'
 //   or  2. call stbrp_allow_out_of_mem() defined below with 'allow_out_of_mem = 1'
 //

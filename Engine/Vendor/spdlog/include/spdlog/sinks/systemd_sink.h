@@ -59,7 +59,7 @@ protected:
         // Do not send source location if not available
         if (msg.source.empty())
         {
-            // Note: function call inside '()' to avoid macro expansion
+            // NOTE function call inside '()' to avoid macro expansion
             err = (sd_journal_send)("MESSAGE=%.*s", static_cast<int>(length), msg.payload.data(), "PRIORITY=%d", syslog_level(msg.level),
                 "SYSLOG_IDENTIFIER=%.*s", static_cast<int>(msg.logger_name.size()), msg.logger_name.data(), nullptr);
         }

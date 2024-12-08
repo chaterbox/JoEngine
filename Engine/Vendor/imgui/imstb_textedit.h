@@ -170,7 +170,7 @@
 //    STB_TEXTEDIT_K_TEXTSTART2          secondary keyboard input to move cursor to start of text
 //    STB_TEXTEDIT_K_TEXTEND2            secondary keyboard input to move cursor to end of text
 //
-// Todo:
+// TODO
 //    STB_TEXTEDIT_K_PGUP        keyboard input to move cursor up a page
 //    STB_TEXTEDIT_K_PGDOWN      keyboard input to move cursor down a page
 //
@@ -1076,7 +1076,7 @@ retry:
          break;
       }
 
-// @TODO:
+// @TODO
 //    STB_TEXTEDIT_K_PGUP      - move cursor up a page
 //    STB_TEXTEDIT_K_PGDOWN    - move cursor down a page
    }
@@ -1086,7 +1086,7 @@ retry:
 //
 //      Undo processing
 //
-// @OPTIMIZE: the undo/redo buffer should be circular
+// @OPTIMIZE the undo/redo buffer should be circular
 
 static void stb_textedit_flush_redo(StbUndoState *state)
 {
@@ -1106,7 +1106,7 @@ static void stb_textedit_discard_undo(StbUndoState *state)
          STB_TEXTEDIT_memmove(state->undo_char, state->undo_char + n, (size_t) (state->undo_char_point*sizeof(STB_TEXTEDIT_CHARTYPE)));
          for (i=0; i < state->undo_point; ++i)
             if (state->undo_rec[i].char_storage >= 0)
-               state->undo_rec[i].char_storage -= n; // @OPTIMIZE: get rid of char_storage and infer it
+               state->undo_rec[i].char_storage -= n; // @OPTIMIZE get rid of char_storage and infer it
       }
       --state->undo_point;
       STB_TEXTEDIT_memmove(state->undo_rec, state->undo_rec+1, (size_t) (state->undo_point*sizeof(state->undo_rec[0])));

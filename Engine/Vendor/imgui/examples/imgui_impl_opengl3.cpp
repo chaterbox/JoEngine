@@ -168,7 +168,7 @@ bool    ImGui_ImplOpenGL3_Init(const char* glsl_version)
     io.BackendFlags |= ImGuiBackendFlags_RendererHasViewports;  // We can create multi-viewports on the Renderer side (optional)
 
     // Store GLSL version string so we can refer to it later in case we recreate shaders.
-    // Note: GLSL version is NOT the same as GL version. Leave this to NULL if unsure.
+    // NOTE GLSL version is NOT the same as GL version. Leave this to NULL if unsure.
 #if defined(IMGUI_IMPL_OPENGL_ES2)
     if (glsl_version == NULL)
         glsl_version = "#version 100";

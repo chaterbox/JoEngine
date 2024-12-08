@@ -21,7 +21,7 @@
 //  For correct results you need to be using sRGB and convert to linear space in the pixel shader output.
 //  The default imgui styles will be impacted by this change (alpha values will need tweaking).
 
-// FIXME: cfg.OversampleH, OversampleV are not supported (but perhaps not so necessary with this rasterizer).
+// FIXME cfg.OversampleH, OversampleV are not supported (but perhaps not so necessary with this rasterizer).
 
 #include "imgui_freetype.h"
 #include "imgui_internal.h"     // ImMin,ImMax,ImFontAtlasBuild*,
@@ -37,8 +37,8 @@
 #endif
 
 #if defined(__GNUC__)
-#pragma GCC diagnostic ignored "-Wpragmas"                  // warning: unknown option after '#pragma GCC diagnostic' kind
-#pragma GCC diagnostic ignored "-Wunused-function"          // warning: 'xxxx' defined but not used
+#pragma GCC diagnostic ignored "-Wpragmas"                  // WARNING unknown option after '#pragma GCC diagnostic' kind
+#pragma GCC diagnostic ignored "-Wunused-function"          // WARNING 'xxxx' defined but not used
 #endif
 
 namespace
@@ -524,7 +524,7 @@ bool ImFontAtlasBuildWithFreeType(FT_Library ft_library, ImFontAtlas* atlas, uns
         stbrp_pack_rects(&pack_context, src_tmp.Rects, src_tmp.GlyphsCount);
 
         // Extend texture height and mark missing glyphs as non-packed so we won't render them.
-        // FIXME: We are not handling packing failure here (would happen if we got off TEX_HEIGHT_MAX or if a single if larger than TexWidth?)
+        // FIXME We are not handling packing failure here (would happen if we got off TEX_HEIGHT_MAX or if a single if larger than TexWidth?)
         for (int glyph_i = 0; glyph_i < src_tmp.GlyphsCount; glyph_i++)
             if (src_tmp.Rects[glyph_i].was_packed)
                 atlas->TexHeight = ImMax(atlas->TexHeight, src_tmp.Rects[glyph_i].y + src_tmp.Rects[glyph_i].h);

@@ -1,9 +1,5 @@
 #pragma once
-#include "Joe/Layer.h"
-
-#include "Joe/Events/ApplicationEvents.h"
-#include "Joe/Events/KeyEvent.h"
-#include "Joe/Events/MouseEvent.h"
+#include <Joe/Core/Layer.h>
 
 namespace Joe{
 	class ImGuiLayer : public Layer{

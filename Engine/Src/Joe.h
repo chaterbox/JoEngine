@@ -1,30 +1,25 @@
 #pragma once
 // application
-#include "Joe/Application.h"
+#include "Joe/Core/Application.h"
 // input
-#include "Joe/Input.h"
-// key and mouse codes
-#include "Joe/KeyCode.h"
-#include "Joe/MouseButtonCodes.h"
+#include "Joe/Input/Input.h"
+// key, mouse and gamepad codes
+#include "Joe/Input/KeyCodes/KeyCode.h"
+#include "Joe/Input/KeyCodes/MouseButtonCodes.h"
+#include "Joe/Input/KeyCodes/GamePadCodes.h"
 // layer
-#include "Joe/Layer.h"
+#include "Joe/Core/Layer.h"
 // logging
-#include "Joe/Log.h"
+#include "Joe/Core/Log.h"
 // input 
-#include "Joe/Input.h"
+#include "Joe/Input/Input.h"
 //imgui
 #include "Joe/ImGui/ImGuiLayer.h"
 //--renderer-----------------------
 #include "Joe/Renderer/Renderer.h"
-#include "Joe/Renderer/RenderCommand.h"
 
 #include "Joe/Renderer/Buffer.h"
-#include "Joe/Renderer/Shader.h"
-#include "Joe/Renderer/VertexArray.h"
-
-#include "Joe/Renderer/OrthographicCamera.h"
 //---------------------------------
 
-// --entry point-------------------
-#include "Joe/EntryPoint.h"
-//---------------------------------
+// Mesh
+#include "Joe/Components/Mesh.h"

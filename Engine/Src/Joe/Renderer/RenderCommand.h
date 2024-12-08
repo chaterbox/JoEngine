@@ -1,21 +1,21 @@
 #pragma once
-#include "RendererAPI.h"
+#include "RHI.h"
 
 namespace Joe{
 	class RenderCommand{
 	public:
-		inline static void Clear(){
-			s_RendererAPI->Clear();
+		static inline void Clear(){
+			s_RHI->Clear();
 		}
 
-		inline static void SetClearColor(const glm::vec4& color){
-			s_RendererAPI->SetClearColor(color);
+		static inline void SetClearColor(const glm::vec4& color){
+			s_RHI->SetClearColor(color);
 		}
 
-		inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray){
-			s_RendererAPI->DrawIndexed(vertexArray);
+		static inline void DrawIndexed(){
+			s_RHI->DrawIndexed();
 		}
 	private:
-		static RendererAPI* s_RendererAPI;
+		static RHI* s_RHI;
 	};
 }

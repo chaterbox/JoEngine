@@ -1,25 +1,17 @@
 #include "Joepch.h"
 #include "Renderer.h"
 
-#include "Platform/Opengl/OpenGLShader.h"
-
 namespace Joe{
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
 	
-	void Renderer::BeginScene(OrthographicCamera& camera){
-		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+	void Renderer::BeginScene(){
+
 	}
 
 	void Renderer::EndScene(){
 	}
 
-	void Renderer::Submit(const std::shared_ptr<Shader>& shader,const std::shared_ptr<VertexArray>& vertexArray){
-		if (RendererAPI::GetAPI() == RendererAPI::API::OpenGL){
-			shader->Bind();
-			std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
+	void Renderer::Submit(){
 
-			vertexArray->Bind();
-			RenderCommand::DrawIndexed(vertexArray);
-		}	
 	}
 }

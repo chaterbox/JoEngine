@@ -50,7 +50,7 @@ SPDLOG_API bool fopen_s(FILE **fp, const filename_t &filename, const filename_t 
 SPDLOG_API int remove(const filename_t &filename) SPDLOG_NOEXCEPT;
 
 // Remove file if exists. return 0 on success
-// Note: Non atomic (might return failure to delete if concurrently deleted by other process/thread)
+// NOTE Non atomic (might return failure to delete if concurrently deleted by other process/thread)
 SPDLOG_API int remove_if_exists(const filename_t &filename) SPDLOG_NOEXCEPT;
 
 SPDLOG_API int rename(const filename_t &filename1, const filename_t &filename2) SPDLOG_NOEXCEPT;

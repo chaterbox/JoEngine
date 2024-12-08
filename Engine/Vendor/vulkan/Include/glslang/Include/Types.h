@@ -52,7 +52,7 @@ namespace glslang {
 
 class TIntermAggregate;
 
-const int GlslangMaxTypeLength = 200;  // TODO: need to print block/struct one member per line, so this can stay bounded
+const int GlslangMaxTypeLength = 200;  // TODO need to print block/struct one member per line, so this can stay bounded
 
 const char* const AnonymousPrefix = "anon@"; // for something like a block whose members can be directly accessed
 inline bool IsAnonymous(const TString& name)
@@ -366,7 +366,7 @@ enum TVertexOrder {
     EvoCcw
 };
 
-// Note: order matters, as type of format is done by comparison.
+// NOTE order matters, as type of format is done by comparison.
 enum TLayoutFormat {
     ElfNone,
 

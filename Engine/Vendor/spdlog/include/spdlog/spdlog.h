@@ -80,7 +80,7 @@ SPDLOG_API bool should_log(level::level_enum lvl);
 SPDLOG_API void flush_on(level::level_enum log_level);
 
 // Start/Restart a periodic flusher thread
-// Warning: Use only if all your loggers are thread safe!
+// WARNING Use only if all your loggers are thread safe!
 SPDLOG_API void flush_every(std::chrono::seconds interval);
 
 // Set global error handler

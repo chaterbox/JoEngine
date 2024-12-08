@@ -73,7 +73,7 @@ Breaking Changes:
 - IO: Removed io.DisplayVisibleMin, io.DisplayVisibleMax settings (they were marked obsoleted, used to clip within the (0,0)..(DisplaySize) range).
 
 Other changes:
-(FIXME: This need a fuller explanation!)
+(FIXME This need a fuller explanation!)
 
 - Added ImGuiPlatformIO structure and GetPlatformIO().
   Similarly to ImGuiIO and GetIO(), this structure is the main point of communication for back-ends supporting multi-viewports.
@@ -114,9 +114,9 @@ Other Changes:
   where v_min == v_max. (#3361)
 - BeginMenuBar: Fixed minor bug where CursorPosMax gets pushed to CursorPos prior to calling BeginMenuBar(),
   so e.g. calling the function at the end of a window would often add +ItemSpacing.y to scrolling range.
-- TreeNode, CollapsingHeader: Made clicking on arrow toggle toggle the open state on the Mouse Down event 
-  rather than the Mouse Down+Up sequence, even if the _OpenOnArrow flag isn't set. This is standard behavior 
-  and amends the change done in 1.76 which only affected cases were _OpenOnArrow flag was set. 
+- TreeNode, CollapsingHeader: Made clicking on arrow toggle toggle the open state on the Mouse Down event
+  rather than the Mouse Down+Up sequence, even if the _OpenOnArrow flag isn't set. This is standard behavior
+  and amends the change done in 1.76 which only affected cases were _OpenOnArrow flag was set.
   (This is also necessary to support full multi/range-select/drag and drop operations.)
 - Tab Bar: Keep tab item close button visible while dragging a tab (independent of hovering state).
 - Metrics: Various tweaks, listing windows front-to-back, greying inactive items when possible.
@@ -588,7 +588,7 @@ Other Changes:
 - DragScalar: Fixed dragging of unsigned values on ARM cpu (float to uint cast is undefined). (#2780) [@dBagrat]
 - TreeNode: Added ImGuiTreeNodeFlags_SpanAvailWidth flag. (#2451, #2438, #1897) [@Melix19, @PathogenDavid]
   This extends the hit-box to the right-most edge, even if the node is not framed.
-  (Note: this is not the default in order to allow adding other items on the same line. In the future we will
+  (NOTE this is not the default in order to allow adding other items on the same line. In the future we will
   aim toward refactoring the hit-system to be front-to-back, allowing more natural overlapping of items,
   and then we will be able to make this the default.)
 - TreeNode: Added ImGuiTreeNodeFlags_SpanFullWidth flag. This extends the hit-box to both the left-most and

@@ -260,7 +260,7 @@ bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
         return io.WantCaptureMouse;
     }
 
-    // FIXME: All the key handling is wrong and broken. Refer to GLFW's cocoa_init.mm and cocoa_window.mm.
+    // FIXME All the key handling is wrong and broken. Refer to GLFW's cocoa_init.mm and cocoa_window.mm.
     if (event.type == NSEventTypeKeyDown)
     {
         NSString* str = [event characters];

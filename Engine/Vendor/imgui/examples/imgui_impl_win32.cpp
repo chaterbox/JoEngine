@@ -212,7 +212,7 @@ static void ImGui_ImplWin32_UpdateMousePos()
     // rectangles and last focused time of every viewports it knows about. It will be unaware of foreign windows that may be sitting between or over your windows.
     if (HWND hovered_hwnd = ::WindowFromPoint(mouse_screen_pos))
         if (ImGuiViewport* viewport = ImGui::FindViewportByPlatformHandle((void*)hovered_hwnd))
-            if ((viewport->Flags & ImGuiViewportFlags_NoInputs) == 0) // FIXME: We still get our NoInputs window with WM_NCHITTEST/HTTRANSPARENT code when decorated?
+            if ((viewport->Flags & ImGuiViewportFlags_NoInputs) == 0) // FIXME We still get our NoInputs window with WM_NCHITTEST/HTTRANSPARENT code when decorated?
                 io.MouseHoveredViewport = viewport->ID;
 }
 

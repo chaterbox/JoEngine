@@ -31,7 +31,7 @@ jobs:
       - name: Fix Projects
         shell: powershell
         run: |
-          # WARNING: This will need updating if toolset/sdk change in project files!
+          # WARNING This will need updating if toolset/sdk change in project files!
           gci -recurse -filter "*.vcxproj" | ForEach-Object {
             # Fix SDK and toolset for most samples.
             (Get-Content $_.FullName) -Replace "<PlatformToolset>v110</PlatformToolset>","<PlatformToolset>v142</PlatformToolset>" | Set-Content -Path $_.FullName

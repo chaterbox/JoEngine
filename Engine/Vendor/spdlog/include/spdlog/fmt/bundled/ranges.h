@@ -324,7 +324,7 @@ struct formatter<tuple_arg_join<Char, T...>, Char> {
   template <typename FormatContext>
   typename FormatContext::iterator format_args(
       const tuple_arg_join<Char, T...>&, FormatContext& ctx) {
-    // NOTE: for compilers that support C++17, this empty function instantiation
+    // NOTE for compilers that support C++17, this empty function instantiation
     // can be replaced with a constexpr branch in the variadic overload.
     return ctx.out();
   }
